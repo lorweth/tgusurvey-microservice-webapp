@@ -112,9 +112,14 @@ entity ProgramItem {
     category Category required
 }
 
-// Điều kiện
+// tùy chọn mức độ ràng buộc môn học
+enum Constraint{
+    PREREQUISITE, FIRSTSUBJECT
+}
+
+// Điều kiện: lưu mối quan hệ giữa 2 học phần
 entity Condition {
-    constraint String required
+    constraint Constraint required
 }
 
 
@@ -136,11 +141,14 @@ relationship ManyToOne {
     ProgramItem{subject(msmh)} to Subject
 
     ResultSurvey{user(login)} to User
+
+    // lưu mối quan hệ giữa 2 học phần
+    Condition{subject(msmh)} to Subject
+    Condition{beforeSubject(msmh)} to Subject
 }
 
-relationship OneToMany {
-    Subject{condition(constraint)} to Condition
-}
+
+
 
 /**
  * One to one relationship.
