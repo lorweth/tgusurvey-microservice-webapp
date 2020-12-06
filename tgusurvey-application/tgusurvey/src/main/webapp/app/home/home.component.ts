@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
   login(): void {
     this.loginService.login();
   }
+
+  makeSurveyForm(): void {
+    alert("tạo phiếu");
+  }
 }
