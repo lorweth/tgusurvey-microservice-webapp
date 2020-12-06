@@ -1,0 +1,70 @@
+{
+  "name": "Students",
+  "fields": [
+    {
+      "fieldName": "mssv",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRulesMinlength": "8",
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "birthDay",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cmnd",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "graduationStatus",
+      "fieldType": "GraduationStatus",
+      "fieldValues": "GRADUATED,PENDING",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "students",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "classroom",
+      "otherEntityRelationshipName": "students",
+      "relationshipName": "classroom",
+      "otherEntityField": "mslh"
+    }
+  ],
+  "changelogDate": "20201206030643",
+  "entityTableName": "students",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "userinfo"],
+  "microserviceName": "userinfo"
+}
