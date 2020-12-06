@@ -1,0 +1,138 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-subject-heading" jhiTranslate="tgusurveyApp.surveystoreSubject.home.createOrEditLabel">Create or edit a Subject</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubject.msmh" for="field_msmh">Msmh</label>
+                    <input type="text" class="form-control" name="msmh" id="field_msmh"
+                           formControlName="msmh"/>
+                    <div *ngIf="editForm.get('msmh')!.invalid && (editForm.get('msmh')!.dirty || editForm.get('msmh')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('msmh')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('msmh')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 4 }">
+                        This field is required to be at least 4 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('msmh')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 20 }">
+                        This field cannot be longer than 20 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubject.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 5 }">
+                        This field is required to be at least 5 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name')?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 30 }">
+                        This field cannot be longer than 30 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubject.numOfCredit" for="field_numOfCredit">Num Of Credit</label>
+                    <input type="number" class="form-control" name="numOfCredit" id="field_numOfCredit"
+                           formControlName="numOfCredit"/>
+                    <div *ngIf="editForm.get('numOfCredit')!.invalid && (editForm.get('numOfCredit')!.dirty || editForm.get('numOfCredit')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numOfCredit')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numOfCredit')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 2 }">
+                            This field should be at least 2.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('numOfCredit')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 60 }">
+                            This field cannot be more than 60.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('numOfCredit')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubject.theoryLesson" for="field_theoryLesson">Theory Lesson</label>
+                    <input type="number" class="form-control" name="theoryLesson" id="field_theoryLesson"
+                           formControlName="theoryLesson"/>
+                    <div *ngIf="editForm.get('theoryLesson')!.invalid && (editForm.get('theoryLesson')!.dirty || editForm.get('theoryLesson')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('theoryLesson')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('theoryLesson')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 2 }">
+                            This field should be at least 2.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('theoryLesson')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 60 }">
+                            This field cannot be more than 60.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('theoryLesson')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubject.practiceLesson" for="field_practiceLesson">Practice Lesson</label>
+                    <input type="number" class="form-control" name="practiceLesson" id="field_practiceLesson"
+                           formControlName="practiceLesson"/>
+                    <div *ngIf="editForm.get('practiceLesson')!.invalid && (editForm.get('practiceLesson')!.dirty || editForm.get('practiceLesson')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('practiceLesson')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('practiceLesson')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 2 }">
+                            This field should be at least 2.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('practiceLesson')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 60 }">
+                            This field cannot be more than 60.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('practiceLesson')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

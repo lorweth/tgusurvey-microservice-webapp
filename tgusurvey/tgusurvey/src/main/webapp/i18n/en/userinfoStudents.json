@@ -1,0 +1,33 @@
+{
+  "tgusurveyApp": {
+    "userinfoStudents": {
+      "home": {
+        "title": "Students",
+        "createLabel": "Create a new Students",
+        "createOrEditLabel": "Create or edit a Students",
+        "notFound": "No Students found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Students {{ id }}?"
+      },
+      "detail": {
+        "title": "Students"
+      },
+      "mssv": "Mssv",
+      "birthDay": "Birth Day",
+      "gender": "Gender",
+      "cmnd": "Cmnd",
+      "phoneNumber": "Phone Number",
+      "graduationStatus": "Graduation Status",
+      "user": "User",
+      "classroom": "Classroom"
+    }
+  },
+  "userinfoApp": {
+    "userinfoStudents": {
+      "created": "A new Students is created with identifier {{ param }}",
+      "updated": "A Students is updated with identifier {{ param }}",
+      "deleted": "A Students is deleted with identifier {{ param }}"
+    }
+  }
+}

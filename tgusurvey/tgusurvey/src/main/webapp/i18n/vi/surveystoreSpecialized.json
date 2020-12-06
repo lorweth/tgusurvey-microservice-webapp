@@ -1,0 +1,27 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSpecialized": {
+      "home": {
+        "title": "Specializeds",
+        "createLabel": "Thêm mới một Specialized",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Specialized",
+        "notFound": "No Specializeds found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Specialized {{ id }}?"
+      },
+      "detail": {
+        "title": "Specialized"
+      },
+      "mscn": "Mscn",
+      "name": "Name"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSpecialized": {
+      "created": "Một Specialized mới được tạo với định danh {{ param }}",
+      "updated": "Một Specialized cập nhật với định danh {{ param }}",
+      "deleted": "Một Specialized đã xóa với định danh {{ param }}"
+    }
+  }
+}

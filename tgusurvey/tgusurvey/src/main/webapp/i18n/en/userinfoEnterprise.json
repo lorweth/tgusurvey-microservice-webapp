@@ -1,0 +1,31 @@
+{
+  "tgusurveyApp": {
+    "userinfoEnterprise": {
+      "home": {
+        "title": "Enterprises",
+        "createLabel": "Create a new Enterprise",
+        "createOrEditLabel": "Create or edit a Enterprise",
+        "notFound": "No Enterprises found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Enterprise {{ id }}?"
+      },
+      "detail": {
+        "title": "Enterprise"
+      },
+      "name": "Name",
+      "address": "Address",
+      "phoneNumber": "Phone Number",
+      "representative": "Representative",
+      "lineOfBussiness": "Line Of Bussiness",
+      "user": "User"
+    }
+  },
+  "userinfoApp": {
+    "userinfoEnterprise": {
+      "created": "A new Enterprise is created with identifier {{ param }}",
+      "updated": "A Enterprise is updated with identifier {{ param }}",
+      "deleted": "A Enterprise is deleted with identifier {{ param }}"
+    }
+  }
+}

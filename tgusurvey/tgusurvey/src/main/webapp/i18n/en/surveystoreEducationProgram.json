@@ -1,0 +1,29 @@
+{
+  "tgusurveyApp": {
+    "surveystoreEducationProgram": {
+      "home": {
+        "title": "Education Programs",
+        "createLabel": "Create a new Education Program",
+        "createOrEditLabel": "Create or edit a Education Program",
+        "notFound": "No Education Programs found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Education Program {{ id }}?"
+      },
+      "detail": {
+        "title": "Education Program"
+      },
+      "msct": "Msct",
+      "name": "Name",
+      "year": "Year",
+      "specialized": "Specialized"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreEducationProgram": {
+      "created": "A new Education Program is created with identifier {{ param }}",
+      "updated": "A Education Program is updated with identifier {{ param }}",
+      "deleted": "A Education Program is deleted with identifier {{ param }}"
+    }
+  }
+}

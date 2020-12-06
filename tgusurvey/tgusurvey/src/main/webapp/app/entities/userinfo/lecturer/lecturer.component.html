@@ -1,0 +1,87 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="tgusurveyApp.userinfoLecturer.home.title">Lecturers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-lecturer" [routerLink]="['/lecturer/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="tgusurveyApp.userinfoLecturer.home.createLabel">
+            Create a new Lecturer
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="lecturers?.length === 0">
+        <span jhiTranslate="tgusurveyApp.userinfoLecturer.home.notFound">No lecturers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="lecturers && lecturers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.msgv">Msgv</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.birthDay">Birth Day</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.address">Address</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.gender">Gender</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.cmnd">Cmnd</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.phoneNumber">Phone Number</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.user">User</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.position">Position</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.unit">Unit</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let lecturer of lecturers ;trackBy: trackId">
+                    <td><a [routerLink]="['/lecturer', lecturer.id, 'view']">{{ lecturer.id }}</a></td>
+                    <td>{{ lecturer.msgv }}</td>
+                    <td>{{ lecturer.birthDay | date:'mediumDate' }}</td>
+                    <td>{{ lecturer.address }}</td>
+                    <td jhiTranslate="{{ 'tgusurveyApp.Gender.' + lecturer.gender }}">{{ lecturer.gender }}</td>
+                    <td>{{ lecturer.cmnd }}</td>
+                    <td>{{ lecturer.phoneNumber }}</td>
+                    <td>
+                        {{ lecturer.user?.login }}
+                    </td>
+                    <td>
+                        <div *ngIf="lecturer.position">
+                            <a [routerLink]="['/position', lecturer.position?.id, 'view']" >{{ lecturer.position?.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="lecturer.unit">
+                            <a [routerLink]="['/unit', lecturer.unit?.id, 'view']" >{{ lecturer.unit?.name }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/lecturer', lecturer.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/lecturer', lecturer.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(lecturer)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

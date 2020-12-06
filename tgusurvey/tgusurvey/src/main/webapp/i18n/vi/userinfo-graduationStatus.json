@@ -1,0 +1,9 @@
+{
+  "tgusurveyApp": {
+    "GraduationStatus": {
+      "null": "",
+      "GRADUATED": "GRADUATED",
+      "PENDING": "PENDING"
+    }
+  }
+}

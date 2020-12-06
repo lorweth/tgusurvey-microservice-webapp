@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="lecturer">
+            <h2><span jhiTranslate="tgusurveyApp.userinfoLecturer.detail.title">Lecturer</span> {{ lecturer.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.msgv">Msgv</span></dt>
+                <dd>
+                    <span>{{ lecturer.msgv }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.birthDay">Birth Day</span></dt>
+                <dd>
+                    <span>{{ lecturer.birthDay }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.address">Address</span></dt>
+                <dd>
+                    <span>{{ lecturer.address }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.gender">Gender</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'tgusurveyApp.Gender.' + lecturer.gender }}">{{ lecturer.gender }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.cmnd">Cmnd</span></dt>
+                <dd>
+                    <span>{{ lecturer.cmnd }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{ lecturer.phoneNumber }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.user">User</span></dt>
+                <dd>
+                    {{ lecturer.user?.login }}
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.position">Position</span></dt>
+                <dd>
+                    <div *ngIf="lecturer.position">
+                        <a [routerLink]="['/position', lecturer.position?.id, 'view']">{{ lecturer.position?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.userinfoLecturer.unit">Unit</span></dt>
+                <dd>
+                    <div *ngIf="lecturer.unit">
+                        <a [routerLink]="['/unit', lecturer.unit?.id, 'view']">{{ lecturer.unit?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/lecturer', lecturer.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSurveyHeader": {
+      "home": {
+        "title": "Survey Headers",
+        "createLabel": "Create a new Survey Header",
+        "createOrEditLabel": "Create or edit a Survey Header",
+        "notFound": "No Survey Headers found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Survey Header {{ id }}?"
+      },
+      "detail": {
+        "title": "Survey Header"
+      },
+      "stt": "Stt",
+      "title": "Title",
+      "surveyForm": "Survey Form"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSurveyHeader": {
+      "created": "A new Survey Header is created with identifier {{ param }}",
+      "updated": "A Survey Header is updated with identifier {{ param }}",
+      "deleted": "A Survey Header is deleted with identifier {{ param }}"
+    }
+  }
+}

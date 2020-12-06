@@ -1,0 +1,34 @@
+{
+  "tgusurveyApp": {
+    "userinfoLecturer": {
+      "home": {
+        "title": "Lecturers",
+        "createLabel": "Create a new Lecturer",
+        "createOrEditLabel": "Create or edit a Lecturer",
+        "notFound": "No Lecturers found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Lecturer {{ id }}?"
+      },
+      "detail": {
+        "title": "Lecturer"
+      },
+      "msgv": "Msgv",
+      "birthDay": "Birth Day",
+      "address": "Address",
+      "gender": "Gender",
+      "cmnd": "Cmnd",
+      "phoneNumber": "Phone Number",
+      "user": "User",
+      "position": "Position",
+      "unit": "Unit"
+    }
+  },
+  "userinfoApp": {
+    "userinfoLecturer": {
+      "created": "A new Lecturer is created with identifier {{ param }}",
+      "updated": "A Lecturer is updated with identifier {{ param }}",
+      "deleted": "A Lecturer is deleted with identifier {{ param }}"
+    }
+  }
+}

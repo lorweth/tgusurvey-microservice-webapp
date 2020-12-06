@@ -1,0 +1,33 @@
+{
+  "tgusurveyApp": {
+    "userinfoStudents": {
+      "home": {
+        "title": "Students",
+        "createLabel": "Thêm mới một Students",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Students",
+        "notFound": "No Students found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Students {{ id }}?"
+      },
+      "detail": {
+        "title": "Students"
+      },
+      "mssv": "Mssv",
+      "birthDay": "Birth Day",
+      "gender": "Gender",
+      "cmnd": "Cmnd",
+      "phoneNumber": "Phone Number",
+      "graduationStatus": "Graduation Status",
+      "user": "User",
+      "classroom": "Classroom"
+    }
+  },
+  "userinfoApp": {
+    "userinfoStudents": {
+      "created": "Một Students mới được tạo với định danh {{ param }}",
+      "updated": "Một Students cập nhật với định danh {{ param }}",
+      "deleted": "Một Students đã xóa với định danh {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "SurveyHeader",
+  "fields": [
+    {
+      "fieldName": "stt",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "required"],
+      "fieldValidateRulesMin": "1"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "surveyForm",
+      "otherEntityRelationshipName": "surveyHeader",
+      "relationshipName": "surveyForm",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20201206031643",
+  "entityTableName": "survey_header",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

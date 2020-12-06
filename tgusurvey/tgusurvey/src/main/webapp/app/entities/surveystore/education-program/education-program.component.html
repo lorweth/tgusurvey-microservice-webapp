@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.home.title">Education Programs</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-education-program" [routerLink]="['/education-program/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="tgusurveyApp.surveystoreEducationProgram.home.createLabel">
+            Create a new Education Program
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="educationPrograms?.length === 0">
+        <span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.home.notFound">No educationPrograms found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="educationPrograms && educationPrograms.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.msct">Msct</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.name">Name</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.year">Year</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.specialized">Specialized</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let educationProgram of educationPrograms ;trackBy: trackId">
+                    <td><a [routerLink]="['/education-program', educationProgram.id, 'view']">{{ educationProgram.id }}</a></td>
+                    <td>{{ educationProgram.msct }}</td>
+                    <td>{{ educationProgram.name }}</td>
+                    <td>{{ educationProgram.year | date:'mediumDate' }}</td>
+                    <td>
+                        <div *ngIf="educationProgram.specialized">
+                            <a [routerLink]="['/specialized', educationProgram.specialized?.id, 'view']" >{{ educationProgram.specialized?.mscn }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/education-program', educationProgram.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/education-program', educationProgram.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(educationProgram)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

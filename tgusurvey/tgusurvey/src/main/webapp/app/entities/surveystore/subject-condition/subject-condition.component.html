@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.home.title">Subject Conditions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-subject-condition" [routerLink]="['/subject-condition/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.home.createLabel">
+            Create a new Subject Condition
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="subjectConditions?.length === 0">
+        <span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.home.notFound">No subjectConditions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="subjectConditions && subjectConditions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.subject">Subject</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let subjectCondition of subjectConditions ;trackBy: trackId">
+                    <td><a [routerLink]="['/subject-condition', subjectCondition.id, 'view']">{{ subjectCondition.id }}</a></td>
+                    <td jhiTranslate="{{ 'tgusurveyApp.Constraint.' + subjectCondition.constraint }}">{{ subjectCondition.constraint }}</td>
+                    <td>
+                        <div *ngIf="subjectCondition.subject">
+                            <a [routerLink]="['/subject', subjectCondition.subject?.id, 'view']" >{{ subjectCondition.subject?.msmh }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="subjectCondition.beforeSubject">
+                            <a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']" >{{ subjectCondition.beforeSubject?.msmh }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/subject-condition', subjectCondition.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/subject-condition', subjectCondition.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(subjectCondition)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSpecialized": {
+      "home": {
+        "title": "Specializeds",
+        "createLabel": "Create a new Specialized",
+        "createOrEditLabel": "Create or edit a Specialized",
+        "notFound": "No Specializeds found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Specialized {{ id }}?"
+      },
+      "detail": {
+        "title": "Specialized"
+      },
+      "mscn": "Mscn",
+      "name": "Name"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSpecialized": {
+      "created": "A new Specialized is created with identifier {{ param }}",
+      "updated": "A Specialized is updated with identifier {{ param }}",
+      "deleted": "A Specialized is deleted with identifier {{ param }}"
+    }
+  }
+}

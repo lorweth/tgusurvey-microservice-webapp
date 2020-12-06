@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreProgramItem": {
+      "home": {
+        "title": "Program Items",
+        "createLabel": "Create a new Program Item",
+        "createOrEditLabel": "Create or edit a Program Item",
+        "notFound": "No Program Items found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Program Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Item"
+      },
+      "category": "Category",
+      "program": "Program",
+      "subject": "Subject"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreProgramItem": {
+      "created": "A new Program Item is created with identifier {{ param }}",
+      "updated": "A Program Item is updated with identifier {{ param }}",
+      "deleted": "A Program Item is deleted with identifier {{ param }}"
+    }
+  }
+}

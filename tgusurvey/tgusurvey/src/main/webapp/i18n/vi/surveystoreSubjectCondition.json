@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSubjectCondition": {
+      "home": {
+        "title": "Subject Conditions",
+        "createLabel": "Thêm mới một Subject Condition",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Subject Condition",
+        "notFound": "No Subject Conditions found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Subject Condition {{ id }}?"
+      },
+      "detail": {
+        "title": "Subject Condition"
+      },
+      "constraint": "Constraint",
+      "subject": "Subject",
+      "beforeSubject": "Before Subject"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSubjectCondition": {
+      "created": "Một Subject Condition mới được tạo với định danh {{ param }}",
+      "updated": "Một Subject Condition cập nhật với định danh {{ param }}",
+      "deleted": "Một Subject Condition đã xóa với định danh {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "tgusurveyApp": {
+    "surveystoreResultSurvey": {
+      "home": {
+        "title": "Result Surveys",
+        "createLabel": "Create a new Result Survey",
+        "createOrEditLabel": "Create or edit a Result Survey",
+        "notFound": "No Result Surveys found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Result Survey {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Survey"
+      },
+      "surveyDate": "Survey Date",
+      "answer": "Answer",
+      "question": "Question",
+      "user": "User"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreResultSurvey": {
+      "created": "A new Result Survey is created with identifier {{ param }}",
+      "updated": "A Result Survey is updated with identifier {{ param }}",
+      "deleted": "A Result Survey is deleted with identifier {{ param }}"
+    }
+  }
+}

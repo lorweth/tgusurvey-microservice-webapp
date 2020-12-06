@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSurveyForm": {
+      "home": {
+        "title": "Survey Forms",
+        "createLabel": "Thêm mới một Survey Form",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Survey Form",
+        "notFound": "No Survey Forms found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Survey Form {{ id }}?"
+      },
+      "detail": {
+        "title": "Survey Form"
+      },
+      "name": "Name",
+      "note": "Note",
+      "program": "Program"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSurveyForm": {
+      "created": "Một Survey Form mới được tạo với định danh {{ param }}",
+      "updated": "Một Survey Form cập nhật với định danh {{ param }}",
+      "deleted": "Một Survey Form đã xóa với định danh {{ param }}"
+    }
+  }
+}

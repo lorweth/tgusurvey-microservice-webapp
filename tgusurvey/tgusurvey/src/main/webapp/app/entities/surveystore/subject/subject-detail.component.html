@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="subject">
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreSubject.detail.title">Subject</span> {{ subject.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSubject.msmh">Msmh</span></dt>
+                <dd>
+                    <span>{{ subject.msmh }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSubject.name">Name</span></dt>
+                <dd>
+                    <span>{{ subject.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSubject.numOfCredit">Num Of Credit</span></dt>
+                <dd>
+                    <span>{{ subject.numOfCredit }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSubject.theoryLesson">Theory Lesson</span></dt>
+                <dd>
+                    <span>{{ subject.theoryLesson }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSubject.practiceLesson">Practice Lesson</span></dt>
+                <dd>
+                    <span>{{ subject.practiceLesson }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/subject', subject.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

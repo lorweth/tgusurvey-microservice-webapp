@@ -1,0 +1,35 @@
+{
+  "name": "SurveyForm",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "educationProgram",
+      "otherEntityRelationshipName": "surveyForm",
+      "relationshipName": "program",
+      "otherEntityField": "msct"
+    }
+  ],
+  "changelogDate": "20201206031543",
+  "entityTableName": "survey_form",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

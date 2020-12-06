@@ -1,0 +1,9 @@
+{
+  "tgusurveyApp": {
+    "Constraint": {
+      "null": "",
+      "PREREQUISITE": "PREREQUISITE",
+      "FIRSTSUBJECT": "FIRSTSUBJECT"
+    }
+  }
+}

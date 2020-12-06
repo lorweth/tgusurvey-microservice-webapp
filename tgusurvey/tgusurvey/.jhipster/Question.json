@@ -1,0 +1,31 @@
+{
+  "name": "Question",
+  "fields": [
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "section",
+      "otherEntityRelationshipName": "question",
+      "relationshipName": "section",
+      "otherEntityField": "title"
+    }
+  ],
+  "changelogDate": "20201206031843",
+  "entityTableName": "question",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

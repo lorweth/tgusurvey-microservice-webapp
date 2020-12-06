@@ -1,0 +1,78 @@
+{
+  "name": "Lecturer",
+  "fields": [
+    {
+      "fieldName": "msgv",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRulesMinlength": "8",
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "birthDay",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "Gender",
+      "fieldValues": "MALE,FEMALE",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cmnd",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "9"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "10"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "lecturer",
+      "relationshipName": "user",
+      "otherEntityField": "login",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "position",
+      "otherEntityRelationshipName": "lecturer",
+      "relationshipName": "position",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "unit",
+      "otherEntityRelationshipName": "lecturer",
+      "relationshipName": "unit",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20201206030843",
+  "entityTableName": "lecturer",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "userinfo"],
+  "microserviceName": "userinfo"
+}

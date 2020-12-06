@@ -1,0 +1,29 @@
+{
+  "tgusurveyApp": {
+    "surveystoreEducationProgram": {
+      "home": {
+        "title": "Education Programs",
+        "createLabel": "Thêm mới một Education Program",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Education Program",
+        "notFound": "No Education Programs found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Education Program {{ id }}?"
+      },
+      "detail": {
+        "title": "Education Program"
+      },
+      "msct": "Msct",
+      "name": "Name",
+      "year": "Year",
+      "specialized": "Specialized"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreEducationProgram": {
+      "created": "Một Education Program mới được tạo với định danh {{ param }}",
+      "updated": "Một Education Program cập nhật với định danh {{ param }}",
+      "deleted": "Một Education Program đã xóa với định danh {{ param }}"
+    }
+  }
+}

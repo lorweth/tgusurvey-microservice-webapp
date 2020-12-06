@@ -1,0 +1,30 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSubject": {
+      "home": {
+        "title": "Subjects",
+        "createLabel": "Create a new Subject",
+        "createOrEditLabel": "Create or edit a Subject",
+        "notFound": "No Subjects found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Subject {{ id }}?"
+      },
+      "detail": {
+        "title": "Subject"
+      },
+      "msmh": "Msmh",
+      "name": "Name",
+      "numOfCredit": "Num Of Credit",
+      "theoryLesson": "Theory Lesson",
+      "practiceLesson": "Practice Lesson"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSubject": {
+      "created": "A new Subject is created with identifier {{ param }}",
+      "updated": "A Subject is updated with identifier {{ param }}",
+      "deleted": "A Subject is deleted with identifier {{ param }}"
+    }
+  }
+}

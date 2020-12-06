@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="programItem">
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.detail.title">Program Item</span> {{ programItem.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.category">Category</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'tgusurveyApp.Category.' + programItem.category }}">{{ programItem.category }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.program">Program</span></dt>
+                <dd>
+                    <div *ngIf="programItem.program">
+                        <a [routerLink]="['/education-program', programItem.program?.id, 'view']">{{ programItem.program?.msct }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject">Subject</span></dt>
+                <dd>
+                    <div *ngIf="programItem.subject">
+                        <a [routerLink]="['/subject', programItem.subject?.id, 'view']">{{ programItem.subject?.msmh }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/program-item', programItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

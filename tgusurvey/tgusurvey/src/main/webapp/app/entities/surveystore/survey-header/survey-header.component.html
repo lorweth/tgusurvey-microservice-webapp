@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.home.title">Survey Headers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-survey-header" [routerLink]="['/survey-header/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.home.createLabel">
+            Create a new Survey Header
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="surveyHeaders?.length === 0">
+        <span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.home.notFound">No surveyHeaders found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="surveyHeaders && surveyHeaders.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.stt">Stt</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.title">Title</span></th>
+                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.surveyForm">Survey Form</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let surveyHeader of surveyHeaders ;trackBy: trackId">
+                    <td><a [routerLink]="['/survey-header', surveyHeader.id, 'view']">{{ surveyHeader.id }}</a></td>
+                    <td>{{ surveyHeader.stt }}</td>
+                    <td>{{ surveyHeader.title }}</td>
+                    <td>
+                        <div *ngIf="surveyHeader.surveyForm">
+                            <a [routerLink]="['/survey-form', surveyHeader.surveyForm?.id, 'view']" >{{ surveyHeader.surveyForm?.name }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/survey-header', surveyHeader.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/survey-header', surveyHeader.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(surveyHeader)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="surveyHeader">
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.detail.title">Survey Header</span> {{ surveyHeader.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.stt">Stt</span></dt>
+                <dd>
+                    <span>{{ surveyHeader.stt }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.title">Title</span></dt>
+                <dd>
+                    <span>{{ surveyHeader.title }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.surveyForm">Survey Form</span></dt>
+                <dd>
+                    <div *ngIf="surveyHeader.surveyForm">
+                        <a [routerLink]="['/survey-form', surveyHeader.surveyForm?.id, 'view']">{{ surveyHeader.surveyForm?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/survey-header', surveyHeader.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

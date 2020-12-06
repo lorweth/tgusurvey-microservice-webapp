@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSubjectCondition": {
+      "home": {
+        "title": "Subject Conditions",
+        "createLabel": "Create a new Subject Condition",
+        "createOrEditLabel": "Create or edit a Subject Condition",
+        "notFound": "No Subject Conditions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Subject Condition {{ id }}?"
+      },
+      "detail": {
+        "title": "Subject Condition"
+      },
+      "constraint": "Constraint",
+      "subject": "Subject",
+      "beforeSubject": "Before Subject"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSubjectCondition": {
+      "created": "A new Subject Condition is created with identifier {{ param }}",
+      "updated": "A Subject Condition is updated with identifier {{ param }}",
+      "deleted": "A Subject Condition is deleted with identifier {{ param }}"
+    }
+  }
+}

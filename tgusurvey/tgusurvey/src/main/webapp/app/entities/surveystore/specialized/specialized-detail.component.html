@@ -1,0 +1,34 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="specialized">
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreSpecialized.detail.title">Specialized</span> {{ specialized.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSpecialized.mscn">Mscn</span></dt>
+                <dd>
+                    <span>{{ specialized.mscn }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSpecialized.name">Name</span></dt>
+                <dd>
+                    <span>{{ specialized.name }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/specialized', specialized.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

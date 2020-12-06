@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreProgramItem": {
+      "home": {
+        "title": "Program Items",
+        "createLabel": "Thêm mới một Program Item",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Program Item",
+        "notFound": "No Program Items found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Program Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Item"
+      },
+      "category": "Category",
+      "program": "Program",
+      "subject": "Subject"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreProgramItem": {
+      "created": "Một Program Item mới được tạo với định danh {{ param }}",
+      "updated": "Một Program Item cập nhật với định danh {{ param }}",
+      "deleted": "Một Program Item đã xóa với định danh {{ param }}"
+    }
+  }
+}

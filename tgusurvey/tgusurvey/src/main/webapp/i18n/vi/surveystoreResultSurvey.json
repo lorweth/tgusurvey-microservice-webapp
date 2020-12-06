@@ -1,0 +1,29 @@
+{
+  "tgusurveyApp": {
+    "surveystoreResultSurvey": {
+      "home": {
+        "title": "Result Surveys",
+        "createLabel": "Thêm mới một Result Survey",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Result Survey",
+        "notFound": "No Result Surveys found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Result Survey {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Survey"
+      },
+      "surveyDate": "Survey Date",
+      "answer": "Answer",
+      "question": "Question",
+      "user": "User"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreResultSurvey": {
+      "created": "Một Result Survey mới được tạo với định danh {{ param }}",
+      "updated": "Một Result Survey cập nhật với định danh {{ param }}",
+      "deleted": "Một Result Survey đã xóa với định danh {{ param }}"
+    }
+  }
+}

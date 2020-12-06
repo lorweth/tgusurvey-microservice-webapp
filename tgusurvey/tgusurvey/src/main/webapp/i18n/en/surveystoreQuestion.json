@@ -1,0 +1,27 @@
+{
+  "tgusurveyApp": {
+    "surveystoreQuestion": {
+      "home": {
+        "title": "Questions",
+        "createLabel": "Create a new Question",
+        "createOrEditLabel": "Create or edit a Question",
+        "notFound": "No Questions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Question {{ id }}?"
+      },
+      "detail": {
+        "title": "Question"
+      },
+      "content": "Content",
+      "section": "Section"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreQuestion": {
+      "created": "A new Question is created with identifier {{ param }}",
+      "updated": "A Question is updated with identifier {{ param }}",
+      "deleted": "A Question is deleted with identifier {{ param }}"
+    }
+  }
+}

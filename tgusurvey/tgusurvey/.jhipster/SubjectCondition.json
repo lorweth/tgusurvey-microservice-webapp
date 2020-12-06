@@ -1,0 +1,39 @@
+{
+  "name": "SubjectCondition",
+  "fields": [
+    {
+      "fieldName": "constraint",
+      "fieldType": "Constraint",
+      "fieldValues": "PREREQUISITE,FIRSTSUBJECT",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "subject",
+      "otherEntityRelationshipName": "subjectCondition",
+      "relationshipName": "subject",
+      "otherEntityField": "msmh"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "subject",
+      "otherEntityRelationshipName": "subjectCondition",
+      "relationshipName": "beforeSubject",
+      "otherEntityField": "msmh"
+    }
+  ],
+  "changelogDate": "20201206032043",
+  "entityTableName": "subject_condition",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSurveyForm": {
+      "home": {
+        "title": "Survey Forms",
+        "createLabel": "Create a new Survey Form",
+        "createOrEditLabel": "Create or edit a Survey Form",
+        "notFound": "No Survey Forms found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Survey Form {{ id }}?"
+      },
+      "detail": {
+        "title": "Survey Form"
+      },
+      "name": "Name",
+      "note": "Note",
+      "program": "Program"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSurveyForm": {
+      "created": "A new Survey Form is created with identifier {{ param }}",
+      "updated": "A Survey Form is updated with identifier {{ param }}",
+      "deleted": "A Survey Form is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "tgusurveyApp": {
+    "surveystoreSurveyHeader": {
+      "home": {
+        "title": "Survey Headers",
+        "createLabel": "Thêm mới một Survey Header",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Survey Header",
+        "notFound": "No Survey Headers found"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Survey Header {{ id }}?"
+      },
+      "detail": {
+        "title": "Survey Header"
+      },
+      "stt": "Stt",
+      "title": "Title",
+      "surveyForm": "Survey Form"
+    }
+  },
+  "surveystoreApp": {
+    "surveystoreSurveyHeader": {
+      "created": "Một Survey Header mới được tạo với định danh {{ param }}",
+      "updated": "Một Survey Header cập nhật với định danh {{ param }}",
+      "deleted": "Một Survey Header đã xóa với định danh {{ param }}"
+    }
+  }
+}

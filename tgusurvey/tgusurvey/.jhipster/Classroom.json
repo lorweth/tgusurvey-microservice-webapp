@@ -1,0 +1,30 @@
+{
+  "name": "Classroom",
+  "fields": [
+    {
+      "fieldName": "mslh",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRulesMinlength": "3",
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201206030543",
+  "entityTableName": "classroom",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "userinfo"],
+  "microserviceName": "userinfo"
+}
