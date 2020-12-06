@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql, mariadb"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031143_added_entity_Specialized.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031243_added_entity_EducationProgram.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031343_added_entity_Subject.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031443_added_entity_ResultSurvey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031543_added_entity_SurveyForm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031643_added_entity_SurveyHeader.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031743_added_entity_Section.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031843_added_entity_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031943_added_entity_ProgramItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206032043_added_entity_SubjectCondition.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20201206031243_added_entity_constraints_EducationProgram.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031443_added_entity_constraints_ResultSurvey.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031543_added_entity_constraints_SurveyForm.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031643_added_entity_constraints_SurveyHeader.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031743_added_entity_constraints_Section.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031843_added_entity_constraints_Question.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206031943_added_entity_constraints_ProgramItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201206032043_added_entity_constraints_SubjectCondition.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+{
+  "name": "EducationProgram",
+  "fields": [
+    {
+      "fieldName": "msct",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRulesMinlength": "4",
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "5",
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "year",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "specialized",
+      "otherEntityRelationshipName": "educationProgram",
+      "relationshipName": "specialized",
+      "otherEntityField": "mscn"
+    }
+  ],
+  "changelogDate": "20201206031243",
+  "entityTableName": "education_program",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

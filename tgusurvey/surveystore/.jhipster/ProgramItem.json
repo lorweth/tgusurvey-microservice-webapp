@@ -1,0 +1,39 @@
+{
+  "name": "ProgramItem",
+  "fields": [
+    {
+      "fieldName": "category",
+      "fieldType": "Category",
+      "fieldValues": "REQUIRED,OPTION",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "educationProgram",
+      "otherEntityRelationshipName": "programItem",
+      "relationshipName": "program",
+      "otherEntityField": "msct"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "subject",
+      "otherEntityRelationshipName": "programItem",
+      "relationshipName": "subject",
+      "otherEntityField": "msmh"
+    }
+  ],
+  "changelogDate": "20201206031943",
+  "entityTableName": "program_item",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["tgusurvey", "surveystore"],
+  "microserviceName": "surveystore"
+}

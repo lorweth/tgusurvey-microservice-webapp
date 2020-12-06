@@ -1,0 +1,11 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["surveystore", "tgusurvey", "userinfo"],
+    "directoryPath": "../",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "consoleOptions": [],
+    "serviceDiscoveryType": "consul",
+    "jwtSecretKey": "OWRkYTU0NmJlYzdlNWI2YmUyZWJjYWUyYjRjZDFiZjBhMGFlMjg2YTI0YTUzNWZmNzgyYzA5N2NlNmQyMDI4MmUwODEwZjBlY2JiNzllZDZkNDI4ZTYxYjBiZjlhN2VhZjAyYQ=="
+  }
+}

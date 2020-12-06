@@ -1,0 +1,253 @@
+application {
+  config {
+   	baseName tgusurvey
+    applicationType gateway
+    packageName vn.vnedu.tgusurvey.tgusurvey
+    serverPort 8080
+    authenticationType oauth2
+    // uaaBaseName "authenticate"
+    databaseType sql
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    cacheProvider hazelcast
+    clientFramework angularX
+    buildTool gradle
+    languages [en, vi]
+    clientTheme flatly
+    serviceDiscoveryType consul
+    testFrameworks [protractor]
+  }
+  entities *
+}
+
+application {
+  config {
+   	baseName userinfo
+    applicationType microservice
+    packageName vn.vnedu.tgusurvey.userinfo
+    serverPort 8081
+    authenticationType oauth2
+    // uaaBaseName "authenticate"
+    databaseType sql
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    buildTool gradle
+    languages [en, vi]
+    cacheProvider hazelcast
+    serviceDiscoveryType consul
+    testFrameworks [gatling]
+  }
+  // entities *
+  entities Students, Lecturer, Enterprise, Classroom, Unit, Position
+}
+
+application {
+  config {
+   	baseName surveystore
+    applicationType microservice
+    packageName vn.vnedu.tgusurvey.surveystore
+    serverPort 8082
+    authenticationType oauth2
+    // uaaBaseName "authenticate"
+    databaseType sql
+    devDatabaseType mysql
+    prodDatabaseType mysql
+    buildTool gradle
+    languages [en, vi]
+    cacheProvider hazelcast
+    serviceDiscoveryType consul
+    testFrameworks [gatling]
+  }
+  // entities *
+  entities ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized
+}
+
+// application {
+// 	config {
+//    	baseName authenticate
+//     applicationType uaa
+//     packageName vn.vnedu.tgusurvey.authenticate
+//     serverPort 9999
+//     databaseType sql
+//     devDatabaseType mysql
+//     prodDatabaseType mysql
+//     buildTool gradle
+//     languages [en]
+//     cacheProvider hazelcast
+//     serviceDiscoveryType consul
+//     testFrameworks [gatling]
+//   }
+// }
+
+
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum GraduationStatus {
+    GRADUATED
+    PENDING
+}
+
+entity Classroom {
+    mslh String minlength(3) maxlength(20) required unique
+    name String required
+}
+
+entity Students {
+    mssv String minlength(8) maxlength(20) required unique
+    birthDay LocalDate required
+    gender Gender required
+    cmnd String maxlength(9) required
+    phoneNumber String maxlength(10) required
+    graduationStatus GraduationStatus required
+}
+
+// Đơn vị của Trường
+entity Unit {
+    name String required
+}
+
+// Giảng viên
+entity Lecturer {
+    msgv String minlength(8) maxlength(20) required unique
+    birthDay LocalDate required
+    address TextBlob required
+    gender Gender required
+    cmnd String maxlength(9) required
+    phoneNumber String maxlength(10) required
+}
+
+// Chức vụ
+entity Position {
+    mscv String minlength(5) maxlength(20) required unique
+    name String required
+}
+
+// Doanh nghiệp
+entity Enterprise{
+    name String required
+    address String required
+    phoneNumber String maxlength(10) required
+    representative String required // Tên người đại diện
+    lineOfBussiness String required // lĩnh vực kinh doanh
+}
+
+// Ngành học
+entity Specialized {
+    mscn String minlength(4) maxlength(20) required unique
+    name String required
+}
+
+// Chương trình đào tạo
+entity EducationProgram {
+    msct String minlength(4) maxlength(20) required unique
+    name String minlength(5) maxlength(30)
+    year LocalDate required
+}
+
+// Loại môn học
+enum Category {
+    REQUIRED
+    OPTION
+}
+
+// Môn học
+entity Subject {
+    msmh String minlength(4) maxlength(20) required unique
+    name String minlength(5) maxlength(30) required
+    numOfCredit Integer min(2) max(60) required
+    theoryLesson Integer min(2) max(60) required
+    practiceLesson Integer min(2) max(60) required
+}
+
+enum Answer {
+    OPTION1, OPTION2, OPTION3, OPTION4, OPTION5
+}
+
+// Kết quả khảo sát
+entity ResultSurvey {
+    surveyDate Instant
+    answer Answer
+
+}
+
+// Phiếu khảo sát
+entity SurveyForm {
+    name String required
+    note String
+}
+
+entity SurveyHeader {
+    stt Integer min(1) required
+    title String required
+}
+
+entity Section {
+    stt Integer min(1) required
+    title String required
+    comment TextBlob
+}
+
+entity Question {
+    content String required
+}
+
+// Bảng sinh ra khi kết nối nhiều nhiều Môn học - CTĐT
+entity ProgramItem {
+    category Category required
+}
+
+// tùy chọn mức độ ràng buộc môn học
+enum Constraint{
+    PREREQUISITE, FIRSTSUBJECT
+}
+
+// Điều kiện: lưu mối quan hệ giữa 2 học phần
+entity SubjectCondition {
+    constraint Constraint required
+}
+
+
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+    Students{classroom(mslh)} to Classroom
+    Lecturer{unit(name)} to Unit
+
+    Question{section(title)} to Section
+    Section{header(title)} to SurveyHeader
+    SurveyHeader{surveyForm(name)} to SurveyForm
+
+    SurveyForm{program(msct)} to EducationProgram
+    EducationProgram{specialized(mscn)} to Specialized
+
+    ProgramItem{program(msct)} to EducationProgram
+    ProgramItem{subject(msmh)} to Subject
+
+    ResultSurvey{user(login)} to User
+
+    // lưu mối quan hệ giữa 2 học phần
+    SubjectCondition{subject(msmh)} to Subject
+    SubjectCondition{beforeSubject(msmh)} to Subject
+}
+
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Lecturer{user(login)} to User
+    Students{user(login)} to User
+    Enterprise{user(login)} to User
+    Lecturer{position(name)} to Position
+
+    ResultSurvey{question(content)} to Question
+}
+
+microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
+microservice ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized with surveystore
+
+
+

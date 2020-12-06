@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity SubjectCondition.
+    -->
+    <changeSet id="20201206032043-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="subject_id"
+                                 baseTableName="subject_condition"
+                                 constraintName="fk_subject_condition_subject_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subject"/>
+
+        <addForeignKeyConstraint baseColumnNames="before_subject_id"
+                                 baseTableName="subject_condition"
+                                 constraintName="fk_subject_condition_before_subject_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subject"/>
+
+    </changeSet>
+</databaseChangeLog>

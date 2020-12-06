@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity ProgramItem.
+    -->
+    <changeSet id="20201206031943-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="program_id"
+                                 baseTableName="program_item"
+                                 constraintName="fk_program_item_program_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="education_program"/>
+
+        <addForeignKeyConstraint baseColumnNames="subject_id"
+                                 baseTableName="program_item"
+                                 constraintName="fk_program_item_subject_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subject"/>
+
+    </changeSet>
+</databaseChangeLog>
