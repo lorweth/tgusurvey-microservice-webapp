@@ -7,6 +7,8 @@ import { TgusurveyCoreModule } from 'app/core/core.module';
 import { TgusurveyAppRoutingModule } from './app-routing.module';
 import { TgusurveyHomeModule } from './home/home.module';
 import { TgusurveyEntityModule } from './entities/entity.module';
+// thêm module của component
+import { TgusurveyComponentModule } from './components/component.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
@@ -24,8 +26,9 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     TgusurveyHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     TgusurveyEntityModule,
+    TgusurveyComponentModule,
     TgusurveyAppRoutingModule,
-    LeafletModule
+    LeafletModule,
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent],
