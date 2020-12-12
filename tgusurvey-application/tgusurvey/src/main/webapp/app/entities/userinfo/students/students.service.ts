@@ -38,6 +38,7 @@ export class StudentsService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  // call api get student profile of current login user
   getMyInfo(): Observable<EntityResponseType> {
     return this.http
       .get<IStudents>(`${this.resourceUrl}/myinfo`, { observe: 'response' })

@@ -38,6 +38,13 @@ export class LecturerService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  // call api get enterprise profile of current login user
+  getMyInfo(): Observable<EntityResponseType> {
+    return this.http
+      .get<ILecturer>(`${this.resourceUrl}/myinfo`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http

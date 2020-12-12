@@ -38,7 +38,7 @@ export const personalInfoRoute: Routes = [
     path: '',
     component: PersonalInfoComponent,
     data: {
-      authorities: [Authority.STUDENTS, Authority.ADMIN],
+      authorities: [Authority.USER],
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],

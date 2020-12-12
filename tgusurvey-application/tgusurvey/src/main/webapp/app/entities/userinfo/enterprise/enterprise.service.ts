@@ -27,6 +27,11 @@ export class EnterpriseService {
     return this.http.get<IEnterprise>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  // call api get enterprise profile of current login user
+  getMyInfo(): Observable<EntityResponseType> {
+    return this.http.get<IEnterprise>(`${this.resourceUrl}/myinfo`, { observe: 'response' });
+  }
+
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http.get<IEnterprise[]>(this.resourceUrl, { params: options, observe: 'response' });
