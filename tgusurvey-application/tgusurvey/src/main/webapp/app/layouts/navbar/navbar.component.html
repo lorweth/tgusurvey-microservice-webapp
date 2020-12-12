@@ -205,8 +205,20 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
-                    <li>
-                        <a class="dropdown-item" routerLink="/personal-info" id="info">
+                    <li *jhiHasAnyAuthority="'ROLE_STUDENTS'">
+                        <a class="dropdown-item" routerLink="/student-profile" id="student-profile">
+                            <fa-icon icon="user" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.info">Info</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="'ROLE_LECTURERS'">
+                        <a class="dropdown-item" routerLink="/lecturer-profile" id="lecturer-profile">
+                            <fa-icon icon="user" [fixedWidth]="true"></fa-icon>
+                            <span jhiTranslate="global.menu.info">Info</span>
+                        </a>
+                    </li>
+                    <li *jhiHasAnyAuthority="'ROLE_ENTERPRISES'">
+                        <a class="dropdown-item" routerLink="/enterprise-profile" id="enterprise-profile">
                             <fa-icon icon="user" [fixedWidth]="true"></fa-icon>
                             <span jhiTranslate="global.menu.info">Info</span>
                         </a>
