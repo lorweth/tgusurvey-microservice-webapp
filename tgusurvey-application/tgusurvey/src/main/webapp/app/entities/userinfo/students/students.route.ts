@@ -39,7 +39,7 @@ export const studentsRoute: Routes = [
     path: '',
     component: StudentsComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.STUDENTS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const studentsRoute: Routes = [
       students: StudentsResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.STUDENTS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const studentsRoute: Routes = [
       students: StudentsResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.STUDENTS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -75,7 +75,7 @@ export const studentsRoute: Routes = [
       students: StudentsResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.STUDENTS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],

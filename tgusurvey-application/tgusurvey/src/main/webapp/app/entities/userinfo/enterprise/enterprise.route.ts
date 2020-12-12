@@ -39,7 +39,7 @@ export const enterpriseRoute: Routes = [
     path: '',
     component: EnterpriseComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ENTERPRISES, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoEnterprise.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const enterpriseRoute: Routes = [
       enterprise: EnterpriseResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ENTERPRISES, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoEnterprise.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const enterpriseRoute: Routes = [
       enterprise: EnterpriseResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ENTERPRISES, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoEnterprise.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -75,7 +75,7 @@ export const enterpriseRoute: Routes = [
       enterprise: EnterpriseResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ENTERPRISES, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoEnterprise.home.title',
     },
     canActivate: [UserRouteAccessService],

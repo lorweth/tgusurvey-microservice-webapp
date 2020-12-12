@@ -39,7 +39,7 @@ export const lecturerRoute: Routes = [
     path: '',
     component: LecturerComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.LECTURERS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoLecturer.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const lecturerRoute: Routes = [
       lecturer: LecturerResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.LECTURERS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoLecturer.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -63,7 +63,7 @@ export const lecturerRoute: Routes = [
       lecturer: LecturerResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.LECTURERS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoLecturer.home.title',
     },
     canActivate: [UserRouteAccessService],
@@ -75,7 +75,7 @@ export const lecturerRoute: Routes = [
       lecturer: LecturerResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.LECTURERS, Authority.ADMIN],
       pageTitle: 'tgusurveyApp.userinfoLecturer.home.title',
     },
     canActivate: [UserRouteAccessService],
