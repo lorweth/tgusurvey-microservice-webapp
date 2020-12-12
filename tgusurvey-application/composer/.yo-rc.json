@@ -6,6 +6,6 @@
     "monitoring": "no",
     "consoleOptions": [],
     "serviceDiscoveryType": "consul",
-    "jwtSecretKey": "OWRkYTU0NmJlYzdlNWI2YmUyZWJjYWUyYjRjZDFiZjBhMGFlMjg2YTI0YTUzNWZmNzgyYzA5N2NlNmQyMDI4MmUwODEwZjBlY2JiNzllZDZkNDI4ZTYxYjBiZjlhN2VhZjAyYQ=="
+    "jwtSecretKey": "MGYzMzJkZmVjNDFmZDRjZjZmZjgzMTNlYWU4OTI2ODk4ZjlkNWJkOGFlZDE0MTE2MmU1M2Y0YWViNWI1Y2QwYjkwY2MzMzFhNjY4NWQ5ZmEyY2FmN2E0OTM3YjY0N2Q3MjM1ZQ=="
   }
 }

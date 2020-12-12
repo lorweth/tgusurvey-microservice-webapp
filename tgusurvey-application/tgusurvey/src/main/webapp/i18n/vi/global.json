@@ -25,6 +25,7 @@
         "surveystoreSubjectCondition": "Subject Condition",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "info": "Thông tin của tôi",
       "account": {
         "main": "Tài khoản",
         "settings": "Cài đặt",

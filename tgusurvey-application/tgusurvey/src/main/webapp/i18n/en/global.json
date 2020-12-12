@@ -25,6 +25,7 @@
         "surveystoreSubjectCondition": "Subject Condition",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "info": "My Info",
       "account": {
         "main": "Account",
         "settings": "Settings",
