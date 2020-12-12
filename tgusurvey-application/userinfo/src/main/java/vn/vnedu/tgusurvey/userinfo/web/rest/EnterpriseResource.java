@@ -1,8 +1,10 @@
 package vn.vnedu.tgusurvey.userinfo.web.rest;
 
 import vn.vnedu.tgusurvey.userinfo.domain.Enterprise;
+import vn.vnedu.tgusurvey.userinfo.domain.Students;
 import vn.vnedu.tgusurvey.userinfo.repository.EnterpriseRepository;
 import vn.vnedu.tgusurvey.userinfo.repository.UserRepository;
+import vn.vnedu.tgusurvey.userinfo.security.SecurityUtils;
 import vn.vnedu.tgusurvey.userinfo.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -111,6 +113,24 @@ public class EnterpriseResource {
     public ResponseEntity<Enterprise> getEnterprise(@PathVariable Long id) {
         log.debug("REST request to get Enterprise : {}", id);
         Optional<Enterprise> enterprise = enterpriseRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(enterprise);
+    }
+
+    /**
+     * {@code GET /enterprises/myinfo} : get the current login enterprises
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the enterprises, or with status {@code 404 (Not Found)}
+     */
+    @GetMapping("/enterprises/myinfo")
+    public ResponseEntity<Enterprise> getCurrentEnterprise() {
+        log.debug("REST request to get student login info");
+        final Optional<String> isUser = SecurityUtils.getCurrentUserLogin();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        }
+
+        final String user = isUser.get();
+
+        Optional<Enterprise> enterprise = enterpriseRepository.findOneByUserLogin(user);
         return ResponseUtil.wrapOrNotFound(enterprise);
     }
 

@@ -1,8 +1,10 @@
 package vn.vnedu.tgusurvey.userinfo.web.rest;
 
 import vn.vnedu.tgusurvey.userinfo.domain.Lecturer;
+import vn.vnedu.tgusurvey.userinfo.domain.Students;
 import vn.vnedu.tgusurvey.userinfo.repository.LecturerRepository;
 import vn.vnedu.tgusurvey.userinfo.repository.UserRepository;
+import vn.vnedu.tgusurvey.userinfo.security.SecurityUtils;
 import vn.vnedu.tgusurvey.userinfo.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -111,6 +113,24 @@ public class LecturerResource {
     public ResponseEntity<Lecturer> getLecturer(@PathVariable Long id) {
         log.debug("REST request to get Lecturer : {}", id);
         Optional<Lecturer> lecturer = lecturerRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(lecturer);
+    }
+
+    /**
+     * {@code GET /lecturers/myinfo} : get the current login lecturers
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the lecturers, or with status {@code 404 (Not Found)}
+     */
+    @GetMapping("/lecturers/myinfo")
+    public ResponseEntity<Lecturer> getCurrentLecturer() {
+        log.debug("REST request to get student login info");
+        final Optional<String> isUser = SecurityUtils.getCurrentUserLogin();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        }
+
+        final String user = isUser.get();
+
+        Optional<Lecturer> lecturer = lecturerRepository.findOneByUserLogin(user);
         return ResponseUtil.wrapOrNotFound(lecturer);
     }
 

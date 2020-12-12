@@ -117,8 +117,12 @@ public class StudentsResource {
         return ResponseUtil.wrapOrNotFound(students);
     }
 
+    /**
+     * {@code GET /students/myinfo} : get the current login students
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the students, or with status {@code 404 (Not Found)}
+     */
     @GetMapping("/students/myinfo")
-    public ResponseEntity<Students> getStudents() {
+    public ResponseEntity<Students> getCurrentStudents() {
         log.debug("REST request to get student login info");
         final Optional<String> isUser = SecurityUtils.getCurrentUserLogin();
         if(!isUser.isPresent()) {
