@@ -1,8 +1,11 @@
 package vn.vnedu.tgusurvey.userinfo.web.rest;
 
 import vn.vnedu.tgusurvey.userinfo.domain.Students;
+import vn.vnedu.tgusurvey.userinfo.domain.User;
 import vn.vnedu.tgusurvey.userinfo.repository.StudentsRepository;
 import vn.vnedu.tgusurvey.userinfo.repository.UserRepository;
+import vn.vnedu.tgusurvey.userinfo.security.SecurityUtils;
+import vn.vnedu.tgusurvey.userinfo.service.UserService;
 import vn.vnedu.tgusurvey.userinfo.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -111,6 +114,20 @@ public class StudentsResource {
     public ResponseEntity<Students> getStudents(@PathVariable Long id) {
         log.debug("REST request to get Students : {}", id);
         Optional<Students> students = studentsRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(students);
+    }
+
+    @GetMapping("/students/myinfo")
+    public ResponseEntity<Students> getStudents() {
+        log.debug("REST request to get student login info");
+        final Optional<String> isUser = SecurityUtils.getCurrentUserLogin();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        }
+
+        final String user = isUser.get();
+
+        Optional<Students> students = studentsRepository.findOneByUserLogin(user);
         return ResponseUtil.wrapOrNotFound(students);
     }
 
