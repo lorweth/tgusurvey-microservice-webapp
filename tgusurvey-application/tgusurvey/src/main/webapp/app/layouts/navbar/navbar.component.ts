@@ -62,10 +62,6 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  getMyInfo(): void {
-    alert('show my info');
-  }
-
   toggleNavbar(): void {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
