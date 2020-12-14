@@ -25,7 +25,7 @@ type SelectableEntity = IUser | IPosition | IUnit;
 })
 export class LecturerUpdateComponent implements OnInit {
   isSaving = false;
-  users: IUser[] = [];
+  users: IUser | null = null;
   positions: IPosition[] = [];
   units: IUnit[] = [];
   birthDayDp: any;
@@ -58,7 +58,7 @@ export class LecturerUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ lecturer }) => {
       this.updateForm(lecturer);
 
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+      this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.users = res.body || null));
 
       this.positionService
         .query({ filter: 'lecturer-is-null' })
@@ -141,7 +141,8 @@ export class LecturerUpdateComponent implements OnInit {
       gender: this.editForm.get(['gender'])!.value,
       cmnd: this.editForm.get(['cmnd'])!.value,
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
-      user: this.editForm.get(['user'])!.value,
+      //user: this.editForm.get(['user'])!.value,
+      user: this.users || undefined,
       position: this.editForm.get(['position'])!.value,
       unit: this.editForm.get(['unit'])!.value,
     };

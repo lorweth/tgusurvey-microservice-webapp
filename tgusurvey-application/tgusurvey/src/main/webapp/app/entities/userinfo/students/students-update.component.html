@@ -107,13 +107,16 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.userinfoStudents.user" for="field_user">User</label>
-                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                    <input class="form-control" id="field_user" name="user" formControlName="user" [placeholder]="users?.login"/>
+                    
+                    
+                </div> -->
+                <!-- <select class="form-control" id="field_user" name="user" formControlName="user">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
-                    </select>
-                </div>
+                    </select> -->
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.userinfoStudents.classroom" for="field_classroom">Classroom</label>

@@ -16,7 +16,7 @@ import { UserService } from 'app/core/user/user.service';
 })
 export class EnterpriseUpdateComponent implements OnInit {
   isSaving = false;
-  users: IUser[] = [];
+  users: IUser | null = null;
 
   editForm = this.fb.group({
     id: [],
@@ -39,7 +39,7 @@ export class EnterpriseUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ enterprise }) => {
       this.updateForm(enterprise);
 
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+      this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.users = res.body || null));
     });
   }
 
@@ -78,7 +78,8 @@ export class EnterpriseUpdateComponent implements OnInit {
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       representative: this.editForm.get(['representative'])!.value,
       lineOfBussiness: this.editForm.get(['lineOfBussiness'])!.value,
-      user: this.editForm.get(['user'])!.value,
+      //user: this.editForm.get(['user'])!.value,
+      user: this.users || undefined,
     };
   }
 

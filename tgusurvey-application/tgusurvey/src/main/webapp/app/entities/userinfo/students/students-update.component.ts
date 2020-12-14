@@ -20,7 +20,7 @@ type SelectableEntity = IUser | IClassroom;
 })
 export class StudentsUpdateComponent implements OnInit {
   isSaving = false;
-  users: IUser[] = [];
+  users: IUser | null = null;
   classrooms: IClassroom[] = [];
   birthDayDp: any;
 
@@ -47,9 +47,7 @@ export class StudentsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ students }) => {
       this.updateForm(students);
-
-      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
-
+      this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.users = res.body || null));
       this.classroomService.query().subscribe((res: HttpResponse<IClassroom[]>) => (this.classrooms = res.body || []));
     });
   }
@@ -92,7 +90,8 @@ export class StudentsUpdateComponent implements OnInit {
       cmnd: this.editForm.get(['cmnd'])!.value,
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       graduationStatus: this.editForm.get(['graduationStatus'])!.value,
-      user: this.editForm.get(['user'])!.value,
+      //user: this.editForm.get(['user'])!.value,
+      user: this.users || undefined,
       classroom: this.editForm.get(['classroom'])!.value,
     };
   }
