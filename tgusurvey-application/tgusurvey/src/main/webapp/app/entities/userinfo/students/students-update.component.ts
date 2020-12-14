@@ -90,6 +90,7 @@ export class StudentsUpdateComponent implements OnInit {
       cmnd: this.editForm.get(['cmnd'])!.value,
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       graduationStatus: this.editForm.get(['graduationStatus'])!.value,
+      // eslint-disable-next-line
       //user: this.editForm.get(['user'])!.value,
       user: this.users || undefined,
       classroom: this.editForm.get(['classroom'])!.value,

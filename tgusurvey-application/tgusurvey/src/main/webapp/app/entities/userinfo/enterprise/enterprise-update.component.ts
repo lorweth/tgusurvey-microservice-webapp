@@ -78,6 +78,7 @@ export class EnterpriseUpdateComponent implements OnInit {
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
       representative: this.editForm.get(['representative'])!.value,
       lineOfBussiness: this.editForm.get(['lineOfBussiness'])!.value,
+      // eslint-disable-next-line
       //user: this.editForm.get(['user'])!.value,
       user: this.users || undefined,
     };

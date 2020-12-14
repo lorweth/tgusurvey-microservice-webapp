@@ -141,6 +141,7 @@ export class LecturerUpdateComponent implements OnInit {
       gender: this.editForm.get(['gender'])!.value,
       cmnd: this.editForm.get(['cmnd'])!.value,
       phoneNumber: this.editForm.get(['phoneNumber'])!.value,
+      // eslint-disable-next-line
       //user: this.editForm.get(['user'])!.value,
       user: this.users || undefined,
       position: this.editForm.get(['position'])!.value,
