@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import vn.vnedu.tgusurvey.tgusurvey.service.dto.UserDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,4 +30,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findOneWithAuthoritiesByLogin(String login);
 
     Page<User> findAllByLoginNot(Pageable pageable, String login);
+
+//    Page<UserDTO> findByLogin(Pageable pageable, String login);
+    Optional<UserDTO> findByLogin(String login);
 }

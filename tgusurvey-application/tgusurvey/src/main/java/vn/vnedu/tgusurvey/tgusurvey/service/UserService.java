@@ -81,6 +81,14 @@ public class UserService {
         return userRepository.findOneWithAuthoritiesByLogin(login);
     }
 
+//    @Transactional
+//    public Page<UserDTO> getCurrentUserLogin(Pageable pageable) {
+//        return userRepository.findByLogin(pageable, SecurityUtils.getCurrentUserLogin().orElse(null));
+//    }
+
+    public Optional<UserDTO> getCurrentUserLogin() {
+        return userRepository.findByLogin(SecurityUtils.getCurrentUserLogin().orElse(null));
+    }
 
     /**
      * Gets a list of all the authorities.
@@ -215,4 +223,6 @@ public class UserService {
             Objects.requireNonNull(cacheManager.getCache(UserRepository.USERS_BY_EMAIL_CACHE)).evict(user.getEmail());
         }
     }
+
+
 }

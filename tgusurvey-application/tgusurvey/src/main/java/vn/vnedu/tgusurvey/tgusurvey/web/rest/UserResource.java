@@ -1,6 +1,7 @@
 package vn.vnedu.tgusurvey.tgusurvey.web.rest;
 
 import vn.vnedu.tgusurvey.tgusurvey.config.Constants;
+import vn.vnedu.tgusurvey.tgusurvey.domain.User;
 import vn.vnedu.tgusurvey.tgusurvey.security.AuthoritiesConstants;
 import vn.vnedu.tgusurvey.tgusurvey.service.UserService;
 import vn.vnedu.tgusurvey.tgusurvey.service.dto.UserDTO;
@@ -70,12 +71,25 @@ public class UserResource {
      */
     @GetMapping("/users")
     public ResponseEntity<List<UserDTO>> getAllUsers(Pageable pageable) {
-
         final Page<UserDTO> page = userService.getAllManagedUsers(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+//    @GetMapping("/users/current-user")
+//    public ResponseEntity<List<UserDTO>> getCurrentUserLogin(Pageable pageable) {
+//        log.debug("REST request to get current user");
+//        final Page<UserDTO> page = userService.getCurrentUserLogin(pageable);
+//        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+//        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+//    }
+
+    @GetMapping("/users/current-user")
+    public ResponseEntity<UserDTO> getCurrentUserLogin(){
+        log.debug("REST request to get current user");
+        Optional<UserDTO> currentUser = userService.getCurrentUserLogin();
+        return ResponseUtil.wrapOrNotFound(currentUser);
+    }
 
     /**
      * Gets a list of all roles.
