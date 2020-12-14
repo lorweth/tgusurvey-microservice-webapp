@@ -1,5 +1,16 @@
 <div *jhiHasAnyAuthority="'ROLE_STUDENTS'" class="row justify-content-center my-3">
     <div class="col-8">
+        <h2 *ngIf="students == null" id="page-heading">
+            <span jhiTranslate="tgusurveyApp.userinfoStudents.home.title">Students</span>
+    
+            <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-students" [routerLink]="['/students/new']">
+                <fa-icon icon="plus"></fa-icon>
+                <span  jhiTranslate="tgusurveyApp.userinfoStudents.home.createLabel">
+                Create a new Students
+                </span>
+            </button>
+        </h2>
+
         <div *ngIf="students">
             <h2><span jhiTranslate="tgusurveyApp.userinfoStudents.detail.title">Students</span> {{ students.id }}</h2>
 
