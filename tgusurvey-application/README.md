@@ -16,3 +16,12 @@ Làm theo hướng dẫn và chạy `docker-compose up -d` để chạy project
 ## Chạy trong lúc phát triển
 
 Dùng `docker-compose` chạy `consul` và `keycloak`. Sau đó dùng `gradlew` hoặc `./gradlew` để chạy các project
+
+## Triển khai
+
+Cài Java 11 [tại đây](https://adoptopenjdk.net/)
+
+Vào thư mục `tgusurvey`, mở `cmd` và gõ lệnh `gradlew -Pprod bootJar jibDockerBuild` 
+tương tự với `surveystore` và `userinfo`.
+
+Sao khi hoàn tất vào thư mục `composer` mở `cmd` và nhấn `docker-compose up -d`.
