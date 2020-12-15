@@ -1,8 +1,11 @@
 ## Cấu trúc thư mục
 
 composer: chứa các file cấu hình `docker-compose`
+
 surveystore: project microservice, lưu trữ, xử lý các chức năng liên quan đến các bài khảo sát (không có giao diện)
+
 tgusurvey: project gateway, lưu trữ thông tin người dùng và hiển thị giao diện người dùng (có giao diện)
+
 userinfo: project microservice, lưu trữ, xử lý các chức năng liên quan đến thông tin cá nhân - thông tin học sinh, giáo viên, doanh nghiệp (Không có giao diện)
 
 ## Triển khai
