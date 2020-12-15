@@ -75,6 +75,33 @@
         "clientRole": false,
         "containerId": "jhipster",
         "attributes": {}
+      },
+      {
+        "id": "8b1a0e78-24be-49ed-bc74-6471bd8d0f8g",
+        "name": "ROLE_STUDENTS",
+        "description": "students role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "jhipster",
+        "attributes": {}
+      },
+      {
+        "id": "8b1a0e78-24be-49ed-bc74-6471bd8d0f8h",
+        "name": "ROLE_LECTURERS",
+        "description": "lecturers role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "jhipster",
+        "attributes": {}
+      },
+      {
+        "id": "8b1a0e78-24be-49ed-bc74-6471bd8d0f8i",
+        "name": "ROLE_ENTERPRISES",
+        "description": "enterprises role",
+        "composite": false,
+        "clientRole": false,
+        "containerId": "jhipster",
+        "attributes": {}
       }
     ],
     "client": {
@@ -394,6 +421,33 @@
       "path": "/Users",
       "attributes": {},
       "realmRoles": ["ROLE_USER"],
+      "clientRoles": {},
+      "subGroups": []
+    },
+    {
+      "id": "ab0947d8-3b91-42a0-81e7-953a3c207332",
+      "name": "Students",
+      "path": "/Students",
+      "attributes": {},
+      "realmRoles": ["ROLE_USER", "ROLE_STUDENTS"],
+      "clientRoles": {},
+      "subGroups": []
+    },
+    {
+      "id": "ab0947d8-3b91-42a0-81e7-953a3c207364",
+      "name": "Lecturers",
+      "path": "/Lecturers",
+      "attributes": {},
+      "realmRoles": ["ROLE_USER", "ROLE_LECTURERS"],
+      "clientRoles": {},
+      "subGroups": []
+    },
+    {
+      "id": "ab0947d8-3b91-42a0-81e7-953a3c207128",
+      "name": "Enterprises",
+      "path": "/Enterprises",
+      "attributes": {},
+      "realmRoles": ["ROLE_USER", "ROLE_ENTERPRISES"],
       "clientRoles": {},
       "subGroups": []
     }
