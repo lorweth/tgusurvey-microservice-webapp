@@ -1,6 +1,17 @@
+## Cấu trúc thư mục
+
+composer: chứa các file cấu hình `docker-compose`
+surveystore: project microservice, lưu trữ, xử lý các chức năng liên quan đến các bài khảo sát (không có giao diện)
+tgusurvey: project gateway, lưu trữ thông tin người dùng và hiển thị giao diện người dùng (có giao diện)
+userinfo: project microservice, lưu trữ, xử lý các chức năng liên quan đến thông tin cá nhân - thông tin học sinh, giáo viên, doanh nghiệp (Không có giao diện)
+
 ## Triển khai
 
-Cài Java 11 [tại đây](https://adoptopenjdk.net/)
+Cài Java 11 [xem tại đây](https://adoptopenjdk.net/)
+
+Cài Docker-Destop [xem hướng dẫn cho window 10 tại đây](https://docs.docker.com/docker-for-windows/install/)
+
+Cài wsl2 (nếu đang dùng window 10) [xem hướng dẫn cho window 10 tại đây](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 > Lưu ý: Cần thêm `127.0.0.1	keycloak` vào `c:\Windows\System32\Drivers\etc\hosts` [chi tiết tại đây](https://www.jhipster.tech/docker-compose/#6)
 
