@@ -20,10 +20,14 @@ Main page styles
     background: url('../../content/images/logo-tgu.svg') no-repeat center top;
     background-size: contain;
   }
+
+  .piechart {
+    justify-content: center;
+  }
 }
 
 .card {
-  transition: transform .3s ease-out;
+  transition: transform 0.3s ease-out;
   margin: 2rem 2rem;
 }
 
