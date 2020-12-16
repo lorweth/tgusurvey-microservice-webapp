@@ -232,6 +232,9 @@ relationship ManyToOne {
     // lưu mối quan hệ giữa 2 học phần
     SubjectCondition{subject(msmh)} to Subject
     SubjectCondition{beforeSubject(msmh)} to Subject
+
+    // Nhiều câu trả lời cho 1 câu hỏi
+    ResultSurvey{question(content)} to Question
 }
 
 /**
@@ -242,8 +245,6 @@ relationship OneToOne {
     Students{user(login)} to User
     Enterprise{user(login)} to User
     Lecturer{position(name)} to Position
-
-    ResultSurvey{question(content)} to Question
 }
 
 microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
