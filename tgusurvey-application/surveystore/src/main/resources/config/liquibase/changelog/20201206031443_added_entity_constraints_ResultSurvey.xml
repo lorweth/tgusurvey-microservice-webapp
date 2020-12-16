@@ -8,17 +8,17 @@
     -->
     <changeSet id="20201206031443-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="question_id"
-                                 baseTableName="result_survey"
-                                 constraintName="fk_result_survey_question_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="question"/>
-
         <addForeignKeyConstraint baseColumnNames="user_id"
                                  baseTableName="result_survey"
                                  constraintName="fk_result_survey_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="question_id"
+                                 baseTableName="result_survey"
+                                 constraintName="fk_result_survey_question_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="question"/>
 
     </changeSet>
 </databaseChangeLog>

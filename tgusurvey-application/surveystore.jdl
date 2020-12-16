@@ -1,0 +1,104 @@
+// ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized
+
+
+// Ngành học
+entity Specialized {
+    mscn String minlength(4) maxlength(20) required unique
+    name String required
+}
+
+// Chương trình đào tạo
+entity EducationProgram {
+    msct String minlength(4) maxlength(20) required unique
+    name String minlength(5) maxlength(30)
+    year LocalDate required
+}
+
+// Loại môn học
+enum Category {
+    REQUIRED
+    OPTION
+}
+
+// Môn học
+entity Subject {
+    msmh String minlength(4) maxlength(20) required unique
+    name String minlength(5) maxlength(30) required
+    numOfCredit Integer min(2) max(60) required
+    theoryLesson Integer min(2) max(60) required
+    practiceLesson Integer min(2) max(60) required
+}
+
+enum Answer {
+    OPTION1, OPTION2, OPTION3, OPTION4, OPTION5
+}
+
+// Kết quả khảo sát
+entity ResultSurvey {
+    surveyDate Instant
+    answer Answer
+
+}
+
+// Phiếu khảo sát
+entity SurveyForm {
+    name String required
+    note String
+}
+
+entity SurveyHeader {
+    stt Integer min(1) required
+    title String required
+}
+
+entity Section {
+    stt Integer min(1) required
+    title String required
+    comment TextBlob
+}
+
+entity Question {
+    content String required
+}
+
+// Bảng sinh ra khi kết nối nhiều nhiều Môn học - CTĐT
+entity ProgramItem {
+    category Category required
+}
+
+// tùy chọn mức độ ràng buộc môn học
+enum Constraint{
+    PREREQUISITE, FIRSTSUBJECT
+}
+
+// Điều kiện: lưu mối quan hệ giữa 2 học phần
+entity SubjectCondition {
+    constraint Constraint required
+}
+
+
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+
+    Question{section(title)} to Section
+    Section{header(title)} to SurveyHeader
+    SurveyHeader{surveyForm(name)} to SurveyForm
+
+    SurveyForm{program(msct)} to EducationProgram
+    EducationProgram{specialized(mscn)} to Specialized
+
+    ProgramItem{program(msct)} to EducationProgram
+    ProgramItem{subject(msmh)} to Subject
+
+    ResultSurvey{user(login)} to User
+
+    // lưu mối quan hệ giữa 2 học phần
+    SubjectCondition{subject(msmh)} to Subject
+    SubjectCondition{beforeSubject(msmh)} to Subject
+
+    ResultSurvey{question(content)} to Question
+}
+
+microservice ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized with surveystore

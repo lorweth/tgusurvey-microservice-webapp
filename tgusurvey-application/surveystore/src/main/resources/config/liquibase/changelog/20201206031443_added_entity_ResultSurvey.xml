@@ -22,10 +22,10 @@
             <column name="answer" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="question_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_result_survey_question_id" />
-            </column>
             <column name="user_id" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="question_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
