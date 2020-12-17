@@ -104,6 +104,12 @@ public class QuestionResource {
         return ResponseUtil.wrapOrNotFound(question);
     }
 
+    @GetMapping("/questions/in-form/{id}")
+    public List<Question> getAllQuestionInForm(@PathVariable Long id) {
+        log.debug("REST request to get all Questions in form : {}", id);
+        return questionRepository.findALLBysection_header_surveyForm_Id(id);
+    }
+
     /**
      * {@code DELETE  /questions/:id} : delete the "id" question.
      *
