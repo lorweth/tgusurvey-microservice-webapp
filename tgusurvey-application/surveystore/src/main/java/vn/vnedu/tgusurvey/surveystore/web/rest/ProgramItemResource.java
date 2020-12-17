@@ -105,6 +105,17 @@ public class ProgramItemResource {
     }
 
     /**
+     * {@code GET  /program-items/in-program/:id} : get all the programItems with the "id" education program
+     *
+     * @param id the id of the education program
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of programItems in body.
+     */
+    @GetMapping("/program-items/in-program/{id}")
+    public List<ProgramItem> getProgramItemOfProgram(@PathVariable Long id) {
+        return programItemRepository.findALlByProgramId(id);
+    }
+
+    /**
      * {@code DELETE  /program-items/:id} : delete the "id" programItem.
      *
      * @param id the id of the programItem to delete.

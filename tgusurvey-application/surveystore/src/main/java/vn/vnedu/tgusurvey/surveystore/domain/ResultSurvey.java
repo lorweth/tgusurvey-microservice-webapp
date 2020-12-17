@@ -32,13 +32,13 @@ public class ResultSurvey implements Serializable {
     @Column(name = "answer")
     private Answer answer;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Question question;
-
     @ManyToOne
     @JsonIgnoreProperties(value = "resultSurveys", allowSetters = true)
     private User user;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "resultSurveys", allowSetters = true)
+    private Question question;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -75,19 +75,6 @@ public class ResultSurvey implements Serializable {
         this.answer = answer;
     }
 
-    public Question getQuestion() {
-        return question;
-    }
-
-    public ResultSurvey question(Question question) {
-        this.question = question;
-        return this;
-    }
-
-    public void setQuestion(Question question) {
-        this.question = question;
-    }
-
     public User getUser() {
         return user;
     }
@@ -99,6 +86,19 @@ public class ResultSurvey implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public ResultSurvey question(Question question) {
+        this.question = question;
+        return this;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

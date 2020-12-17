@@ -105,6 +105,17 @@ public class SubjectConditionResource {
     }
 
     /**
+     * {@code GET  /subject-conditions/in-subject/:id} : get all the subjectCondition with the "id" subject
+     * @param id the id if the subject
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subjectConditions in body.}
+     */
+    @GetMapping("/subject-conditions/in-subject/{id}")
+    public List<SubjectCondition> getAllSubjectInSubject(@PathVariable Long id){
+        log.debug("REST request to get SubjectCondition with subject : {}", id);
+        return subjectConditionRepository.findAllBySubjectId(id);
+    }
+
+    /**
      * {@code DELETE  /subject-conditions/:id} : delete the "id" subjectCondition.
      *
      * @param id the id of the subjectCondition to delete.

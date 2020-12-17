@@ -13,19 +13,18 @@
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "question",
-      "otherEntityRelationshipName": "resultSurvey",
-      "relationshipName": "question",
-      "otherEntityField": "content",
-      "ownerSide": true
-    },
-    {
       "relationshipType": "many-to-one",
       "otherEntityName": "user",
       "otherEntityRelationshipName": "resultSurvey",
       "relationshipName": "user",
       "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "resultSurvey",
+      "relationshipName": "question",
+      "otherEntityField": "content"
     }
   ],
   "changelogDate": "20201206031443",
@@ -37,7 +36,7 @@
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }
