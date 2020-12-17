@@ -28,15 +28,15 @@ export class SubjectDetailComponent implements OnInit, OnDestroy {
     protected subjectConditionService: SubjectConditionService
   ) {}
 
-  loadAll(): void {
-    this.subjectConditionService
+  loadListCondition(): void {
+    this.eventSubscriber = this.subjectConditionService
       .getListSubjectInProgram(this.subject?.id)
       .subscribe((res: HttpResponse<ISubjectCondition[]>) => (this.subjectConditions = res.body || []));
   }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ subject }) => (this.subject = subject));
-    this.loadAll();
+    this.loadListCondition();
   }
 
   previousState(): void {

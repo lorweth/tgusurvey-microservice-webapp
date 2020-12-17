@@ -51,27 +51,23 @@
             <table class="table table-striped" aria-describedby="page-heading">
                 <thead>
                     <tr>
-                        <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span></th>
-                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.subject">Subject</span></th>
+                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.msmh">Msmh</span></th>
                         <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span></th>
+                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let subjectCondition of subjectConditions ;trackBy: trackId">
-                        <td><a [routerLink]="['/subject-condition', subjectCondition.id, 'view']">{{ subjectCondition.id }}</a></td>
-                        <td jhiTranslate="{{ 'tgusurveyApp.Constraint.' + subjectCondition.constraint }}">{{ subjectCondition.constraint }}</td>
-                        <td>
-                            <div *ngIf="subjectCondition.subject">
-                                <a [routerLink]="['/subject', subjectCondition.subject?.id, 'view']" >{{ subjectCondition.subject?.msmh }}</a>
-                            </div>
-                        </td>
+                        <td><a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']">{{ subjectCondition.beforeSubject?.msmh }}</a></td>
+                        
                         <td>
                             <div *ngIf="subjectCondition.beforeSubject">
-                                <a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']" >{{ subjectCondition.beforeSubject?.msmh }}</a>
+                                {{ subjectCondition.beforeSubject?.name }}
                             </div>
                         </td>
+
+                        <td jhiTranslate="{{ 'tgusurveyApp.Constraint.' + subjectCondition.constraint }}">{{ subjectCondition.constraint }}</td>
                         <td class="text-right">
                             <div class="btn-group">
                                 <button type="submit"
