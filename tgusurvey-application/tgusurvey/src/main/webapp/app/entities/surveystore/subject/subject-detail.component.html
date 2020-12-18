@@ -63,7 +63,7 @@
                     <tr *ngFor="let subjectCondition of subjectConditions ;trackBy: trackId">
                         <td>
                             <div *ngIf="subjectCondition.beforeSubject">
-                                <a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']" >{{ subjectCondition.beforeSubject?.msmh }}</a>
+                                <a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']" (click)="reset()" >{{ subjectCondition.beforeSubject?.msmh }}</a>
                             </div>
                         </td>
                         <td>{{ subjectCondition.beforeSubject?.name }}</td>
@@ -73,7 +73,8 @@
                             <div class="btn-group">
                                 <button type="submit"
                                         [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']"
-                                        class="btn btn-info btn-sm">
+                                        class="btn btn-info btn-sm"
+                                        (click)="reset()">
                                     <fa-icon icon="eye"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                                 </button>

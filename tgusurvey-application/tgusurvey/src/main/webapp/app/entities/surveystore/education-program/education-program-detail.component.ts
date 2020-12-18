@@ -8,6 +8,7 @@ import { IEducationProgram } from 'app/shared/model/surveystore/education-progra
 import { IProgramItem } from 'app/shared/model/surveystore/program-item.model';
 import { JhiEventManager, JhiParseLinks } from 'ng-jhipster';
 import { Subscription } from 'rxjs';
+import { ProgramItemDeleteDialogComponent } from '../program-item/program-item-delete-dialog.component';
 import { ProgramItemService } from '../program-item/program-item.service';
 
 @Component({
@@ -83,6 +84,11 @@ export class EducationProgramDetailComponent implements OnInit, OnDestroy {
   trackId(index: number, item: IProgramItem): number {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     return item.id!;
+  }
+
+  delete(programItem: IProgramItem): void {
+    const modalRef = this.modalService.open(ProgramItemDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.programItem = programItem;
   }
 
   registerChangeInProgramItems(): void {

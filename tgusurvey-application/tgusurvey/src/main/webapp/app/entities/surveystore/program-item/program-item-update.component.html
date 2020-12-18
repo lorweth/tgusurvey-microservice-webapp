@@ -29,7 +29,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreProgramItem.program" for="field_program">Program</label>
                     <select class="form-control" id="field_program" name="program" formControlName="program">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="educationProgramOption.id === editForm.get('program')!.value?.id ? editForm.get('program')!.value : educationProgramOption" *ngFor="let educationProgramOption of educationprograms; trackBy: trackById">{{ educationProgramOption.msct }}</option>
+                        <option [ngValue]="educationProgramOption.id === editForm.get('program')!.value?.id ? editForm.get('program')!.value : educationProgramOption" *ngFor="let educationProgramOption of educationprograms; trackBy: trackById">{{ educationProgramOption.msct }} - {{educationProgramOption.name}}</option>
                     </select>
                 </div>
 
@@ -37,7 +37,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject" for="field_subject">Subject</label>
                     <select class="form-control" id="field_subject" name="subject" formControlName="subject">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="subjectOption.id === editForm.get('subject')!.value?.id ? editForm.get('subject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }}</option>
+                        <option [ngValue]="subjectOption.id === editForm.get('subject')!.value?.id ? editForm.get('subject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }} - {{subjectOption.name}}</option>
                     </select>
                 </div>
             </div>
