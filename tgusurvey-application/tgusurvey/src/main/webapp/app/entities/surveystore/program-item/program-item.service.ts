@@ -32,6 +32,11 @@ export class ProgramItemService {
     return this.http.get<IProgramItem[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
+  getItemInProgram(id: number, req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IProgramItem[]>(`${this.resourceUrl}/in-program/${id}`, { params: options, observe: 'response' });
+  }
+
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
