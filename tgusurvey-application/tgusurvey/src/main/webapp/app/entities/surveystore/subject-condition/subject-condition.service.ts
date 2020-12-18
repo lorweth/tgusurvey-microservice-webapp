@@ -32,8 +32,9 @@ export class SubjectConditionService {
     return this.http.get<ISubjectCondition[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
-  getListSubjectInProgram(id?: number): Observable<EntityArrayResponseType> {
-    return this.http.get<ISubjectCondition[]>(`${this.resourceUrl}/in-subject/${id}`, { observe: 'response' });
+  getConditionInSubject(id: number, req?: any): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<ISubjectCondition[]>(`${this.resourceUrl}/in-subject/${id}`, { params: options, observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

@@ -5,7 +5,9 @@
       "fieldName": "category",
       "fieldType": "Category",
       "fieldValues": "REQUIRED,OPTION",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -27,13 +29,13 @@
   "changelogDate": "20201206031943",
   "entityTableName": "program_item",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }

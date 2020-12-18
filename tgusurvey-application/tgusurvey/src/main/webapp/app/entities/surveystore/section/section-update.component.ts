@@ -4,11 +4,9 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
 
 import { ISection, Section } from 'app/shared/model/surveystore/section.model';
 import { SectionService } from './section.service';
-import { AlertError } from 'app/shared/alert/alert-error.model';
 import { ISurveyHeader } from 'app/shared/model/surveystore/survey-header.model';
 import { SurveyHeaderService } from 'app/entities/surveystore/survey-header/survey-header.service';
 
@@ -22,15 +20,12 @@ export class SectionUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    stt: [null, [Validators.required, Validators.min(1)]],
+    stt: [null, [Validators.min(1)]],
     title: [null, [Validators.required]],
-    comment: [],
     header: [],
   });
 
   constructor(
-    protected dataUtils: JhiDataUtils,
-    protected eventManager: JhiEventManager,
     protected sectionService: SectionService,
     protected surveyHeaderService: SurveyHeaderService,
     protected activatedRoute: ActivatedRoute,
@@ -50,24 +45,7 @@ export class SectionUpdateComponent implements OnInit {
       id: section.id,
       stt: section.stt,
       title: section.title,
-      comment: section.comment,
       header: section.header,
-    });
-  }
-
-  byteSize(base64String: string): string {
-    return this.dataUtils.byteSize(base64String);
-  }
-
-  openFile(contentType: string, base64String: string): void {
-    this.dataUtils.openFile(contentType, base64String);
-  }
-
-  setFileData(event: any, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe(null, (err: JhiFileLoadError) => {
-      this.eventManager.broadcast(
-        new JhiEventWithContent<AlertError>('tgusurveyApp.error', { ...err, key: 'error.file.' + err.key })
-      );
     });
   }
 
@@ -91,7 +69,6 @@ export class SectionUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       stt: this.editForm.get(['stt'])!.value,
       title: this.editForm.get(['title'])!.value,
-      comment: this.editForm.get(['comment'])!.value,
       header: this.editForm.get(['header'])!.value,
     };
   }

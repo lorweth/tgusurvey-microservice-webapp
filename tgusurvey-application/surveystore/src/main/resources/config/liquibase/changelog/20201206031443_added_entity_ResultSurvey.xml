@@ -16,10 +16,13 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="survey_date" type="datetime">
+            <column name="answer" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="answer" type="varchar(255)">
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="user_id" type="varchar(100)">
@@ -30,7 +33,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="result_survey" columnName="survey_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="result_survey" columnName="date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20201206031443-1-relations" author="jhipster">
@@ -52,8 +55,9 @@
                   separator=";"
                   tableName="result_survey">
             <column name="id" type="numeric"/>
-            <column name="survey_date" type="datetime"/>
             <column name="answer" type="string"/>
+            <column name="comment" type="string"/>
+            <column name="date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -17,13 +17,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="stt" type="integer">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="title" type="varchar(255)">
                 <constraints nullable="false" />
-            </column>
-            <column name="comment" type="${clobType}">
-                <constraints nullable="true" />
             </column>
             <column name="header_id" type="bigint">
                 <constraints nullable="true" />
@@ -53,7 +50,6 @@
             <column name="id" type="numeric"/>
             <column name="stt" type="numeric"/>
             <column name="title" type="string"/>
-            <column name="comment" type="clob"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

@@ -20,7 +20,7 @@ export class SurveyHeaderUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    stt: [null, [Validators.required, Validators.min(1)]],
+    stt: [null, [Validators.min(1)]],
     title: [null, [Validators.required]],
     surveyForm: [],
   });

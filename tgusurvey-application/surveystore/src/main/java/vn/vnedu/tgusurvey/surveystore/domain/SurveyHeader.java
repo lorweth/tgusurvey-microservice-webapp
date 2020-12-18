@@ -23,9 +23,8 @@ public class SurveyHeader implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Min(value = 1)
-    @Column(name = "stt", nullable = false)
+    @Column(name = "stt")
     private Integer stt;
 
     @NotNull

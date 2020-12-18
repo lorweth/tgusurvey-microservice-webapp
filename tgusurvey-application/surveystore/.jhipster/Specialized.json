@@ -4,27 +4,34 @@
     {
       "fieldName": "mscn",
       "fieldType": "String",
-      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRules": [
+        "minlength",
+        "maxlength",
+        "required",
+        "unique"
+      ],
       "fieldValidateRulesMinlength": "4",
       "fieldValidateRulesMaxlength": "20"
     },
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [],
   "changelogDate": "20201206031143",
   "entityTableName": "specialized",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }

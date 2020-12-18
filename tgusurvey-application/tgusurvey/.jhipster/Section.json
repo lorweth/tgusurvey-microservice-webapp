@@ -4,18 +4,17 @@
     {
       "fieldName": "stt",
       "fieldType": "Integer",
-      "fieldValidateRules": ["min", "required"],
+      "fieldValidateRules": [
+        "min"
+      ],
       "fieldValidateRulesMin": "1"
     },
     {
       "fieldName": "title",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
-    },
-    {
-      "fieldName": "comment",
-      "fieldType": "byte[]",
-      "fieldTypeBlobContent": "text"
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -30,13 +29,13 @@
   "changelogDate": "20201206031743",
   "entityTableName": "section",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "applications": "*",
   "microserviceName": "surveystore"
 }

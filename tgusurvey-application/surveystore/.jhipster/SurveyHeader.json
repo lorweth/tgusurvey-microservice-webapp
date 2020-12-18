@@ -4,13 +4,17 @@
     {
       "fieldName": "stt",
       "fieldType": "Integer",
-      "fieldValidateRules": ["min", "required"],
+      "fieldValidateRules": [
+        "min"
+      ],
       "fieldValidateRulesMin": "1"
     },
     {
       "fieldName": "title",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -25,13 +29,13 @@
   "changelogDate": "20201206031643",
   "entityTableName": "survey_header",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }

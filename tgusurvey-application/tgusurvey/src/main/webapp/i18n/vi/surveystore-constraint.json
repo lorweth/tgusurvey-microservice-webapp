@@ -3,7 +3,7 @@
     "Constraint": {
       "null": "",
       "PREREQUISITE": "PREREQUISITE",
-      "FIRSTSUBJECT": "FIRSTSUBJECT"
+      "NONPREREQUISITE": "NONPREREQUISITE"
     }
   }
 }

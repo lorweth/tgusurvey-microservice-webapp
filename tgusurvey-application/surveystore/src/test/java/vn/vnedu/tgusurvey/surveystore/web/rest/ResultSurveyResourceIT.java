@@ -35,11 +35,14 @@ import vn.vnedu.tgusurvey.surveystore.domain.enumeration.Answer;
 @WithMockUser
 public class ResultSurveyResourceIT {
 
-    private static final Instant DEFAULT_SURVEY_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_SURVEY_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
     private static final Answer DEFAULT_ANSWER = Answer.OPTION1;
     private static final Answer UPDATED_ANSWER = Answer.OPTION2;
+
+    private static final String DEFAULT_COMMENT = "AAAAAAAAAA";
+    private static final String UPDATED_COMMENT = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private ResultSurveyRepository resultSurveyRepository;
@@ -63,8 +66,9 @@ public class ResultSurveyResourceIT {
      */
     public static ResultSurvey createEntity(EntityManager em) {
         ResultSurvey resultSurvey = new ResultSurvey()
-            .surveyDate(DEFAULT_SURVEY_DATE)
-            .answer(DEFAULT_ANSWER);
+            .answer(DEFAULT_ANSWER)
+            .comment(DEFAULT_COMMENT)
+            .date(DEFAULT_DATE);
         return resultSurvey;
     }
     /**
@@ -75,8 +79,9 @@ public class ResultSurveyResourceIT {
      */
     public static ResultSurvey createUpdatedEntity(EntityManager em) {
         ResultSurvey resultSurvey = new ResultSurvey()
-            .surveyDate(UPDATED_SURVEY_DATE)
-            .answer(UPDATED_ANSWER);
+            .answer(UPDATED_ANSWER)
+            .comment(UPDATED_COMMENT)
+            .date(UPDATED_DATE);
         return resultSurvey;
     }
 
@@ -99,8 +104,9 @@ public class ResultSurveyResourceIT {
         List<ResultSurvey> resultSurveyList = resultSurveyRepository.findAll();
         assertThat(resultSurveyList).hasSize(databaseSizeBeforeCreate + 1);
         ResultSurvey testResultSurvey = resultSurveyList.get(resultSurveyList.size() - 1);
-        assertThat(testResultSurvey.getSurveyDate()).isEqualTo(DEFAULT_SURVEY_DATE);
         assertThat(testResultSurvey.getAnswer()).isEqualTo(DEFAULT_ANSWER);
+        assertThat(testResultSurvey.getComment()).isEqualTo(DEFAULT_COMMENT);
+        assertThat(testResultSurvey.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -134,8 +140,9 @@ public class ResultSurveyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(resultSurvey.getId().intValue())))
-            .andExpect(jsonPath("$.[*].surveyDate").value(hasItem(DEFAULT_SURVEY_DATE.toString())))
-            .andExpect(jsonPath("$.[*].answer").value(hasItem(DEFAULT_ANSWER.toString())));
+            .andExpect(jsonPath("$.[*].answer").value(hasItem(DEFAULT_ANSWER.toString())))
+            .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT)))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
     
     @Test
@@ -149,8 +156,9 @@ public class ResultSurveyResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(resultSurvey.getId().intValue()))
-            .andExpect(jsonPath("$.surveyDate").value(DEFAULT_SURVEY_DATE.toString()))
-            .andExpect(jsonPath("$.answer").value(DEFAULT_ANSWER.toString()));
+            .andExpect(jsonPath("$.answer").value(DEFAULT_ANSWER.toString()))
+            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
     @Test
     @Transactional
@@ -173,8 +181,9 @@ public class ResultSurveyResourceIT {
         // Disconnect from session so that the updates on updatedResultSurvey are not directly saved in db
         em.detach(updatedResultSurvey);
         updatedResultSurvey
-            .surveyDate(UPDATED_SURVEY_DATE)
-            .answer(UPDATED_ANSWER);
+            .answer(UPDATED_ANSWER)
+            .comment(UPDATED_COMMENT)
+            .date(UPDATED_DATE);
 
         restResultSurveyMockMvc.perform(put("/api/result-surveys").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -185,8 +194,9 @@ public class ResultSurveyResourceIT {
         List<ResultSurvey> resultSurveyList = resultSurveyRepository.findAll();
         assertThat(resultSurveyList).hasSize(databaseSizeBeforeUpdate);
         ResultSurvey testResultSurvey = resultSurveyList.get(resultSurveyList.size() - 1);
-        assertThat(testResultSurvey.getSurveyDate()).isEqualTo(UPDATED_SURVEY_DATE);
         assertThat(testResultSurvey.getAnswer()).isEqualTo(UPDATED_ANSWER);
+        assertThat(testResultSurvey.getComment()).isEqualTo(UPDATED_COMMENT);
+        assertThat(testResultSurvey.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

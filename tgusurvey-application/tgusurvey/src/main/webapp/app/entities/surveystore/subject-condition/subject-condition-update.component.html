@@ -15,7 +15,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint" for="field_constraint">Constraint</label>
                     <select class="form-control" name="constraint" formControlName="constraint" id="field_constraint">
                         <option value="PREREQUISITE">{{ 'tgusurveyApp.Constraint.PREREQUISITE' | translate }}</option>
-                        <option value="FIRSTSUBJECT">{{ 'tgusurveyApp.Constraint.FIRSTSUBJECT' | translate }}</option>
+                        <option value="NONPREREQUISITE">{{ 'tgusurveyApp.Constraint.NONPREREQUISITE' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('constraint')!.invalid && (editForm.get('constraint')!.dirty || editForm.get('constraint')!.touched)">
                         <small class="form-text text-danger"

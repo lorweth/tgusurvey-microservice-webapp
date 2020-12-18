@@ -1,16 +1,24 @@
 import { Moment } from 'moment';
-import { IQuestion } from 'app/shared/model/surveystore/question.model';
 import { IUser } from 'app/core/user/user.model';
+import { IQuestion } from 'app/shared/model/surveystore/question.model';
 import { Answer } from 'app/shared/model/enumerations/answer.model';
 
 export interface IResultSurvey {
   id?: number;
-  surveyDate?: Moment;
   answer?: Answer;
-  question?: IQuestion;
+  comment?: string;
+  date?: Moment;
   user?: IUser;
+  question?: IQuestion;
 }
 
 export class ResultSurvey implements IResultSurvey {
-  constructor(public id?: number, public surveyDate?: Moment, public answer?: Answer, public question?: IQuestion, public user?: IUser) {}
+  constructor(
+    public id?: number,
+    public answer?: Answer,
+    public comment?: string,
+    public date?: Moment,
+    public user?: IUser,
+    public question?: IQuestion
+  ) {}
 }

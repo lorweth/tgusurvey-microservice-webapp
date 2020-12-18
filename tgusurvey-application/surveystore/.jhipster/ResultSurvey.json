@@ -2,13 +2,17 @@
   "name": "ResultSurvey",
   "fields": [
     {
-      "fieldName": "surveyDate",
-      "fieldType": "Instant"
-    },
-    {
       "fieldName": "answer",
       "fieldType": "Answer",
       "fieldValues": "OPTION1,OPTION2,OPTION3,OPTION4,OPTION5"
+    },
+    {
+      "fieldName": "comment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "Instant"
     }
   ],
   "relationships": [
@@ -30,7 +34,7 @@
   "changelogDate": "20201206031443",
   "entityTableName": "result_survey",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,

@@ -5,10 +5,16 @@ import vn.vnedu.tgusurvey.surveystore.repository.SubjectConditionRepository;
 import vn.vnedu.tgusurvey.surveystore.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -83,12 +89,15 @@ public class SubjectConditionResource {
     /**
      * {@code GET  /subject-conditions} : get all the subjectConditions.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subjectConditions in body.
      */
     @GetMapping("/subject-conditions")
-    public List<SubjectCondition> getAllSubjectConditions() {
-        log.debug("REST request to get all SubjectConditions");
-        return subjectConditionRepository.findAll();
+    public ResponseEntity<List<SubjectCondition>> getAllSubjectConditions(Pageable pageable) {
+        log.debug("REST request to get a page of SubjectConditions");
+        Page<SubjectCondition> page = subjectConditionRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**
@@ -105,14 +114,17 @@ public class SubjectConditionResource {
     }
 
     /**
-     * {@code GET  /subject-conditions/in-subject/:id} : get all the subjectCondition with the "id" subject
-     * @param id the id if the subject
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subjectConditions in body.}
+     * {@code GET  /subject-conditions/in-subject/:id} : get all the subjectConditions in the "id" subject
+     *
+     * @param id the id of the subject to retrieve, pageable the pagination information
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of subjectConditions in body.
      */
     @GetMapping("/subject-conditions/in-subject/{id}")
-    public List<SubjectCondition> getAllSubjectInSubject(@PathVariable Long id){
-        log.debug("REST request to get SubjectCondition with subject : {}", id);
-        return subjectConditionRepository.findAllBySubjectId(id);
+    public ResponseEntity<List<SubjectCondition>> getAllSubjectCondtionInSubject(@PathVariable Long id,Pageable pageable) {
+        log.debug("REST request to get a page of SubjectConditions");
+        Page<SubjectCondition> page = subjectConditionRepository.findBySubjectId(id, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**

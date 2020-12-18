@@ -21,13 +21,13 @@
     <div class="table-responsive" id="entities" *ngIf="subjects && subjects.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.msmh">Msmh</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.numOfCredit">Num Of Credit</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.theoryLesson">Theory Lesson</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.practiceLesson">Practice Lesson</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="msmh"><span jhiTranslate="tgusurveyApp.surveystoreSubject.msmh">Msmh</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="tgusurveyApp.surveystoreSubject.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="numOfCredit"><span jhiTranslate="tgusurveyApp.surveystoreSubject.numOfCredit">Num Of Credit</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="theoryLesson"><span jhiTranslate="tgusurveyApp.surveystoreSubject.theoryLesson">Theory Lesson</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="practiceLesson"><span jhiTranslate="tgusurveyApp.surveystoreSubject.practiceLesson">Practice Lesson</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -65,5 +65,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="subjects && subjects.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

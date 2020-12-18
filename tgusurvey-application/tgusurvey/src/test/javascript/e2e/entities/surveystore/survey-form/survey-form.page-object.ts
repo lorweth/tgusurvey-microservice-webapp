@@ -31,6 +31,8 @@ export class SurveyFormUpdatePage {
 
   nameInput = element(by.id('field_name'));
   noteInput = element(by.id('field_note'));
+  startDateInput = element(by.id('field_startDate'));
+  endDateInput = element(by.id('field_endDate'));
 
   programSelect = element(by.id('field_program'));
 
@@ -52,6 +54,22 @@ export class SurveyFormUpdatePage {
 
   async getNoteInput(): Promise<string> {
     return await this.noteInput.getAttribute('value');
+  }
+
+  async setStartDateInput(startDate: string): Promise<void> {
+    await this.startDateInput.sendKeys(startDate);
+  }
+
+  async getStartDateInput(): Promise<string> {
+    return await this.startDateInput.getAttribute('value');
+  }
+
+  async setEndDateInput(endDate: string): Promise<void> {
+    await this.endDateInput.sendKeys(endDate);
+  }
+
+  async getEndDateInput(): Promise<string> {
+    return await this.endDateInput.getAttribute('value');
   }
 
   async programSelectLastOption(): Promise<void> {

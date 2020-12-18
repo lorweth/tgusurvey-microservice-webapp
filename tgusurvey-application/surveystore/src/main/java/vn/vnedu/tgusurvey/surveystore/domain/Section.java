@@ -23,18 +23,13 @@ public class Section implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Min(value = 1)
-    @Column(name = "stt", nullable = false)
+    @Column(name = "stt")
     private Integer stt;
 
     @NotNull
     @Column(name = "title", nullable = false)
     private String title;
-
-    @Lob
-    @Column(name = "comment")
-    private String comment;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "sections", allowSetters = true)
@@ -75,19 +70,6 @@ public class Section implements Serializable {
         this.title = title;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public Section comment(String comment) {
-        this.comment = comment;
-        return this;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public SurveyHeader getHeader() {
         return header;
     }
@@ -125,7 +107,6 @@ public class Section implements Serializable {
             "id=" + getId() +
             ", stt=" + getStt() +
             ", title='" + getTitle() + "'" +
-            ", comment='" + getComment() + "'" +
             "}";
     }
 }

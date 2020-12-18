@@ -21,15 +21,15 @@
     <div class="table-responsive" id="entities" *ngIf="programItems && programItems.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.category">Category</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.program">Program</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject">Subject</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="category"><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.category">Category</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="program.msct"><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.program">Program</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="subject.msmh"><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject">Subject</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let programItem of programItems ;trackBy: trackId">
                     <td><a [routerLink]="['/program-item', programItem.id, 'view']">{{ programItem.id }}</a></td>
                     <td jhiTranslate="{{ 'tgusurveyApp.Category.' + programItem.category }}">{{ programItem.category }}</td>

@@ -21,14 +21,14 @@
     <div class="table-responsive" id="entities" *ngIf="questions && questions.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreQuestion.content">Content</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreQuestion.section">Section</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="content"><span jhiTranslate="tgusurveyApp.surveystoreQuestion.content">Content</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="section.title"><span jhiTranslate="tgusurveyApp.surveystoreQuestion.section">Section</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let question of questions ;trackBy: trackId">
                     <td><a [routerLink]="['/question', question.id, 'view']">{{ question.id }}</a></td>
                     <td>{{ question.content }}</td>

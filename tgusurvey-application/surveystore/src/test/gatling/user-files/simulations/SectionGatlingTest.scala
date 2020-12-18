@@ -103,7 +103,6 @@ class SectionGatlingTest extends Simulation {
                 "id":null
                 , "stt":"0"
                 , "title":"SAMPLE_TEXT"
-                , "comment":null
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_section_url"))).exitHereIfFailed

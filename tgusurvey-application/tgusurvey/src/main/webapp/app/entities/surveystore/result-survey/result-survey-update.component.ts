@@ -4,18 +4,17 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IResultSurvey, ResultSurvey } from 'app/shared/model/surveystore/result-survey.model';
 import { ResultSurveyService } from './result-survey.service';
-import { IQuestion } from 'app/shared/model/surveystore/question.model';
-import { QuestionService } from 'app/entities/surveystore/question/question.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { IQuestion } from 'app/shared/model/surveystore/question.model';
+import { QuestionService } from 'app/entities/surveystore/question/question.service';
 
-type SelectableEntity = IQuestion | IUser;
+type SelectableEntity = IUser | IQuestion;
 
 @Component({
   selector: 'jhi-result-survey-update',
@@ -23,21 +22,22 @@ type SelectableEntity = IQuestion | IUser;
 })
 export class ResultSurveyUpdateComponent implements OnInit {
   isSaving = false;
-  questions: IQuestion[] = [];
   users: IUser[] = [];
+  questions: IQuestion[] = [];
 
   editForm = this.fb.group({
     id: [],
-    surveyDate: [],
     answer: [],
-    question: [],
+    comment: [],
+    date: [],
     user: [],
+    question: [],
   });
 
   constructor(
     protected resultSurveyService: ResultSurveyService,
-    protected questionService: QuestionService,
     protected userService: UserService,
+    protected questionService: QuestionService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -46,44 +46,25 @@ export class ResultSurveyUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ resultSurvey }) => {
       if (!resultSurvey.id) {
         const today = moment().startOf('day');
-        resultSurvey.surveyDate = today;
+        resultSurvey.date = today;
       }
 
       this.updateForm(resultSurvey);
 
-      this.questionService
-        .query({ filter: 'resultsurvey-is-null' })
-        .pipe(
-          map((res: HttpResponse<IQuestion[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IQuestion[]) => {
-          if (!resultSurvey.question || !resultSurvey.question.id) {
-            this.questions = resBody;
-          } else {
-            this.questionService
-              .find(resultSurvey.question.id)
-              .pipe(
-                map((subRes: HttpResponse<IQuestion>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IQuestion[]) => (this.questions = concatRes));
-          }
-        });
-
       this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+
+      this.questionService.query().subscribe((res: HttpResponse<IQuestion[]>) => (this.questions = res.body || []));
     });
   }
 
   updateForm(resultSurvey: IResultSurvey): void {
     this.editForm.patchValue({
       id: resultSurvey.id,
-      surveyDate: resultSurvey.surveyDate ? resultSurvey.surveyDate.format(DATE_TIME_FORMAT) : null,
       answer: resultSurvey.answer,
-      question: resultSurvey.question,
+      comment: resultSurvey.comment,
+      date: resultSurvey.date ? resultSurvey.date.format(DATE_TIME_FORMAT) : null,
       user: resultSurvey.user,
+      question: resultSurvey.question,
     });
   }
 
@@ -105,10 +86,11 @@ export class ResultSurveyUpdateComponent implements OnInit {
     return {
       ...new ResultSurvey(),
       id: this.editForm.get(['id'])!.value,
-      surveyDate: this.editForm.get(['surveyDate'])!.value ? moment(this.editForm.get(['surveyDate'])!.value, DATE_TIME_FORMAT) : undefined,
       answer: this.editForm.get(['answer'])!.value,
-      question: this.editForm.get(['question'])!.value,
+      comment: this.editForm.get(['comment'])!.value,
+      date: this.editForm.get(['date'])!.value ? moment(this.editForm.get(['date'])!.value, DATE_TIME_FORMAT) : undefined,
       user: this.editForm.get(['user'])!.value,
+      question: this.editForm.get(['question'])!.value,
     };
   }
 

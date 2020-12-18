@@ -22,11 +22,19 @@
             <column name="note" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="start_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
+            <column name="end_date" type="datetime">
+                <constraints nullable="true" />
+            </column>
             <column name="program_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="survey_form" columnName="start_date" columnDataType="datetime"/>
+        <dropDefaultValue tableName="survey_form" columnName="end_date" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20201206031543-1-relations" author="jhipster">
@@ -50,6 +58,8 @@
             <column name="id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="note" type="string"/>
+            <column name="start_date" type="datetime"/>
+            <column name="end_date" type="datetime"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

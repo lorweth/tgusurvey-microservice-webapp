@@ -25,14 +25,14 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new ResultSurvey(0, currentDate, Answer.OPTION1);
+      elemDefault = new ResultSurvey(0, Answer.OPTION1, 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            surveyDate: currentDate.format(DATE_TIME_FORMAT),
+            date: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
@@ -48,14 +48,14 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            surveyDate: currentDate.format(DATE_TIME_FORMAT),
+            date: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            surveyDate: currentDate,
+            date: currentDate,
           },
           returnedFromService
         );
@@ -70,15 +70,16 @@ describe('Service Tests', () => {
       it('should update a ResultSurvey', () => {
         const returnedFromService = Object.assign(
           {
-            surveyDate: currentDate.format(DATE_TIME_FORMAT),
             answer: 'BBBBBB',
+            comment: 'BBBBBB',
+            date: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            surveyDate: currentDate,
+            date: currentDate,
           },
           returnedFromService
         );
@@ -93,15 +94,16 @@ describe('Service Tests', () => {
       it('should return a list of ResultSurvey', () => {
         const returnedFromService = Object.assign(
           {
-            surveyDate: currentDate.format(DATE_TIME_FORMAT),
             answer: 'BBBBBB',
+            comment: 'BBBBBB',
+            date: currentDate.format(DATE_TIME_FORMAT),
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            surveyDate: currentDate,
+            date: currentDate,
           },
           returnedFromService
         );

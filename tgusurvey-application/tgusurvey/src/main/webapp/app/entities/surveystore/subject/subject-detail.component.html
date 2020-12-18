@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="subject">
-            <h2><span jhiTranslate="tgusurveyApp.surveystoreSubject.detail.title">Subject</span> {{ subject.msmh }}</h2>
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreSubject.detail.title">Subject</span> {{ subject.msmh }} - {{subject.name}}</h2>
 
             <hr>
 
@@ -42,7 +42,9 @@
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
             </button>
         </div>
+
         <br><br>
+
         <div class="alert alert-warning" id="no-result" *ngIf="subjectConditions?.length === 0">
             <span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.home.notFound">No subjectConditions found</span>
         </div>
@@ -50,28 +52,27 @@
         <div class="table-responsive" id="entities" *ngIf="subjectConditions && subjectConditions.length > 0">
             <table class="table table-striped" aria-describedby="page-heading">
                 <thead>
-                    <tr>
-                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubject.msmh">Msmh</span></th>
-                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span></th>
-                        <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span></th>
+                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                        <th scope="col"  jhiSortBy="beforeSubject.msmh"><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span> <fa-icon icon="sort"></fa-icon></th>
+                        <th scope="col"  jhiSortBy="beforeSubject.name"><span jhiTranslate="tgusurveyApp.surveystoreSubject.name">Subject</span> <fa-icon icon="sort"></fa-icon></th>
+                        <th scope="col"  jhiSortBy="constraint"><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span> <fa-icon icon="sort"></fa-icon></th>                      
                         <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                     <tr *ngFor="let subjectCondition of subjectConditions ;trackBy: trackId">
-                        <td><a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']">{{ subjectCondition.beforeSubject?.msmh }}</a></td>
-                        
                         <td>
                             <div *ngIf="subjectCondition.beforeSubject">
-                                {{ subjectCondition.beforeSubject?.name }}
+                                <a [routerLink]="['/subject', subjectCondition.beforeSubject?.id, 'view']" >{{ subjectCondition.beforeSubject?.msmh }}</a>
                             </div>
                         </td>
-
+                        <td>{{ subjectCondition.beforeSubject?.name }}</td>
                         <td jhiTranslate="{{ 'tgusurveyApp.Constraint.' + subjectCondition.constraint }}">{{ subjectCondition.constraint }}</td>
+                        
                         <td class="text-right">
                             <div class="btn-group">
                                 <button type="submit"
-                                        [routerLink]="['/subject-condition', subjectCondition.id, 'view']"
+                                        [routerLink]="['/subject', subjectCondition.beforeSubject.id, 'view']"
                                         class="btn btn-info btn-sm">
                                     <fa-icon icon="eye"></fa-icon>
                                     <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>

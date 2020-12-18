@@ -1,4 +1,4 @@
-import { browser, ExpectedConditions as ec, promise } from 'protractor';
+import { browser, ExpectedConditions as ec, protractor, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../../page-objects/jhi-page-objects';
 
 import { SurveyFormComponentsPage, SurveyFormDeleteDialog, SurveyFormUpdatePage } from './survey-form.page-object';
@@ -43,11 +43,21 @@ describe('SurveyForm e2e test', () => {
     await promise.all([
       surveyFormUpdatePage.setNameInput('name'),
       surveyFormUpdatePage.setNoteInput('note'),
+      surveyFormUpdatePage.setStartDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      surveyFormUpdatePage.setEndDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       surveyFormUpdatePage.programSelectLastOption(),
     ]);
 
     expect(await surveyFormUpdatePage.getNameInput()).to.eq('name', 'Expected Name value to be equals to name');
     expect(await surveyFormUpdatePage.getNoteInput()).to.eq('note', 'Expected Note value to be equals to note');
+    expect(await surveyFormUpdatePage.getStartDateInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected startDate value to be equals to 2000-12-31'
+    );
+    expect(await surveyFormUpdatePage.getEndDateInput()).to.contain(
+      '2001-01-01T02:30',
+      'Expected endDate value to be equals to 2000-12-31'
+    );
 
     await surveyFormUpdatePage.save();
     expect(await surveyFormUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

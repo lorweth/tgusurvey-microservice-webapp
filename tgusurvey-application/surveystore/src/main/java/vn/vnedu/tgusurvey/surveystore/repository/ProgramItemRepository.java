@@ -1,11 +1,11 @@
 package vn.vnedu.tgusurvey.surveystore.repository;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import vn.vnedu.tgusurvey.surveystore.domain.ProgramItem;
 
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Spring Data  repository for the ProgramItem entity.
@@ -13,5 +13,5 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ProgramItemRepository extends JpaRepository<ProgramItem, Long> {
-    List<ProgramItem> findALlByProgramId(Long id);
+    Page<ProgramItem> findByProgramId(Long programId, Pageable pageable);
 }
