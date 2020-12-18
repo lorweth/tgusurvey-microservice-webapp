@@ -6,7 +6,6 @@ import { NgJhipsterModule } from 'ng-jhipster';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   exports: [
@@ -18,7 +17,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     FontAwesomeModule,
     ReactiveFormsModule,
     TranslateModule,
-    LeafletModule
   ],
 })
 export class TgusurveySharedLibsModule {}
