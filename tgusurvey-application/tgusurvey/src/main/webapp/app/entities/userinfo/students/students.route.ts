@@ -40,6 +40,7 @@ export const studentsRoute: Routes = [
     component: StudentsComponent,
     data: {
       authorities: [Authority.STUDENTS, Authority.ADMIN],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.userinfoStudents.home.title',
     },
     canActivate: [UserRouteAccessService],

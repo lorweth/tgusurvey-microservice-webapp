@@ -21,17 +21,17 @@
     <div class="table-responsive" id="entities" *ngIf="lecturers && lecturers.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.msgv">Msgv</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.birthDay">Birth Day</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.address">Address</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.gender">Gender</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.cmnd">Cmnd</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.phoneNumber">Phone Number</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.user">User</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.position">Position</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.userinfoLecturer.unit">Unit</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="msgv"><span jhiTranslate="tgusurveyApp.userinfoLecturer.msgv">Msgv</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="birthDay"><span jhiTranslate="tgusurveyApp.userinfoLecturer.birthDay">Birth Day</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="address"><span jhiTranslate="tgusurveyApp.userinfoLecturer.address">Address</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="gender"><span jhiTranslate="tgusurveyApp.userinfoLecturer.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cmnd"><span jhiTranslate="tgusurveyApp.userinfoLecturer.cmnd">Cmnd</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="phoneNumber"><span jhiTranslate="tgusurveyApp.userinfoLecturer.phoneNumber">Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="tgusurveyApp.userinfoLecturer.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="position.name"><span jhiTranslate="tgusurveyApp.userinfoLecturer.position">Position</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="unit.name"><span jhiTranslate="tgusurveyApp.userinfoLecturer.unit">Unit</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -83,5 +83,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="lecturers && lecturers.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

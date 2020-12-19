@@ -72,6 +72,6 @@ relationship OneToOne {
     Lecturer{position(name)} to Position
 }
 
-pagination * with pagination
+paginate * with pagination
 
 microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
