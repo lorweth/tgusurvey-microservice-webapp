@@ -1,6 +1,3 @@
-// ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized
-
-
 // Ngành học
 entity Specialized {
     mscn String minlength(4) maxlength(20) required unique
@@ -35,26 +32,27 @@ enum Answer {
 
 // Kết quả khảo sát
 entity ResultSurvey {
-    surveyDate Instant
     answer Answer
-
+    comment String
+    date Instant
 }
 
 // Phiếu khảo sát
 entity SurveyForm {
     name String required
     note String
+    startDate Instant
+    endDate Instant
 }
 
 entity SurveyHeader {
-    stt Integer min(1) required
+    stt Integer min(1)
     title String required
 }
 
 entity Section {
-    stt Integer min(1) required
+    stt Integer min(1)
     title String required
-    comment TextBlob
 }
 
 entity Question {
@@ -68,14 +66,13 @@ entity ProgramItem {
 
 // tùy chọn mức độ ràng buộc môn học
 enum Constraint{
-    PREREQUISITE, FIRSTSUBJECT
+    PREREQUISITE, NONPREREQUISITE
 }
 
 // Điều kiện: lưu mối quan hệ giữa 2 học phần
 entity SubjectCondition {
     constraint Constraint required
 }
-
 
 /**
  * Many to one relationship.
@@ -100,5 +97,9 @@ relationship ManyToOne {
 
     ResultSurvey{question(content)} to Question
 }
+
+paginate EducationProgram, Subject, SurveyForm, Specialized with pagination
+paginate ResultSurvey, Question, SurveyHeader, Section, ProgramItem, SubjectCondition with infinite-scroll
+
 
 microservice ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized with surveystore

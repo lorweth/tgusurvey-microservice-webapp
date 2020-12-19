@@ -29,22 +29,15 @@ export class ResultSurveyUpdatePage {
   saveButton = element(by.id('save-entity'));
   cancelButton = element(by.id('cancel-save'));
 
-  surveyDateInput = element(by.id('field_surveyDate'));
   answerSelect = element(by.id('field_answer'));
+  commentInput = element(by.id('field_comment'));
+  dateInput = element(by.id('field_date'));
 
-  questionSelect = element(by.id('field_question'));
   userSelect = element(by.id('field_user'));
+  questionSelect = element(by.id('field_question'));
 
   async getPageTitle(): Promise<string> {
     return this.pageTitle.getAttribute('jhiTranslate');
-  }
-
-  async setSurveyDateInput(surveyDate: string): Promise<void> {
-    await this.surveyDateInput.sendKeys(surveyDate);
-  }
-
-  async getSurveyDateInput(): Promise<string> {
-    return await this.surveyDateInput.getAttribute('value');
   }
 
   async setAnswerSelect(answer: string): Promise<void> {
@@ -59,20 +52,20 @@ export class ResultSurveyUpdatePage {
     await this.answerSelect.all(by.tagName('option')).last().click();
   }
 
-  async questionSelectLastOption(): Promise<void> {
-    await this.questionSelect.all(by.tagName('option')).last().click();
+  async setCommentInput(comment: string): Promise<void> {
+    await this.commentInput.sendKeys(comment);
   }
 
-  async questionSelectOption(option: string): Promise<void> {
-    await this.questionSelect.sendKeys(option);
+  async getCommentInput(): Promise<string> {
+    return await this.commentInput.getAttribute('value');
   }
 
-  getQuestionSelect(): ElementFinder {
-    return this.questionSelect;
+  async setDateInput(date: string): Promise<void> {
+    await this.dateInput.sendKeys(date);
   }
 
-  async getQuestionSelectedOption(): Promise<string> {
-    return await this.questionSelect.element(by.css('option:checked')).getText();
+  async getDateInput(): Promise<string> {
+    return await this.dateInput.getAttribute('value');
   }
 
   async userSelectLastOption(): Promise<void> {
@@ -89,6 +82,22 @@ export class ResultSurveyUpdatePage {
 
   async getUserSelectedOption(): Promise<string> {
     return await this.userSelect.element(by.css('option:checked')).getText();
+  }
+
+  async questionSelectLastOption(): Promise<void> {
+    await this.questionSelect.all(by.tagName('option')).last().click();
+  }
+
+  async questionSelectOption(option: string): Promise<void> {
+    await this.questionSelect.sendKeys(option);
+  }
+
+  getQuestionSelect(): ElementFinder {
+    return this.questionSelect;
+  }
+
+  async getQuestionSelectedOption(): Promise<string> {
+    return await this.questionSelect.element(by.css('option:checked')).getText();
   }
 
   async save(): Promise<void> {

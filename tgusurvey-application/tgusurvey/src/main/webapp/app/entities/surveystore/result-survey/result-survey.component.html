@@ -21,27 +21,29 @@
     <div class="table-responsive" id="entities" *ngIf="resultSurveys && resultSurveys.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.surveyDate">Survey Date</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.answer">Answer</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.question">Question</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.user">User</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="answer"><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.answer">Answer</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="comment"><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.comment">Comment</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="date"><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.date">Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="question.content"><span jhiTranslate="tgusurveyApp.surveystoreResultSurvey.question">Question</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let resultSurvey of resultSurveys ;trackBy: trackId">
                     <td><a [routerLink]="['/result-survey', resultSurvey.id, 'view']">{{ resultSurvey.id }}</a></td>
-                    <td>{{ resultSurvey.surveyDate | date:'medium' }}</td>
                     <td jhiTranslate="{{ 'tgusurveyApp.Answer.' + resultSurvey.answer }}">{{ resultSurvey.answer }}</td>
+                    <td>{{ resultSurvey.comment }}</td>
+                    <td>{{ resultSurvey.date | date:'medium' }}</td>
+                    <td>
+                        {{ resultSurvey.user?.login }}
+                    </td>
                     <td>
                         <div *ngIf="resultSurvey.question">
                             <a [routerLink]="['/question', resultSurvey.question?.id, 'view']" >{{ resultSurvey.question?.content }}</a>
                         </div>
-                    </td>
-                    <td>
-                        {{ resultSurvey.user?.login }}
                     </td>
                     <td class="text-right">
                         <div class="btn-group">

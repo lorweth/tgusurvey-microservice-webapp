@@ -21,21 +21,19 @@
     <div class="table-responsive" id="entities" *ngIf="sections && sections.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSection.stt">Stt</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSection.title">Title</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSection.comment">Comment</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSection.header">Header</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stt"><span jhiTranslate="tgusurveyApp.surveystoreSection.stt">Stt</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="tgusurveyApp.surveystoreSection.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="header.title"><span jhiTranslate="tgusurveyApp.surveystoreSection.header">Header</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let section of sections ;trackBy: trackId">
                     <td><a [routerLink]="['/section', section.id, 'view']">{{ section.id }}</a></td>
                     <td>{{ section.stt }}</td>
                     <td>{{ section.title }}</td>
-                    <td>{{ section.comment }}</td>
                     <td>
                         <div *ngIf="section.header">
                             <a [routerLink]="['/survey-header', section.header?.id, 'view']" >{{ section.header?.title }}</a>

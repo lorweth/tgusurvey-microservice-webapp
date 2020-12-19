@@ -33,7 +33,7 @@ import vn.vnedu.tgusurvey.surveystore.domain.enumeration.Constraint;
 public class SubjectConditionResourceIT {
 
     private static final Constraint DEFAULT_CONSTRAINT = Constraint.PREREQUISITE;
-    private static final Constraint UPDATED_CONSTRAINT = Constraint.FIRSTSUBJECT;
+    private static final Constraint UPDATED_CONSTRAINT = Constraint.NONPREREQUISITE;
 
     @Autowired
     private SubjectConditionRepository subjectConditionRepository;

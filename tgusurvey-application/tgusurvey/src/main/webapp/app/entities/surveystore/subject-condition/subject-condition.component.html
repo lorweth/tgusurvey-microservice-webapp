@@ -21,15 +21,15 @@
     <div class="table-responsive" id="entities" *ngIf="subjectConditions && subjectConditions.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.subject">Subject</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="constraint"><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint">Constraint</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="subject.msmh"><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.subject">Subject</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="beforeSubject.msmh"><span jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject">Before Subject</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let subjectCondition of subjectConditions ;trackBy: trackId">
                     <td><a [routerLink]="['/subject-condition', subjectCondition.id, 'view']">{{ subjectCondition.id }}</a></td>
                     <td jhiTranslate="{{ 'tgusurveyApp.Constraint.' + subjectCondition.constraint }}">{{ subjectCondition.constraint }}</td>

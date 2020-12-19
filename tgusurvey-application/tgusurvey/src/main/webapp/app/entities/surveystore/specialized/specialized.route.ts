@@ -40,6 +40,7 @@ export const specializedRoute: Routes = [
     component: SpecializedComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.surveystoreSpecialized.home.title',
     },
     canActivate: [UserRouteAccessService],

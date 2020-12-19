@@ -2,27 +2,27 @@
   "tgusurveyApp": {
     "surveystoreSubjectCondition": {
       "home": {
-        "title": "Subject Conditions",
-        "createLabel": "Thêm mới một Subject Condition",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Subject Condition",
-        "notFound": "No Subject Conditions found"
+        "title": "Các điều kiện học phần",
+        "createLabel": "Thêm mới một điều kiện học phần",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật điều kiện học phần",
+        "notFound": "Không có điều kiện nào được tìm thấy"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Subject Condition {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa điều kiện {{ id }}?"
       },
       "detail": {
-        "title": "Subject Condition"
+        "title": "Điều kiện học phần"
       },
-      "constraint": "Constraint",
-      "subject": "Subject",
-      "beforeSubject": "Before Subject"
+      "constraint": "Mức độ ràng buộc",
+      "subject": "Học phần",
+      "beforeSubject": "Học phần trước"
     }
   },
   "surveystoreApp": {
     "surveystoreSubjectCondition": {
-      "created": "Một Subject Condition mới được tạo với định danh {{ param }}",
-      "updated": "Một Subject Condition cập nhật với định danh {{ param }}",
-      "deleted": "Một Subject Condition đã xóa với định danh {{ param }}"
+      "created": "Một điều kiện mới được tạo với định danh {{ param }}",
+      "updated": "Một điều kiện Condition cập nhật với định danh {{ param }}",
+      "deleted": "Một điều kiện Condition đã xóa với định danh {{ param }}"
     }
   }
 }

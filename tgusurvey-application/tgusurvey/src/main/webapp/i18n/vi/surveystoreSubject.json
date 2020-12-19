@@ -2,29 +2,29 @@
   "tgusurveyApp": {
     "surveystoreSubject": {
       "home": {
-        "title": "Subjects",
-        "createLabel": "Thêm mới một Subject",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Subject",
-        "notFound": "No Subjects found"
+        "title": "Các học phần",
+        "createLabel": "Thêm mới một học phần",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật một học phần",
+        "notFound": "Không tìm thấy học phần"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Subject {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa học phần {{ id }}?"
       },
       "detail": {
-        "title": "Subject"
+        "title": "Học phần"
       },
       "msmh": "Msmh",
-      "name": "Name",
-      "numOfCredit": "Num Of Credit",
-      "theoryLesson": "Theory Lesson",
-      "practiceLesson": "Practice Lesson"
+      "name": "Tên",
+      "numOfCredit": "Số tín chỉ",
+      "theoryLesson": "Số tiết lý thuyết",
+      "practiceLesson": "Số tiết thực hành"
     }
   },
   "surveystoreApp": {
     "surveystoreSubject": {
-      "created": "Một Subject mới được tạo với định danh {{ param }}",
-      "updated": "Một Subject cập nhật với định danh {{ param }}",
-      "deleted": "Một Subject đã xóa với định danh {{ param }}"
+      "created": "Một học phần mới được tạo với định danh {{ param }}",
+      "updated": "Một học phần cập nhật với định danh {{ param }}",
+      "deleted": "Một học phần đã xóa với định danh {{ param }}"
     }
   }
 }

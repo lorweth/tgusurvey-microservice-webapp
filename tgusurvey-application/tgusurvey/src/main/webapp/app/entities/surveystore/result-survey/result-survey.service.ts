@@ -50,14 +50,14 @@ export class ResultSurveyService {
 
   protected convertDateFromClient(resultSurvey: IResultSurvey): IResultSurvey {
     const copy: IResultSurvey = Object.assign({}, resultSurvey, {
-      surveyDate: resultSurvey.surveyDate && resultSurvey.surveyDate.isValid() ? resultSurvey.surveyDate.toJSON() : undefined,
+      date: resultSurvey.date && resultSurvey.date.isValid() ? resultSurvey.date.toJSON() : undefined,
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.surveyDate = res.body.surveyDate ? moment(res.body.surveyDate) : undefined;
+      res.body.date = res.body.date ? moment(res.body.date) : undefined;
     }
     return res;
   }
@@ -65,7 +65,7 @@ export class ResultSurveyService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((resultSurvey: IResultSurvey) => {
-        resultSurvey.surveyDate = resultSurvey.surveyDate ? moment(resultSurvey.surveyDate) : undefined;
+        resultSurvey.date = resultSurvey.date ? moment(resultSurvey.date) : undefined;
       });
     }
     return res;

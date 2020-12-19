@@ -13,10 +13,11 @@
       "detail": {
         "title": "Result Survey"
       },
-      "surveyDate": "Survey Date",
       "answer": "Answer",
-      "question": "Question",
-      "user": "User"
+      "comment": "Comment",
+      "date": "Date",
+      "user": "User",
+      "question": "Question"
     }
   },
   "surveystoreApp": {

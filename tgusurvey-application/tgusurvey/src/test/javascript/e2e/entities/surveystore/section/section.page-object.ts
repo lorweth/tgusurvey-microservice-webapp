@@ -31,7 +31,6 @@ export class SectionUpdatePage {
 
   sttInput = element(by.id('field_stt'));
   titleInput = element(by.id('field_title'));
-  commentInput = element(by.id('field_comment'));
 
   headerSelect = element(by.id('field_header'));
 
@@ -53,14 +52,6 @@ export class SectionUpdatePage {
 
   async getTitleInput(): Promise<string> {
     return await this.titleInput.getAttribute('value');
-  }
-
-  async setCommentInput(comment: string): Promise<void> {
-    await this.commentInput.sendKeys(comment);
-  }
-
-  async getCommentInput(): Promise<string> {
-    return await this.commentInput.getAttribute('value');
   }
 
   async headerSelectLastOption(): Promise<void> {

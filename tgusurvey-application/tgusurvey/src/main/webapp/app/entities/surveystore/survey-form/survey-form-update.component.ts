@@ -4,6 +4,8 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { ISurveyForm, SurveyForm } from 'app/shared/model/surveystore/survey-form.model';
 import { SurveyFormService } from './survey-form.service';
@@ -22,6 +24,8 @@ export class SurveyFormUpdateComponent implements OnInit {
     id: [],
     name: [null, [Validators.required]],
     note: [],
+    startDate: [],
+    endDate: [],
     program: [],
   });
 
@@ -34,6 +38,12 @@ export class SurveyFormUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ surveyForm }) => {
+      if (!surveyForm.id) {
+        const today = moment().startOf('day');
+        surveyForm.startDate = today;
+        surveyForm.endDate = today;
+      }
+
       this.updateForm(surveyForm);
 
       this.educationProgramService.query().subscribe((res: HttpResponse<IEducationProgram[]>) => (this.educationprograms = res.body || []));
@@ -45,6 +55,8 @@ export class SurveyFormUpdateComponent implements OnInit {
       id: surveyForm.id,
       name: surveyForm.name,
       note: surveyForm.note,
+      startDate: surveyForm.startDate ? surveyForm.startDate.format(DATE_TIME_FORMAT) : null,
+      endDate: surveyForm.endDate ? surveyForm.endDate.format(DATE_TIME_FORMAT) : null,
       program: surveyForm.program,
     });
   }
@@ -69,6 +81,8 @@ export class SurveyFormUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
       note: this.editForm.get(['note'])!.value,
+      startDate: this.editForm.get(['startDate'])!.value ? moment(this.editForm.get(['startDate'])!.value, DATE_TIME_FORMAT) : undefined,
+      endDate: this.editForm.get(['endDate'])!.value ? moment(this.editForm.get(['endDate'])!.value, DATE_TIME_FORMAT) : undefined,
       program: this.editForm.get(['program'])!.value,
     };
   }

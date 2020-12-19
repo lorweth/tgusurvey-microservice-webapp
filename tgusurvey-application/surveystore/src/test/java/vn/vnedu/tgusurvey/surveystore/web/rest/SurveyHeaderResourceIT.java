@@ -118,25 +118,6 @@ public class SurveyHeaderResourceIT {
 
     @Test
     @Transactional
-    public void checkSttIsRequired() throws Exception {
-        int databaseSizeBeforeTest = surveyHeaderRepository.findAll().size();
-        // set the field null
-        surveyHeader.setStt(null);
-
-        // Create the SurveyHeader, which fails.
-
-
-        restSurveyHeaderMockMvc.perform(post("/api/survey-headers").with(csrf())
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(surveyHeader)))
-            .andExpect(status().isBadRequest());
-
-        List<SurveyHeader> surveyHeaderList = surveyHeaderRepository.findAll();
-        assertThat(surveyHeaderList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void checkTitleIsRequired() throws Exception {
         int databaseSizeBeforeTest = surveyHeaderRepository.findAll().size();
         // set the field null

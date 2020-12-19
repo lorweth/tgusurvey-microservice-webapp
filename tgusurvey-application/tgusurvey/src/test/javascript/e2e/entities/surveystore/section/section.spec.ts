@@ -43,13 +43,11 @@ describe('Section e2e test', () => {
     await promise.all([
       sectionUpdatePage.setSttInput('5'),
       sectionUpdatePage.setTitleInput('title'),
-      sectionUpdatePage.setCommentInput('comment'),
       sectionUpdatePage.headerSelectLastOption(),
     ]);
 
     expect(await sectionUpdatePage.getSttInput()).to.eq('5', 'Expected stt value to be equals to 5');
     expect(await sectionUpdatePage.getTitleInput()).to.eq('title', 'Expected Title value to be equals to title');
-    expect(await sectionUpdatePage.getCommentInput()).to.eq('comment', 'Expected Comment value to be equals to comment');
 
     await sectionUpdatePage.save();
     expect(await sectionUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

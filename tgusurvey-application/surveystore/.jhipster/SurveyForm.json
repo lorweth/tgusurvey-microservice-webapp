@@ -4,11 +4,21 @@
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "note",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "Instant"
     }
   ],
   "relationships": [
@@ -23,13 +33,13 @@
   "changelogDate": "20201206031543",
   "entityTableName": "survey_form",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }

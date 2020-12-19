@@ -21,11 +21,13 @@
     <div class="table-responsive" id="entities" *ngIf="surveyForms && surveyForms.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.name">Name</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.note">Note</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.program">Program</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="note"><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.note">Note</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="startDate"><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.startDate">Start Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="endDate"><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.endDate">End Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="program.msct"><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.program">Program</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,6 +36,8 @@
                     <td><a [routerLink]="['/survey-form', surveyForm.id, 'view']">{{ surveyForm.id }}</a></td>
                     <td>{{ surveyForm.name }}</td>
                     <td>{{ surveyForm.note }}</td>
+                    <td>{{ surveyForm.startDate | date:'medium' }}</td>
+                    <td>{{ surveyForm.endDate | date:'medium' }}</td>
                     <td>
                         <div *ngIf="surveyForm.program">
                             <a [routerLink]="['/education-program', surveyForm.program?.id, 'view']" >{{ surveyForm.program?.msct }}</a>
@@ -65,5 +69,15 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+
+    <div *ngIf="surveyForms && surveyForms.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
     </div>
 </div>

@@ -4,8 +4,10 @@
     {
       "fieldName": "constraint",
       "fieldType": "Constraint",
-      "fieldValues": "PREREQUISITE,FIRSTSUBJECT",
-      "fieldValidateRules": ["required"]
+      "fieldValues": "PREREQUISITE,NONPREREQUISITE",
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -27,13 +29,13 @@
   "changelogDate": "20201206032043",
   "entityTableName": "subject_condition",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "applications": "*",
   "microserviceName": "surveystore"
 }

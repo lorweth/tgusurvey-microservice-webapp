@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center" style="min-height: 45em;">
     <div class="col-md-9">
         <span class="hipster img-fluid rounded"></span>
 
@@ -12,9 +12,23 @@
                     [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}".</span>
             </div>
 
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>
+            <div *ngSwitchCase="false">
+                <div class="alert alert-warning">
+                    <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+                    <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>
+                </div>
+                <p>Người thực hiện:</p>
+                <ul>
+                    <li>Đặng Hữu Lộc <a class="badge bg-light text-dark" href="https://github.com/witcher-creator">witcher-creator</a></li>
+                    <li>Nguyễn Ngọc Minh Yến <a class="badge bg-light text-dark" href="https://github.com/witcher-yen">witcher-yen</a></li>
+                    <li>Huỳnh Thị Ngọc Yến</li>
+                    <li>Nguyễn Lê Gia Linh</li>
+                    <li>Nguyễn Thị Mỹ Quyên</li>
+                    <li>Nguyễn Tấn Mãi</li>
+                    <li>Hồ Trọng Nhân</li>
+                    <li>Huỳnh Thế Nghiệp</li>
+                    <li>Tô Long Vũ</li>
+                </ul>
             </div>
         </div>
 

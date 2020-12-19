@@ -40,6 +40,7 @@ export const educationProgramRoute: Routes = [
     component: EducationProgramComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.surveystoreEducationProgram.home.title',
     },
     canActivate: [UserRouteAccessService],

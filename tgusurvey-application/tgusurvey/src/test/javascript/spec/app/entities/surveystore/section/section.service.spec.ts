@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(SectionService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Section(0, 0, 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Section(0, 0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -56,7 +56,6 @@ describe('Service Tests', () => {
           {
             stt: 1,
             title: 'BBBBBB',
-            comment: 'BBBBBB',
           },
           elemDefault
         );
@@ -75,7 +74,6 @@ describe('Service Tests', () => {
           {
             stt: 1,
             title: 'BBBBBB',
-            comment: 'BBBBBB',
           },
           elemDefault
         );

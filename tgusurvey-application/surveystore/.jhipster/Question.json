@@ -4,7 +4,9 @@
     {
       "fieldName": "content",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -19,13 +21,13 @@
   "changelogDate": "20201206031843",
   "entityTableName": "question",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "infinite-scroll",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
-  "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "clientRootFolder": "surveystore",
+  "applications": "*",
   "microserviceName": "surveystore"
 }

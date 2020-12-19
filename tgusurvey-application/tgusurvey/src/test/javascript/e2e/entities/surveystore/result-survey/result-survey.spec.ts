@@ -44,16 +44,15 @@ describe('ResultSurvey e2e test', () => {
     await resultSurveyComponentsPage.clickOnCreateButton();
 
     await promise.all([
-      resultSurveyUpdatePage.setSurveyDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       resultSurveyUpdatePage.answerSelectLastOption(),
-      resultSurveyUpdatePage.questionSelectLastOption(),
+      resultSurveyUpdatePage.setCommentInput('comment'),
+      resultSurveyUpdatePage.setDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
       resultSurveyUpdatePage.userSelectLastOption(),
+      resultSurveyUpdatePage.questionSelectLastOption(),
     ]);
 
-    expect(await resultSurveyUpdatePage.getSurveyDateInput()).to.contain(
-      '2001-01-01T02:30',
-      'Expected surveyDate value to be equals to 2000-12-31'
-    );
+    expect(await resultSurveyUpdatePage.getCommentInput()).to.eq('comment', 'Expected Comment value to be equals to comment');
+    expect(await resultSurveyUpdatePage.getDateInput()).to.contain('2001-01-01T02:30', 'Expected date value to be equals to 2000-12-31');
 
     await resultSurveyUpdatePage.save();
     expect(await resultSurveyUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

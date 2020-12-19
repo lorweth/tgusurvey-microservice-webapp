@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 
 /**
  * A SurveyForm.
@@ -29,6 +30,12 @@ public class SurveyForm implements Serializable {
 
     @Column(name = "note")
     private String note;
+
+    @Column(name = "start_date")
+    private Instant startDate;
+
+    @Column(name = "end_date")
+    private Instant endDate;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "surveyForms", allowSetters = true)
@@ -69,6 +76,32 @@ public class SurveyForm implements Serializable {
         this.note = note;
     }
 
+    public Instant getStartDate() {
+        return startDate;
+    }
+
+    public SurveyForm startDate(Instant startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    public void setStartDate(Instant startDate) {
+        this.startDate = startDate;
+    }
+
+    public Instant getEndDate() {
+        return endDate;
+    }
+
+    public SurveyForm endDate(Instant endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
+    public void setEndDate(Instant endDate) {
+        this.endDate = endDate;
+    }
+
     public EducationProgram getProgram() {
         return program;
     }
@@ -106,6 +139,8 @@ public class SurveyForm implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", note='" + getNote() + "'" +
+            ", startDate='" + getStartDate() + "'" +
+            ", endDate='" + getEndDate() + "'" +
             "}";
     }
 }

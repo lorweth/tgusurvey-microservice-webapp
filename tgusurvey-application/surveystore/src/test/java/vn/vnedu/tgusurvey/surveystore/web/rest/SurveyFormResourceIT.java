@@ -15,6 +15,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,6 +39,12 @@ public class SurveyFormResourceIT {
     private static final String DEFAULT_NOTE = "AAAAAAAAAA";
     private static final String UPDATED_NOTE = "BBBBBBBBBB";
 
+    private static final Instant DEFAULT_START_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_START_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final Instant DEFAULT_END_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_END_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private SurveyFormRepository surveyFormRepository;
 
@@ -57,7 +65,9 @@ public class SurveyFormResourceIT {
     public static SurveyForm createEntity(EntityManager em) {
         SurveyForm surveyForm = new SurveyForm()
             .name(DEFAULT_NAME)
-            .note(DEFAULT_NOTE);
+            .note(DEFAULT_NOTE)
+            .startDate(DEFAULT_START_DATE)
+            .endDate(DEFAULT_END_DATE);
         return surveyForm;
     }
     /**
@@ -69,7 +79,9 @@ public class SurveyFormResourceIT {
     public static SurveyForm createUpdatedEntity(EntityManager em) {
         SurveyForm surveyForm = new SurveyForm()
             .name(UPDATED_NAME)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .startDate(UPDATED_START_DATE)
+            .endDate(UPDATED_END_DATE);
         return surveyForm;
     }
 
@@ -94,6 +106,8 @@ public class SurveyFormResourceIT {
         SurveyForm testSurveyForm = surveyFormList.get(surveyFormList.size() - 1);
         assertThat(testSurveyForm.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testSurveyForm.getNote()).isEqualTo(DEFAULT_NOTE);
+        assertThat(testSurveyForm.getStartDate()).isEqualTo(DEFAULT_START_DATE);
+        assertThat(testSurveyForm.getEndDate()).isEqualTo(DEFAULT_END_DATE);
     }
 
     @Test
@@ -147,7 +161,9 @@ public class SurveyFormResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(surveyForm.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)));
+            .andExpect(jsonPath("$.[*].note").value(hasItem(DEFAULT_NOTE)))
+            .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())));
     }
     
     @Test
@@ -162,7 +178,9 @@ public class SurveyFormResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(surveyForm.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE));
+            .andExpect(jsonPath("$.note").value(DEFAULT_NOTE))
+            .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
+            .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()));
     }
     @Test
     @Transactional
@@ -186,7 +204,9 @@ public class SurveyFormResourceIT {
         em.detach(updatedSurveyForm);
         updatedSurveyForm
             .name(UPDATED_NAME)
-            .note(UPDATED_NOTE);
+            .note(UPDATED_NOTE)
+            .startDate(UPDATED_START_DATE)
+            .endDate(UPDATED_END_DATE);
 
         restSurveyFormMockMvc.perform(put("/api/survey-forms").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -199,6 +219,8 @@ public class SurveyFormResourceIT {
         SurveyForm testSurveyForm = surveyFormList.get(surveyFormList.size() - 1);
         assertThat(testSurveyForm.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testSurveyForm.getNote()).isEqualTo(UPDATED_NOTE);
+        assertThat(testSurveyForm.getStartDate()).isEqualTo(UPDATED_START_DATE);
+        assertThat(testSurveyForm.getEndDate()).isEqualTo(UPDATED_END_DATE);
     }
 
     @Test

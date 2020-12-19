@@ -4,35 +4,56 @@
     {
       "fieldName": "msmh",
       "fieldType": "String",
-      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRules": [
+        "minlength",
+        "maxlength",
+        "required",
+        "unique"
+      ],
       "fieldValidateRulesMinlength": "4",
       "fieldValidateRulesMaxlength": "20"
     },
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["minlength", "maxlength", "required"],
+      "fieldValidateRules": [
+        "minlength",
+        "maxlength",
+        "required"
+      ],
       "fieldValidateRulesMinlength": "5",
       "fieldValidateRulesMaxlength": "30"
     },
     {
       "fieldName": "numOfCredit",
       "fieldType": "Integer",
-      "fieldValidateRules": ["min", "max", "required"],
+      "fieldValidateRules": [
+        "min",
+        "max",
+        "required"
+      ],
       "fieldValidateRulesMin": "2",
       "fieldValidateRulesMax": "60"
     },
     {
       "fieldName": "theoryLesson",
       "fieldType": "Integer",
-      "fieldValidateRules": ["min", "max", "required"],
+      "fieldValidateRules": [
+        "min",
+        "max",
+        "required"
+      ],
       "fieldValidateRulesMin": "2",
       "fieldValidateRulesMax": "60"
     },
     {
       "fieldName": "practiceLesson",
       "fieldType": "Integer",
-      "fieldValidateRules": ["min", "max", "required"],
+      "fieldValidateRules": [
+        "min",
+        "max",
+        "required"
+      ],
       "fieldValidateRulesMin": "2",
       "fieldValidateRulesMax": "60"
     }
@@ -41,13 +62,13 @@
   "changelogDate": "20201206031343",
   "entityTableName": "subject",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "surveystore"],
+  "applications": "*",
   "microserviceName": "surveystore"
 }

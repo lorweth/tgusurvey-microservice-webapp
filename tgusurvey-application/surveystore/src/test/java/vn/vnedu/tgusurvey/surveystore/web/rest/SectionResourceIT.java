@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -38,9 +37,6 @@ public class SectionResourceIT {
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COMMENT = "AAAAAAAAAA";
-    private static final String UPDATED_COMMENT = "BBBBBBBBBB";
-
     @Autowired
     private SectionRepository sectionRepository;
 
@@ -61,8 +57,7 @@ public class SectionResourceIT {
     public static Section createEntity(EntityManager em) {
         Section section = new Section()
             .stt(DEFAULT_STT)
-            .title(DEFAULT_TITLE)
-            .comment(DEFAULT_COMMENT);
+            .title(DEFAULT_TITLE);
         return section;
     }
     /**
@@ -74,8 +69,7 @@ public class SectionResourceIT {
     public static Section createUpdatedEntity(EntityManager em) {
         Section section = new Section()
             .stt(UPDATED_STT)
-            .title(UPDATED_TITLE)
-            .comment(UPDATED_COMMENT);
+            .title(UPDATED_TITLE);
         return section;
     }
 
@@ -100,7 +94,6 @@ public class SectionResourceIT {
         Section testSection = sectionList.get(sectionList.size() - 1);
         assertThat(testSection.getStt()).isEqualTo(DEFAULT_STT);
         assertThat(testSection.getTitle()).isEqualTo(DEFAULT_TITLE);
-        assertThat(testSection.getComment()).isEqualTo(DEFAULT_COMMENT);
     }
 
     @Test
@@ -122,25 +115,6 @@ public class SectionResourceIT {
         assertThat(sectionList).hasSize(databaseSizeBeforeCreate);
     }
 
-
-    @Test
-    @Transactional
-    public void checkSttIsRequired() throws Exception {
-        int databaseSizeBeforeTest = sectionRepository.findAll().size();
-        // set the field null
-        section.setStt(null);
-
-        // Create the Section, which fails.
-
-
-        restSectionMockMvc.perform(post("/api/sections").with(csrf())
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(TestUtil.convertObjectToJsonBytes(section)))
-            .andExpect(status().isBadRequest());
-
-        List<Section> sectionList = sectionRepository.findAll();
-        assertThat(sectionList).hasSize(databaseSizeBeforeTest);
-    }
 
     @Test
     @Transactional
@@ -173,8 +147,7 @@ public class SectionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(section.getId().intValue())))
             .andExpect(jsonPath("$.[*].stt").value(hasItem(DEFAULT_STT)))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
-            .andExpect(jsonPath("$.[*].comment").value(hasItem(DEFAULT_COMMENT.toString())));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)));
     }
     
     @Test
@@ -189,8 +162,7 @@ public class SectionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(section.getId().intValue()))
             .andExpect(jsonPath("$.stt").value(DEFAULT_STT))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
-            .andExpect(jsonPath("$.comment").value(DEFAULT_COMMENT.toString()));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE));
     }
     @Test
     @Transactional
@@ -214,8 +186,7 @@ public class SectionResourceIT {
         em.detach(updatedSection);
         updatedSection
             .stt(UPDATED_STT)
-            .title(UPDATED_TITLE)
-            .comment(UPDATED_COMMENT);
+            .title(UPDATED_TITLE);
 
         restSectionMockMvc.perform(put("/api/sections").with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
@@ -228,7 +199,6 @@ public class SectionResourceIT {
         Section testSection = sectionList.get(sectionList.size() - 1);
         assertThat(testSection.getStt()).isEqualTo(UPDATED_STT);
         assertThat(testSection.getTitle()).isEqualTo(UPDATED_TITLE);
-        assertThat(testSection.getComment()).isEqualTo(UPDATED_COMMENT);
     }
 
     @Test

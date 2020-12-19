@@ -2,8 +2,8 @@
   "tgusurveyApp": {
     "Constraint": {
       "null": "",
-      "PREREQUISITE": "PREREQUISITE",
-      "FIRSTSUBJECT": "FIRSTSUBJECT"
+      "PREREQUISITE": "Tiên quyết",
+      "NONPREREQUISITE": "Không tiên quyết"
     }
   }
 }

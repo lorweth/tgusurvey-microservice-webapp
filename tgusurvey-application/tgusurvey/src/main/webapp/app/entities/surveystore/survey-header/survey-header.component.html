@@ -21,15 +21,15 @@
     <div class="table-responsive" id="entities" *ngIf="surveyHeaders && surveyHeaders.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.stt">Stt</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.title">Title</span></th>
-                    <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.surveyForm">Survey Form</span></th>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="stt"><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.stt">Stt</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="surveyForm.name"><span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.surveyForm">Survey Form</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
                 <tr *ngFor="let surveyHeader of surveyHeaders ;trackBy: trackId">
                     <td><a [routerLink]="['/survey-header', surveyHeader.id, 'view']">{{ surveyHeader.id }}</a></td>
                     <td>{{ surveyHeader.stt }}</td>

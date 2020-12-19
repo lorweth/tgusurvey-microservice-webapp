@@ -15,7 +15,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.constraint" for="field_constraint">Constraint</label>
                     <select class="form-control" name="constraint" formControlName="constraint" id="field_constraint">
                         <option value="PREREQUISITE">{{ 'tgusurveyApp.Constraint.PREREQUISITE' | translate }}</option>
-                        <option value="FIRSTSUBJECT">{{ 'tgusurveyApp.Constraint.FIRSTSUBJECT' | translate }}</option>
+                        <option value="NONPREREQUISITE">{{ 'tgusurveyApp.Constraint.NONPREREQUISITE' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('constraint')!.invalid && (editForm.get('constraint')!.dirty || editForm.get('constraint')!.touched)">
                         <small class="form-text text-danger"
@@ -29,7 +29,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.subject" for="field_subject">Subject</label>
                     <select class="form-control" id="field_subject" name="subject" formControlName="subject">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="subjectOption.id === editForm.get('subject')!.value?.id ? editForm.get('subject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }}</option>
+                        <option [ngValue]="subjectOption.id === editForm.get('subject')!.value?.id ? editForm.get('subject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }} - {{subjectOption.name}}</option>
                     </select>
                 </div>
 
@@ -37,7 +37,7 @@
                     <label class="form-control-label" jhiTranslate="tgusurveyApp.surveystoreSubjectCondition.beforeSubject" for="field_beforeSubject">Before Subject</label>
                     <select class="form-control" id="field_beforeSubject" name="beforeSubject" formControlName="beforeSubject">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="subjectOption.id === editForm.get('beforeSubject')!.value?.id ? editForm.get('beforeSubject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }}</option>
+                        <option [ngValue]="subjectOption.id === editForm.get('beforeSubject')!.value?.id ? editForm.get('beforeSubject')!.value : subjectOption" *ngFor="let subjectOption of subjects; trackBy: trackById">{{ subjectOption.msmh }} - {{subjectOption.name}}</option>
                     </select>
                 </div>
             </div>

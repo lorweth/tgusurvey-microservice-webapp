@@ -25,12 +25,15 @@ public class ResultSurvey implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "survey_date")
-    private Instant surveyDate;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "answer")
     private Answer answer;
+
+    @Column(name = "comment")
+    private String comment;
+
+    @Column(name = "date")
+    private Instant date;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "resultSurveys", allowSetters = true)
@@ -49,19 +52,6 @@ public class ResultSurvey implements Serializable {
         this.id = id;
     }
 
-    public Instant getSurveyDate() {
-        return surveyDate;
-    }
-
-    public ResultSurvey surveyDate(Instant surveyDate) {
-        this.surveyDate = surveyDate;
-        return this;
-    }
-
-    public void setSurveyDate(Instant surveyDate) {
-        this.surveyDate = surveyDate;
-    }
-
     public Answer getAnswer() {
         return answer;
     }
@@ -73,6 +63,32 @@ public class ResultSurvey implements Serializable {
 
     public void setAnswer(Answer answer) {
         this.answer = answer;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public ResultSurvey comment(String comment) {
+        this.comment = comment;
+        return this;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Instant getDate() {
+        return date;
+    }
+
+    public ResultSurvey date(Instant date) {
+        this.date = date;
+        return this;
+    }
+
+    public void setDate(Instant date) {
+        this.date = date;
     }
 
     public User getUser() {
@@ -123,8 +139,9 @@ public class ResultSurvey implements Serializable {
     public String toString() {
         return "ResultSurvey{" +
             "id=" + getId() +
-            ", surveyDate='" + getSurveyDate() + "'" +
             ", answer='" + getAnswer() + "'" +
+            ", comment='" + getComment() + "'" +
+            ", date='" + getDate() + "'" +
             "}";
     }
 }

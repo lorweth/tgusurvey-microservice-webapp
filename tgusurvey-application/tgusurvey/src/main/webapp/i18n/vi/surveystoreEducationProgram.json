@@ -2,28 +2,28 @@
   "tgusurveyApp": {
     "surveystoreEducationProgram": {
       "home": {
-        "title": "Education Programs",
-        "createLabel": "Thêm mới một Education Program",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Education Program",
-        "notFound": "No Education Programs found"
+        "title": "Danh sách CTĐT",
+        "createLabel": "Thêm mới một CTĐT",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật CTĐT",
+        "notFound": "Không có CTĐT nào được tìm thấy"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Education Program {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa CTĐT {{ id }}?"
       },
       "detail": {
-        "title": "Education Program"
+        "title": "CTĐT"
       },
       "msct": "Msct",
-      "name": "Name",
-      "year": "Year",
-      "specialized": "Specialized"
+      "name": "Tên",
+      "year": "Năm",
+      "specialized": "Ngành"
     }
   },
   "surveystoreApp": {
     "surveystoreEducationProgram": {
-      "created": "Một Education Program mới được tạo với định danh {{ param }}",
-      "updated": "Một Education Program cập nhật với định danh {{ param }}",
-      "deleted": "Một Education Program đã xóa với định danh {{ param }}"
+      "created": "Một CTĐT mới được tạo với định danh {{ param }}",
+      "updated": "Một CTĐT cập nhật với định danh {{ param }}",
+      "deleted": "Một CTĐT đã xóa với định danh {{ param }}"
     }
   }
 }

@@ -40,6 +40,7 @@ export const subjectRoute: Routes = [
     component: SubjectComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.surveystoreSubject.home.title',
     },
     canActivate: [UserRouteAccessService],

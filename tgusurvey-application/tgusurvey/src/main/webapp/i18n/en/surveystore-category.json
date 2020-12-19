@@ -2,8 +2,8 @@
   "tgusurveyApp": {
     "Category": {
       "null": "",
-      "REQUIRED": "REQUIRED",
-      "OPTION": "OPTION"
+      "REQUIRED": "Required",
+      "OPTION": "Option"
     }
   }
 }

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="educationProgram">
-            <h2><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.detail.title">Education Program</span> {{ educationProgram.msct }}</h2>
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.detail.title">Education Program</span> {{ educationProgram.msct }} - {{ educationProgram.name }}</h2>
 
             <hr>
 
@@ -18,12 +18,12 @@
                 </dd>
                 <dt><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.year">Year</span></dt>
                 <dd>
-                    <span>{{ educationProgram.year | date:'mediumDate' }}</span>
+                    <span>{{ educationProgram.year | date: 'mediumDate'}}</span>
                 </dd>
                 <dt><span jhiTranslate="tgusurveyApp.surveystoreEducationProgram.specialized">Specialized</span></dt>
                 <dd>
                     <div *ngIf="educationProgram.specialized">
-                        <a [routerLink]="['/specialized', educationProgram.specialized?.id, 'view']">{{ educationProgram.specialized?.mscn }}</a>
+                        <a [routerLink]="['/specialized', educationProgram.specialized?.id, 'view']">{{ educationProgram.specialized?.mscn }} - {{ educationProgram.specialized?.name }}</a>
                     </div>
                 </dd>
             </dl>
@@ -39,67 +39,66 @@
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
             </button>
-
-            <br><br>
-
-            <div class="alert alert-warning" id="no-result" *ngIf="programItems?.length === 0">
-                <span jhiTranslate="tgusurveyApp.surveystoreProgramItem.home.notFound">No programItems found</span>
-            </div>
-        
-            <div class="table-responsive" id="entities" *ngIf="programItems && programItems.length > 0">
-                <table class="table table-striped" aria-describedby="page-heading">
-                    <thead>
-                        <tr>
-                            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
-                            <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject">Subject</span></th>
-                            <th scope="col" ><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.category">Category</span></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let programItem of programItems ;trackBy: trackId">
-                            <td><a [routerLink]="['/program-item', programItem.id, 'view']">{{ programItem.id }}</a></td>
-                            <td>
-                                <div *ngIf="programItem.subject">
-                                    <a [routerLink]="['/subject', programItem.subject?.id, 'view']" >{{ programItem.subject?.name }}</a>
-                                </div>
-                            </td>
-                            <td jhiTranslate="{{ 'tgusurveyApp.Category.' + programItem.category }}">{{ programItem.category }}</td>
-                            
-                            <td class="text-right">
-                                <div class="btn-group">
-                                    <button type="submit"
-                                            [routerLink]="['/subject', programItem.subject?.id, 'view']"
-                                            class="btn btn-info btn-sm">
-                                        <fa-icon icon="eye"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                    </button>
-        
-                                    <button type="submit"
-                                            [routerLink]="['/program-item', programItem.id, 'edit']"
-                                            class="btn btn-primary btn-sm">
-                                        <fa-icon icon="pencil-alt"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                    </button>
-        
-                                    <button type="submit" (click)="delete(programItem)"
-                                            class="btn btn-danger btn-sm">
-                                        <fa-icon icon="times"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <button id="jh-create-entity" class="btn btn-primary jh-create-entity create-program-item" [routerLink]="['/program-item/new']">
-                <fa-icon icon="plus"></fa-icon>
-                <span  jhiTranslate="tgusurveyApp.surveystoreProgramItem.home.createLabel">
-                Create a new Program Item
-                </span>
-            </button>
         </div>
+        <br><br>
+        <div class="alert alert-warning" id="no-result" *ngIf="programItems?.length === 0">
+            <span jhiTranslate="tgusurveyApp.surveystoreProgramItem.home.notFound">No programItems found</span>
+        </div>
+    
+        <div class="table-responsive" id="entities" *ngIf="programItems && programItems.length > 0">
+            <table class="table table-striped" aria-describedby="page-heading">
+                <thead>
+                    <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
+                        <th scope="col"  jhiSortBy="subject.msmh"><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.subject">Subject</span> <fa-icon icon="sort"></fa-icon></th>
+                        <th scope="col"  jhiSortBy="subject.name"><span jhiTranslate="tgusurveyApp.surveystoreSubject.name">Subject</span> <fa-icon icon="sort"></fa-icon></th>
+                        <th scope="col"  jhiSortBy="category"><span jhiTranslate="tgusurveyApp.surveystoreProgramItem.category">Category</span> <fa-icon icon="sort"></fa-icon></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+                    <tr *ngFor="let programItem of programItems ;trackBy: trackId">
+                        <td>
+                            <div *ngIf="programItem.subject">
+                                <a [routerLink]="['/subject', programItem.subject?.id, 'view']" >{{ programItem.subject?.msmh }}</a>
+                            </div>
+                        </td>
+                        <span>{{ programItem.subject?.name }}</span>
+                        <td jhiTranslate="{{ 'tgusurveyApp.Category.' + programItem.category }}">{{ programItem.category }}</td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button type="submit"
+                                        [routerLink]="['/subject', programItem.subject?.id, 'view']"
+                                        class="btn btn-info btn-sm"
+                                        (click)="reset()"
+                                        >
+                                    <fa-icon icon="eye"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </button>
+    
+                                <button type="submit"
+                                        [routerLink]="['/program-item', programItem.id, 'edit']"
+                                        class="btn btn-primary btn-sm">
+                                    <fa-icon icon="pencil-alt"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </button>
+    
+                                <button type="submit" (click)="delete(programItem)"
+                                        class="btn btn-danger btn-sm">
+                                    <fa-icon icon="times"></fa-icon>
+                                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button id="jh-create-entity" class="btn btn-primary jh-create-entity create-program-item" [routerLink]="['/program-item/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="tgusurveyApp.surveystoreProgramItem.home.createLabel">
+            Create a new Program Item
+            </span>
+        </button>
     </div>
 </div>

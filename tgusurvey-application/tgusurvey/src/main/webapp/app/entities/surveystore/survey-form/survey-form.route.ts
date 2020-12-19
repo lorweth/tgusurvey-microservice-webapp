@@ -40,6 +40,7 @@ export const surveyFormRoute: Routes = [
     component: SurveyFormComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.surveystoreSurveyForm.home.title',
     },
     canActivate: [UserRouteAccessService],
