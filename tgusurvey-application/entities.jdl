@@ -134,24 +134,6 @@ entity Enterprise{
     lineOfBussiness String required // lĩnh vực kinh doanh
 }
 
-/**
- * Many to one relationship.
- */
-relationship ManyToOne {
-    Students{classroom(mslh)} to Classroom
-    Lecturer{unit(name)} to Unit
-}
-
-/**
- * One to one relationship.
- */
-relationship OneToOne {
-    Lecturer{user(login)} to User
-    Students{user(login)} to User
-    Enterprise{user(login)} to User
-    Lecturer{position(name)} to Position
-}
-
 paginate * with pagination
 
 microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
@@ -233,9 +215,22 @@ entity SubjectCondition {
 }
 
 /**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Lecturer{user(login)} to User
+    Students{user(login)} to User
+    Enterprise{user(login)} to User
+    Lecturer{position(name)} to Position
+}
+
+/**
  * Many to one relationship.
  */
 relationship ManyToOne {
+
+    Students{classroom(mslh)} to Classroom
+    Lecturer{unit(name)} to Unit
 
     Question{section(title)} to Section
     Section{header(title)} to SurveyHeader
