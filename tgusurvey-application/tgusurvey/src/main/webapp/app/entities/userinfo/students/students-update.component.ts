@@ -47,7 +47,9 @@ export class StudentsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ students }) => {
       this.updateForm(students);
+
       this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.users = res.body || null));
+
       this.classroomService.query().subscribe((res: HttpResponse<IClassroom[]>) => (this.classrooms = res.body || []));
     });
   }

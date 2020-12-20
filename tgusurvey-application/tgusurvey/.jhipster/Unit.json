@@ -4,20 +4,22 @@
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [],
   "changelogDate": "20201206030743",
   "entityTableName": "unit",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "userinfo"],
+  "applications": "*",
   "microserviceName": "userinfo"
 }

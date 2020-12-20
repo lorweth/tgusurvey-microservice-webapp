@@ -40,6 +40,7 @@ export const enterpriseRoute: Routes = [
     component: EnterpriseComponent,
     data: {
       authorities: [Authority.ENTERPRISES, Authority.ADMIN],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.userinfoEnterprise.home.title',
     },
     canActivate: [UserRouteAccessService],

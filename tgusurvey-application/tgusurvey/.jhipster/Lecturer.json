@@ -4,37 +4,54 @@
     {
       "fieldName": "msgv",
       "fieldType": "String",
-      "fieldValidateRules": ["minlength", "maxlength", "required", "unique"],
+      "fieldValidateRules": [
+        "minlength",
+        "maxlength",
+        "required",
+        "unique"
+      ],
       "fieldValidateRulesMinlength": "8",
       "fieldValidateRulesMaxlength": "20"
     },
     {
       "fieldName": "birthDay",
       "fieldType": "LocalDate",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "address",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "text",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "gender",
       "fieldType": "Gender",
       "fieldValues": "MALE,FEMALE",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "cmnd",
       "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRules": [
+        "maxlength",
+        "required"
+      ],
       "fieldValidateRulesMaxlength": "9"
     },
     {
       "fieldName": "phoneNumber",
       "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRules": [
+        "maxlength",
+        "required"
+      ],
       "fieldValidateRulesMaxlength": "10"
     }
   ],
@@ -66,13 +83,13 @@
   "changelogDate": "20201206030843",
   "entityTableName": "lecturer",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "userinfo"],
+  "applications": "*",
   "microserviceName": "userinfo"
 }

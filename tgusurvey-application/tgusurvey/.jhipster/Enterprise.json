@@ -4,28 +4,39 @@
     {
       "fieldName": "name",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "address",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "phoneNumber",
       "fieldType": "String",
-      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRules": [
+        "maxlength",
+        "required"
+      ],
       "fieldValidateRulesMaxlength": "10"
     },
     {
       "fieldName": "representative",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     },
     {
       "fieldName": "lineOfBussiness",
       "fieldType": "String",
-      "fieldValidateRules": ["required"]
+      "fieldValidateRules": [
+        "required"
+      ]
     }
   ],
   "relationships": [
@@ -41,13 +52,13 @@
   "changelogDate": "20201206031043",
   "entityTableName": "enterprise",
   "dto": "no",
-  "pagination": "no",
+  "pagination": "pagination",
   "service": "no",
   "jpaMetamodelFiltering": false,
   "fluentMethods": true,
   "readOnly": false,
   "embedded": false,
   "clientRootFolder": "",
-  "applications": ["tgusurvey", "userinfo"],
+  "applications": "*",
   "microserviceName": "userinfo"
 }

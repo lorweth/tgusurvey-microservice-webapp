@@ -1,18 +1,22 @@
 package vn.vnedu.tgusurvey.userinfo.web.rest;
 
 import vn.vnedu.tgusurvey.userinfo.domain.Students;
-import vn.vnedu.tgusurvey.userinfo.domain.User;
 import vn.vnedu.tgusurvey.userinfo.repository.StudentsRepository;
 import vn.vnedu.tgusurvey.userinfo.repository.UserRepository;
 import vn.vnedu.tgusurvey.userinfo.security.SecurityUtils;
-import vn.vnedu.tgusurvey.userinfo.service.UserService;
 import vn.vnedu.tgusurvey.userinfo.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
+import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,12 +100,15 @@ public class StudentsResource {
     /**
      * {@code GET  /students} : get all the students.
      *
+     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of students in body.
      */
     @GetMapping("/students")
-    public List<Students> getAllStudents() {
-        log.debug("REST request to get all Students");
-        return studentsRepository.findAll();
+    public ResponseEntity<List<Students>> getAllStudents(Pageable pageable) {
+        log.debug("REST request to get a page of Students");
+        Page<Students> page = studentsRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
     /**

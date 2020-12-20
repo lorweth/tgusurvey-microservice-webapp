@@ -40,6 +40,7 @@ export const classroomRoute: Routes = [
     component: ClassroomComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.userinfoClassroom.home.title',
     },
     canActivate: [UserRouteAccessService],

@@ -40,6 +40,7 @@ export const positionRoute: Routes = [
     component: PositionComponent,
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.userinfoPosition.home.title',
     },
     canActivate: [UserRouteAccessService],

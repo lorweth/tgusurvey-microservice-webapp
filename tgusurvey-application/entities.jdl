@@ -134,6 +134,10 @@ entity Enterprise{
     lineOfBussiness String required // lĩnh vực kinh doanh
 }
 
+paginate * with pagination
+
+microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
+
 // Ngành học
 entity Specialized {
     mscn String minlength(4) maxlength(20) required unique
@@ -168,26 +172,27 @@ enum Answer {
 
 // Kết quả khảo sát
 entity ResultSurvey {
-    surveyDate Instant
     answer Answer
-
+    comment String
+    date Instant
 }
 
 // Phiếu khảo sát
 entity SurveyForm {
     name String required
     note String
+    startDate Instant
+    endDate Instant
 }
 
 entity SurveyHeader {
-    stt Integer min(1) required
+    stt Integer min(1)
     title String required
 }
 
 entity Section {
-    stt Integer min(1) required
+    stt Integer min(1)
     title String required
-    comment TextBlob
 }
 
 entity Question {
@@ -201,7 +206,7 @@ entity ProgramItem {
 
 // tùy chọn mức độ ràng buộc môn học
 enum Constraint{
-    PREREQUISITE, FIRSTSUBJECT
+    PREREQUISITE, NONPREREQUISITE
 }
 
 // Điều kiện: lưu mối quan hệ giữa 2 học phần
@@ -209,11 +214,21 @@ entity SubjectCondition {
     constraint Constraint required
 }
 
+/**
+ * One to one relationship.
+ */
+relationship OneToOne {
+    Lecturer{user(login)} to User
+    Students{user(login)} to User
+    Enterprise{user(login)} to User
+    Lecturer{position(name)} to Position
+}
 
 /**
  * Many to one relationship.
  */
 relationship ManyToOne {
+
     Students{classroom(mslh)} to Classroom
     Lecturer{unit(name)} to Unit
 
@@ -233,22 +248,11 @@ relationship ManyToOne {
     SubjectCondition{subject(msmh)} to Subject
     SubjectCondition{beforeSubject(msmh)} to Subject
 
-    // Nhiều câu trả lời cho 1 câu hỏi
     ResultSurvey{question(content)} to Question
 }
 
-/**
- * One to one relationship.
- */
-relationship OneToOne {
-    Lecturer{user(login)} to User
-    Students{user(login)} to User
-    Enterprise{user(login)} to User
-    Lecturer{position(name)} to Position
-}
+paginate EducationProgram, Subject, SurveyForm, Specialized with pagination
+paginate ResultSurvey, Question, SurveyHeader, Section, ProgramItem, SubjectCondition with infinite-scroll
 
-microservice Students, Lecturer, Enterprise, Classroom, Unit, Position with userinfo
+
 microservice ResultSurvey, Question, SurveyHeader, Section, Subject, ProgramItem, SubjectCondition, SurveyForm, EducationProgram, Specialized with surveystore
-
-
-
