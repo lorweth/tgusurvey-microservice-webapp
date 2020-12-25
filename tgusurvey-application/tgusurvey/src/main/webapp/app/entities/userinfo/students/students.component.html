@@ -10,6 +10,13 @@
         </button>
     </h2>
 
+    <div class="input-group mb-3">
+        <div class="input-group-append">
+            <button class="btn btn-success" type="submit" (click)="find()"><span jhiTranslate="tgusurveyApp.userinfoStudents.search">Search</span></button>
+        </div>
+        <input type="text" class="form-control" placeholder="{{'tgusurveyApp.userinfoStudents.search-placeholder' | translate}}" [(ngModel)]="keyword">
+    </div>
+
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>

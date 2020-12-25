@@ -20,7 +20,9 @@
       "phoneNumber": "Phone Number",
       "graduationStatus": "Graduation Status",
       "user": "User",
-      "classroom": "Classroom"
+      "classroom": "Classroom",
+      "search": "Search",
+      "search-placeholder": "Enter mssv to find"
     }
   },
   "userinfoApp": {

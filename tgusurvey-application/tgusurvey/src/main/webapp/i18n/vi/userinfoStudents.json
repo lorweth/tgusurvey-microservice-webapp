@@ -20,7 +20,9 @@
       "phoneNumber": "Phone Number",
       "graduationStatus": "Graduation Status",
       "user": "User",
-      "classroom": "Classroom"
+      "classroom": "Classroom",
+      "search": "Tìm kiếm",
+      "search-placeholder": "Nhập mssv cần tìm"
     }
   },
   "userinfoApp": {

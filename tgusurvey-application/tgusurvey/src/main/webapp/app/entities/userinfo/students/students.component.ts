@@ -25,6 +25,9 @@ export class StudentsComponent implements OnInit, OnDestroy {
   ascending!: boolean;
   ngbPaginationPage = 1;
 
+  keyword?: string;
+  findSubscriber?: Subscription;
+
   constructor(
     protected studentsService: StudentsService,
     protected activatedRoute: ActivatedRoute,
@@ -53,6 +56,23 @@ export class StudentsComponent implements OnInit, OnDestroy {
     this.registerChangeInStudents();
   }
 
+  find(page?: number, dontNavigate?: boolean): void {
+    if (this.keyword !== undefined) {
+      const pageToLoad: number = page || this.page || 1;
+
+      this.findSubscriber = this.studentsService
+        .getStudentsByMssvContain(this.keyword, {
+          page: pageToLoad - 1,
+          size: this.itemsPerPage,
+          sort: this.sort(),
+        })
+        .subscribe(
+          (res: HttpResponse<IStudents[]>) => this.onSuccess(res.body, res.headers, pageToLoad, !dontNavigate),
+          () => this.onError()
+        );
+    }
+  }
+
   protected handleNavigation(): void {
     combineLatest(this.activatedRoute.data, this.activatedRoute.queryParamMap, (data: Data, params: ParamMap) => {
       const page = params.get('page');
@@ -72,6 +92,9 @@ export class StudentsComponent implements OnInit, OnDestroy {
     if (this.eventSubscriber) {
       this.eventManager.destroy(this.eventSubscriber);
     }
+    if (this.findSubscriber) {
+      this.eventManager.destroy(this.findSubscriber);
+    }
   }
 
   trackId(index: number, item: IStudents): number {
@@ -81,6 +104,7 @@ export class StudentsComponent implements OnInit, OnDestroy {
 
   registerChangeInStudents(): void {
     this.eventSubscriber = this.eventManager.subscribe('studentsListModification', () => this.loadPage());
+    this.findSubscriber = this.eventManager.subscribe('findStudent', () => this.find());
   }
 
   delete(students: IStudents): void {
