@@ -53,6 +53,7 @@ export const classroomRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
+      defaultSort: 'id,asc',
       pageTitle: 'tgusurveyApp.userinfoClassroom.home.title',
     },
     canActivate: [UserRouteAccessService],

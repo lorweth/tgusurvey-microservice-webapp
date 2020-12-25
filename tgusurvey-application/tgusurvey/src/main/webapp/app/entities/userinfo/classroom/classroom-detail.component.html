@@ -30,5 +30,62 @@
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
             </button>
         </div>
+
+        <br><br>
+
+        <div>
+            <div class="alert alert-warning" id="no-result" *ngIf="students?.length === 0">
+                <span jhiTranslate="tgusurveyApp.userinfoStudents.home.notFound">No students found</span>
+            </div>
+        
+            <div class="table-responsive" id="entities" *ngIf="students && students.length > 0">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="mssv"><span jhiTranslate="tgusurveyApp.userinfoStudents.mssv">Mssv</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="birthDay"><span jhiTranslate="tgusurveyApp.userinfoStudents.birthDay">Birth Day</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="gender"><span jhiTranslate="tgusurveyApp.userinfoStudents.gender">Gender</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="cmnd"><span jhiTranslate="tgusurveyApp.userinfoStudents.cmnd">Cmnd</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="phoneNumber"><span jhiTranslate="tgusurveyApp.userinfoStudents.phoneNumber">Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="graduationStatus"><span jhiTranslate="tgusurveyApp.userinfoStudents.graduationStatus">Graduation Status</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="tgusurveyApp.userinfoStudents.user">User</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"  jhiSortBy="classroom.mslh"><span jhiTranslate="tgusurveyApp.userinfoStudents.classroom">Classroom</span> <fa-icon icon="sort"></fa-icon></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let students of students ;trackBy: trackId">
+                            <td><a [routerLink]="['/students', students.id, 'view']">{{ students.id }}</a></td>
+                            <td>{{ students.mssv }}</td>
+                            <td>{{ students.birthDay | date:'mediumDate' }}</td>
+                            <td jhiTranslate="{{ 'tgusurveyApp.Gender.' + students.gender }}">{{ students.gender }}</td>
+                            <td>{{ students.cmnd }}</td>
+                            <td>{{ students.phoneNumber }}</td>
+                            <td jhiTranslate="{{ 'tgusurveyApp.GraduationStatus.' + students.graduationStatus }}">{{ students.graduationStatus }}</td>
+                            <td>
+                                {{ students.user?.login }}
+                            </td>
+                            <td>
+                                <div *ngIf="students.classroom">
+                                    <a [routerLink]="['/classroom', students.classroom?.id, 'view']" >{{ students.classroom?.mslh }}</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div *ngIf="students && students.length > 0">
+                <div class="row justify-content-center">
+                    <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+                </div>
+        
+                <div class="row justify-content-center">
+                    <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
