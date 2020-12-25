@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -107,6 +106,36 @@ public class StudentsResource {
     public ResponseEntity<List<Students>> getAllStudents(Pageable pageable) {
         log.debug("REST request to get a page of Students");
         Page<Students> page = studentsRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET /students/in-class/:classId} : lấy tất cả students trong lớp "classId"
+     *
+     * @param classId "id" của lớp học
+     * @param pageable thông tin phân trang
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of students in body.
+     */
+    @GetMapping("/students/in-class/{classId}")
+    public ResponseEntity<List<Students>> getAllStudentsInClass(@PathVariable Long classId, Pageable pageable){
+        log.debug("REST request to get a page of Students");
+        Page<Students> page = studentsRepository.findByClassroom_Id(pageable, classId);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     *  {@code GET /students/find-by-mssv/:id} Lấy danh sách các students có mssv tương tự "%in%"
+     *
+     * @param keyword keyword tìm kiếm
+     * @param pageable thông tin phân trang
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of students in body.
+     */
+    @GetMapping("/students/find-by-mssv/{keyword}")
+    public ResponseEntity<List<Students>> getStudentsByName(@PathVariable String keyword, Pageable pageable){
+        log.debug("REST request to get a page of Students");
+        Page<Students> page = studentsRepository.findByMssvContainingIgnoreCase(pageable, keyword);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
