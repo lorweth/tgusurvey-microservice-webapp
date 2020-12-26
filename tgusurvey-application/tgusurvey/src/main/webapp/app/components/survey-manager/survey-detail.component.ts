@@ -5,6 +5,7 @@ import { ISurveyFormDTO } from 'app/shared/model/surveystore/survey-form-dto.mod
 @Component({
   selector: 'jhi-survey-detail',
   templateUrl: './survey-detail.component.html',
+  styleUrls: ['./survey-manager.component.scss'],
 })
 export class SurveyDetailComponent implements OnInit {
   surveyForm: ISurveyFormDTO | null = null;

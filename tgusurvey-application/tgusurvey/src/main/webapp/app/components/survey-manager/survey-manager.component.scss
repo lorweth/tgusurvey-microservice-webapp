@@ -1,0 +1,37 @@
+.survey-header {
+  span {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  &:hover {
+    .button-group {
+      opacity: 1;
+    }
+  }
+}
+
+.survey-section {
+  span {
+    font-size: 16px;
+  }
+  &:hover {
+    .button-group {
+      opacity: 1;
+    }
+  }
+}
+
+.survey-question {
+  span {
+    font-size: 14px;
+  }
+  &:hover {
+    .button-group {
+      opacity: 1;
+    }
+  }
+}
+
+.button-group {
+  opacity: 0;
+}
