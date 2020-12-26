@@ -1,5 +1,6 @@
 package vn.vnedu.tgusurvey.userinfo.repository;
 
+import org.springframework.data.domain.Page;
 import vn.vnedu.tgusurvey.userinfo.domain.Lecturer;
 
 import org.springframework.data.jpa.repository.*;

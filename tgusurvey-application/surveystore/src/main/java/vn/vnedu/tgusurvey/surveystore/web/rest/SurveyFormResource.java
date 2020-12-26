@@ -2,6 +2,8 @@ package vn.vnedu.tgusurvey.surveystore.web.rest;
 
 import vn.vnedu.tgusurvey.surveystore.domain.SurveyForm;
 import vn.vnedu.tgusurvey.surveystore.repository.SurveyFormRepository;
+import vn.vnedu.tgusurvey.surveystore.service.SurveyFormService;
+import vn.vnedu.tgusurvey.surveystore.service.dto.SurveyFormDTO;
 import vn.vnedu.tgusurvey.surveystore.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -41,9 +43,11 @@ public class SurveyFormResource {
     private String applicationName;
 
     private final SurveyFormRepository surveyFormRepository;
+    private final SurveyFormService surveyFormService;
 
-    public SurveyFormResource(SurveyFormRepository surveyFormRepository) {
+    public SurveyFormResource(SurveyFormRepository surveyFormRepository, SurveyFormService surveyFormService) {
         this.surveyFormRepository = surveyFormRepository;
+        this.surveyFormService = surveyFormService;
     }
 
     /**
@@ -111,6 +115,13 @@ public class SurveyFormResource {
         log.debug("REST request to get SurveyForm : {}", id);
         Optional<SurveyForm> surveyForm = surveyFormRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(surveyForm);
+    }
+
+    @GetMapping("/survey-forms/full/{id}")
+    public ResponseEntity<SurveyFormDTO> getFullSurveyForm(@PathVariable Long id) {
+        log.debug("REST request to get SurveyFormDTO : {}", id);
+        Optional<SurveyFormDTO> surveyFormDTO = surveyFormService.getSurveyFormDTO(id);
+        return ResponseUtil.wrapOrNotFound(surveyFormDTO);
     }
 
     /**

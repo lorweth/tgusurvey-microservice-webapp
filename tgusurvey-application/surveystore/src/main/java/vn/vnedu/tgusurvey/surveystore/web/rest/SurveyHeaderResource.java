@@ -2,6 +2,7 @@ package vn.vnedu.tgusurvey.surveystore.web.rest;
 
 import vn.vnedu.tgusurvey.surveystore.domain.SurveyHeader;
 import vn.vnedu.tgusurvey.surveystore.repository.SurveyHeaderRepository;
+import vn.vnedu.tgusurvey.surveystore.service.dto.HeaderDTO;
 import vn.vnedu.tgusurvey.surveystore.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
