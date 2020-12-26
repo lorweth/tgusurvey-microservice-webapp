@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { ISurveyForm } from 'app/shared/model/surveystore/survey-form.model';
+import { ISurveyFormDTO } from 'app/shared/model/surveystore/survey-form-dto.model';
 
 type EntityResponseType = HttpResponse<ISurveyForm>;
 type EntityArrayResponseType = HttpResponse<ISurveyForm[]>;
@@ -42,6 +43,12 @@ export class SurveyFormService {
     return this.http
       .get<ISurveyForm[]>(this.resourceUrl, { params: options, observe: 'response' })
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+  }
+
+  getFullSurvey(id: number, req?: any): Observable<HttpResponse<ISurveyFormDTO>> {
+    return this.http
+      .get<ISurveyFormDTO>(`${this.resourceUrl}/full/${id}`, { observe: 'response' })
+      .pipe(map((res: HttpResponse<ISurveyFormDTO>) => this.convertDateFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

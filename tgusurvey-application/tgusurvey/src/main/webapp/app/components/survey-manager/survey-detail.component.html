@@ -24,13 +24,25 @@
                 <dd>
                     <span>{{ surveyForm.endDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.program">Program</span></dt>
-                <dd>
-                    <div *ngIf="surveyForm.program">
-                        <a [routerLink]="['/education-program', surveyForm.program?.id, 'view']">{{ surveyForm.program?.msct }}</a>
-                    </div>
-                </dd>
             </dl>
+
+            <div *ngIf="surveyForm.headers">
+                <ul style="list-style: none;">
+                    <li *ngFor="let header of surveyForm.headers">
+                        {{header.title}}
+                        <ul style="list-style: none;">
+                            <li *ngFor="let section of header.sections">
+                                {{section.title}}
+                                <ul style="list-style: none;">
+                                    <li *ngFor="let question of section.questions">
+                                        {{question.content}}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
             <button type="submit"
                     (click)="previousState()"
@@ -38,11 +50,6 @@
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/survey-form', surveyForm.id, 'edit']"
-                    class="btn btn-primary">
-                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-            </button>
         </div>
 
         <br><br>

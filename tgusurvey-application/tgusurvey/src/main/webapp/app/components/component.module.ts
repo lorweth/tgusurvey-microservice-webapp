@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router';
         path: 'enterprise-profile',
         loadChildren: () => import('./enterprise-profile/enterprise-profile.module').then(m => m.EnterpriseProfileModule),
       },
+      {
+        path: 'survey-manager',
+        loadChildren: () => import('./survey-manager/survey-manager.module').then(m => m.SurveyManagerModule),
+      },
     ]),
   ],
 })
