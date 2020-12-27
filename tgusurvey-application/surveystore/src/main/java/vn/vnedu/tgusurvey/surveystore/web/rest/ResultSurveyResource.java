@@ -3,6 +3,7 @@ package vn.vnedu.tgusurvey.surveystore.web.rest;
 import vn.vnedu.tgusurvey.surveystore.domain.ResultSurvey;
 import vn.vnedu.tgusurvey.surveystore.repository.ResultSurveyRepository;
 import vn.vnedu.tgusurvey.surveystore.repository.UserRepository;
+import vn.vnedu.tgusurvey.surveystore.security.SecurityUtils;
 import vn.vnedu.tgusurvey.surveystore.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -120,6 +121,21 @@ public class ResultSurveyResource {
         log.debug("REST request to get ResultSurvey : {}", id);
         Optional<ResultSurvey> resultSurvey = resultSurveyRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(resultSurvey);
+    }
+
+    /**
+     * {@code GET /result-surveys/answer-of-question/:id}
+     * @param id the id of the question to retrieve answer
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the resultSurvey, or status {@code (no-content)}
+     */
+    @GetMapping("/result-surveys/answer-of-question/{id}")
+    public ResponseEntity<ResultSurvey> getAnswerOfQuestion(@PathVariable Long id) {
+        log.debug("REST request to get ResultSurvey : {}", id);
+        Optional<ResultSurvey> resultSurvey = resultSurveyRepository.findByUserLoginAndQuestionId(SecurityUtils.getCurrentUserLogin().orElse(null),id);
+        if(!resultSurvey.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(resultSurvey.get(), HttpStatus.OK);
     }
 
     /**
