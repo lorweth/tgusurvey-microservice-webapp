@@ -30,91 +30,48 @@
                 <span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.home.notFound">No surveyHeaders found</span>
             </div>
             <div *ngIf="surveyForm.headers">
-                <ul style="list-style: none;">
-                    <li *ngFor="let header of surveyForm.headers">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let header of surveyForm.headers; trackBy: trackHeaderId">
                         <div class="row survey-header">
-                            <span>{{header.title}}</span>
-                            <div class="ml-auto button-group">
-                                <div class="btn-group">
-                                    <button type="submit"
-                                            [routerLink]="['/survey-header', header.id, 'view']"
-                                            class="btn btn-info btn-sm">
-                                        <fa-icon icon="eye"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                    </button>
-        
-                                    <button type="submit"
-                                            [routerLink]="['/survey-header', header.id, 'edit']"
-                                            class="btn btn-primary btn-sm">
-                                        <fa-icon icon="pencil-alt"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                    </button>
-        
-                                    <button type="submit"
-                                            class="btn btn-danger btn-sm">
-                                        <fa-icon icon="times"></fa-icon>
-                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                    </button>
-                                </div>
-                            </div>
+                            <span class="mb-1">{{header.title}}</span>
                         </div>
 
                         <ul style="list-style: none;">
-                            <li *ngFor="let section of header.sections">
+                            <li *ngFor="let section of header.sections; trackBy: trackSectionId">
                                 <div class="row survey-section">
                                     <span>{{section.title}}</span>
-                                    <div class="ml-auto button-group">
-                                        <div class="btn-group">
-                                            <button type="submit"
-                                                    [routerLink]="['/section', section.id, 'view']"
-                                                    class="btn btn-info btn-sm">
-                                                <fa-icon icon="eye"></fa-icon>
-                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                            </button>
-                
-                                            <button type="submit"
-                                                    [routerLink]="['/section', section.id, 'edit']"
-                                                    class="btn btn-primary btn-sm">
-                                                <fa-icon icon="pencil-alt"></fa-icon>
-                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                            </button>
-                
-                                            <button type="submit"
-                                                    class="btn btn-danger btn-sm">
-                                                <fa-icon icon="times"></fa-icon>
-                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                            </button>
-                                        </div>
-                                    </div>
                                 </div>
                                
                                 <hr>
 
                                 <ul style="list-style: none;" class="my-3" >
-                                    <li *ngFor="let question of section.questions">
+                                    <li *ngFor="let question of section.questions; trackBy: trackQuestionId">
                                         <div class="row my-1 survey-question">
-                                            <span>{{question.content}}</span>
-                                            <div class="ml-auto button-group">
-                                                <div class="btn-group">
-                                                    <button type="submit"
-                                                            [routerLink]="['/question', question.id, 'view']"
-                                                            class="btn btn-info btn-sm">
-                                                        <fa-icon icon="eye"></fa-icon>
-                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                                                    </button>
-                        
-                                                    <button type="submit"
-                                                            [routerLink]="['/question', question.id, 'edit']"
-                                                            class="btn btn-primary btn-sm">
-                                                        <fa-icon icon="pencil-alt"></fa-icon>
-                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-                                                    </button>
-                        
-                                                    <button type="submit"
-                                                            class="btn btn-danger btn-sm">
-                                                        <fa-icon icon="times"></fa-icon>
-                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-                                                    </button>
+                                            <span (click)="selectQuesion(question)">{{question.content}}</span>
+                                            <div *ngIf="question.id === userAnswer.question?.id" id="answer-form-{{question.id}}" class="answer-form form-inline ml-auto">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="answer-{{question.id}}" jhiTranslate="tgusurveyApp.surveystoreResultSurvey.answer">Answer</label>
+                                                    </div>
+                                                    <select class="custom-select" id="answer-{{question.id}}" [(ngModel)]="userAnswer.answer">
+                                                        <option value="OPTION1">{{ 'tgusurveyApp.Answer.OPTION1' | translate }}</option>
+                                                        <option value="OPTION2">{{ 'tgusurveyApp.Answer.OPTION2' | translate }}</option>
+                                                        <option value="OPTION3">{{ 'tgusurveyApp.Answer.OPTION3' | translate }}</option>
+                                                        <option value="OPTION4">{{ 'tgusurveyApp.Answer.OPTION4' | translate }}</option>
+                                                        <option value="OPTION5">{{ 'tgusurveyApp.Answer.OPTION5' | translate }}</option>
+                                                    </select>
+                                                    <div class="input-group-append">
+                                                        <label class="input-group-text" for="comment-{{question.id}}" jhiTranslate="tgusurveyApp.surveystoreResultSurvey.comment">Commnet</label>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="comment-{{question.id}}" aria-label="Text input with dropdown button" [(ngModel)]="userAnswer.comment">
+                                                    <div class="input-group-append">
+                                                        <button type="submit"
+                                                            (click)="saveAnswer()"
+                                                            class="btn btn-success btn-sm">
+                                                            <fa-icon icon="save"></fa-icon>
+                                                            <span class="d-none d-md-inline" jhiTranslate="entity.action.save">save</span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

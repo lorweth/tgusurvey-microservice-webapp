@@ -1,0 +1,148 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="surveyForm">
+            <h2><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.detail.title">Survey Form</span> {{ surveyForm.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.name">Name</span></dt>
+                <dd>
+                    <span>{{ surveyForm.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.note">Note</span></dt>
+                <dd>
+                    <span>{{ surveyForm.note }}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{ surveyForm.startDate | date: 'short'}}</span>
+                </dd>
+                <dt><span jhiTranslate="tgusurveyApp.surveystoreSurveyForm.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{ surveyForm.endDate | date: 'short'}}</span>
+                </dd>
+            </dl>
+
+            <div class="alert alert-warning" id="no-result" *ngIf="surveyForm.headers?.length === 0">
+                <span jhiTranslate="tgusurveyApp.surveystoreSurveyHeader.home.notFound">No surveyHeaders found</span>
+            </div>
+            <div *ngIf="surveyForm.headers">
+                <ul style="list-style: none;">
+                    <li *ngFor="let header of surveyForm.headers; trackBy: trackHeaderId">
+                        <div class="row survey-header">
+                            <span>{{header.title}}</span>
+                            <div class="ml-auto button-group">
+                                <div class="btn-group">
+                                    <button type="submit"
+                                            [routerLink]="['/survey-header', header.id, 'view']"
+                                            class="btn btn-info btn-sm">
+                                        <fa-icon icon="eye"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                    </button>
+        
+                                    <button type="submit"
+                                            [routerLink]="['/survey-header', header.id, 'edit']"
+                                            class="btn btn-primary btn-sm">
+                                        <fa-icon icon="pencil-alt"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                    </button>
+        
+                                    <button type="submit"
+                                            class="btn btn-danger btn-sm">
+                                        <fa-icon icon="times"></fa-icon>
+                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <ul style="list-style: none;">
+                            <li *ngFor="let section of header.sections; trackBy: trackSectionId">
+                                <div class="row survey-section">
+                                    <span>{{section.title}}</span>
+                                    <div class="ml-auto button-group">
+                                        <div class="btn-group">
+                                            <button type="submit"
+                                                    [routerLink]="['/section', section.id, 'view']"
+                                                    class="btn btn-info btn-sm">
+                                                <fa-icon icon="eye"></fa-icon>
+                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                            </button>
+                
+                                            <button type="submit"
+                                                    [routerLink]="['/section', section.id, 'edit']"
+                                                    class="btn btn-primary btn-sm">
+                                                <fa-icon icon="pencil-alt"></fa-icon>
+                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                            </button>
+                
+                                            <button type="submit"
+                                                    class="btn btn-danger btn-sm">
+                                                <fa-icon icon="times"></fa-icon>
+                                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <hr>
+
+                                <ul style="list-style: none;" class="my-3" >
+                                    <li *ngFor="let question of section.questions; trackBy: trackQuestionId">
+                                        <div class="row my-1 survey-question">
+                                            <span>{{question.content}}</span>
+                                            <div class="ml-auto button-group">
+                                                <div class="btn-group">
+                                                    <button type="submit"
+                                                            [routerLink]="['/question', question.id, 'view']"
+                                                            class="btn btn-info btn-sm">
+                                                        <fa-icon icon="eye"></fa-icon>
+                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                                    </button>
+                        
+                                                    <button type="submit"
+                                                            [routerLink]="['/question', question.id, 'edit']"
+                                                            class="btn btn-primary btn-sm">
+                                                        <fa-icon icon="pencil-alt"></fa-icon>
+                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                                    </button>
+                        
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm">
+                                                        <fa-icon icon="times"></fa-icon>
+                                                        <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+
+        <br><br>
+
+        
+    </div>
+</div>

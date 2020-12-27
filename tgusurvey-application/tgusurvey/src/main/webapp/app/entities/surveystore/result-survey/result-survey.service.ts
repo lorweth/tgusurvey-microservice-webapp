@@ -44,6 +44,12 @@ export class ResultSurveyService {
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
+  getAnswerOfQuestion(idQues: number): Observable<EntityResponseType> {
+    return this.http
+      .get<IResultSurvey>(`${this.resourceUrl}/answer-of-question/${idQues}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

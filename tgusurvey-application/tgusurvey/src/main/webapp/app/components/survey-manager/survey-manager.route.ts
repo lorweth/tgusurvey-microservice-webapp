@@ -10,6 +10,7 @@ import { SurveyDetailComponent } from './survey-detail.component';
 import { ISurveyFormDTO, SurveyFormDTO } from 'app/shared/model/surveystore/survey-form-dto.model';
 import { SurveyFormService } from 'app/entities/surveystore/survey-form/survey-form.service';
 import { SurveyManagerComponent } from './survey-manager.component';
+import { SurveyEditComponent } from './survey-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class SurveyManagerResolve implements Resolve<ISurveyFormDTO> {
@@ -53,6 +54,18 @@ export const surveyFormManagerRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       pageTitle: 'tgusurveyApp.surveystoreSurveyForm.home.title',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: ':id/edit',
+    component: SurveyEditComponent,
+    resolve: {
+      surveyForm: SurveyManagerResolve,
+    },
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'tgusurveyApp.surveystoreSurveyHeader.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

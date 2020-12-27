@@ -45,7 +45,7 @@ export class SurveyFormService {
       .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
   }
 
-  getFullSurvey(id: number, req?: any): Observable<HttpResponse<ISurveyFormDTO>> {
+  getFullSurvey(id: number): Observable<HttpResponse<ISurveyFormDTO>> {
     return this.http
       .get<ISurveyFormDTO>(`${this.resourceUrl}/full/${id}`, { observe: 'response' })
       .pipe(map((res: HttpResponse<ISurveyFormDTO>) => this.convertDateFromServer(res)));
