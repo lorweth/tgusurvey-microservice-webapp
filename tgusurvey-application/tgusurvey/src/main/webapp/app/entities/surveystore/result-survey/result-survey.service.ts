@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IResultSurvey } from 'app/shared/model/surveystore/result-survey.model';
+import { IAnswerCount } from 'app/shared/model/surveystore/answer-count.model';
 
 type EntityResponseType = HttpResponse<IResultSurvey>;
 type EntityArrayResponseType = HttpResponse<IResultSurvey[]>;
@@ -48,6 +49,10 @@ export class ResultSurveyService {
     return this.http
       .get<IResultSurvey>(`${this.resourceUrl}/answer-of-question/${idQues}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  getDataStatisticsOfQuestion(idQues: number): Observable<HttpResponse<IAnswerCount[]>> {
+    return this.http.get<IAnswerCount[]>(`${this.resourceUrl}/get-statistics/${idQues}`, { observe: 'response' });
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {

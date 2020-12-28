@@ -37,7 +37,7 @@ export class SurveyDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ surveyForm }) => (this.surveyForm = surveyForm));
-    this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.userAnswer.user = res.body || undefined));
+    this.userService.getCurrentUser().subscribe((res: HttpResponse<IUser>) => (this.userAnswer.user = res.body || {}));
   }
 
   ngOnDestroy(): void {
@@ -51,13 +51,17 @@ export class SurveyDetailComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * lấy dữ liệu câu trả lời
-   * @param idQues id của câu hỏi cần hiển thị câu trả lời
+   * subscribe câu trả lời của câu hỏi hoặc trả về đối tượng mới với question được thêm vào
+   *
+   * @param idQues id của câu hỏi, dùng để tìm đáp án của người đăng nhập (cập nhật)
+   * @param question câu hỏi cần thêm vào nếu không tìm được đáp án (thêm mới)
    */
-  getAnswer(idQues: number): void {
+  getAnswer(idQues: number, question: IQuestionDTO): void {
+    const user = this.userAnswer.user || {};
+
     this.eventSubscriber = this.resultSurveyService
       .getAnswerOfQuestion(idQues)
-      .subscribe((res: HttpResponse<IResultSurvey>) => (this.userAnswer = res.body || {}));
+      .subscribe((res: HttpResponse<IResultSurvey>) => (this.userAnswer = res.body || { question, user }));
   }
 
   /**
@@ -66,8 +70,7 @@ export class SurveyDetailComponent implements OnInit, OnDestroy {
    * @param question câu hỏi cần trả lời
    */
   selectQuesion(question: IQuestionDTO): void {
-    this.getAnswer(question.id!);
-    this.userAnswer.question = question;
+    this.getAnswer(question.id!, question);
     this.isSelectQuestion = true;
   }
 

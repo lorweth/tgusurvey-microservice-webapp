@@ -64,7 +64,7 @@ export const surveyFormManagerRoute: Routes = [
       surveyForm: SurveyManagerResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN],
       pageTitle: 'tgusurveyApp.surveystoreSurveyHeader.home.title',
     },
     canActivate: [UserRouteAccessService],

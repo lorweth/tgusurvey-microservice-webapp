@@ -95,7 +95,7 @@
                                 <ul style="list-style: none;" class="my-3" >
                                     <li *ngFor="let question of section.questions; trackBy: trackQuestionId">
                                         <div class="row my-1 survey-question">
-                                            <span>{{question.content}}</span>
+                                            <span (click)="showChart(question)" placement="bottom" ngbTooltip="Click để hiển thị thống kê">{{question.content}}</span>
                                             <div class="ml-auto button-group">
                                                 <div class="btn-group">
                                                     <button type="submit"
