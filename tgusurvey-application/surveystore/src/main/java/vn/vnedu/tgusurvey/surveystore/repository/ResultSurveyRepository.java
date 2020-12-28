@@ -1,5 +1,6 @@
 package vn.vnedu.tgusurvey.surveystore.repository;
 
+import feign.Param;
 import vn.vnedu.tgusurvey.surveystore.domain.Question;
 import vn.vnedu.tgusurvey.surveystore.domain.ResultSurvey;
 
@@ -21,4 +22,7 @@ public interface ResultSurveyRepository extends JpaRepository<ResultSurvey, Long
     List<ResultSurvey> findByUserIsCurrentUser();
 
     Optional<ResultSurvey> findByUserLoginAndQuestionId(String userLogin, Long Id);
+
+    @Query("select resultSurvey.answer, count(resultSurvey) from ResultSurvey resultSurvey where resultSurvey.question.id = :id group by resultSurvey.answer")
+    List<Object[]> getCountUserEachAnswer(@Param("id") Long id);
 }

@@ -4,6 +4,8 @@ import vn.vnedu.tgusurvey.surveystore.domain.ResultSurvey;
 import vn.vnedu.tgusurvey.surveystore.repository.ResultSurveyRepository;
 import vn.vnedu.tgusurvey.surveystore.repository.UserRepository;
 import vn.vnedu.tgusurvey.surveystore.security.SecurityUtils;
+import vn.vnedu.tgusurvey.surveystore.service.ResultSurveyService;
+import vn.vnedu.tgusurvey.surveystore.service.dto.dataStatisticsDTO;
 import vn.vnedu.tgusurvey.surveystore.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -40,11 +43,12 @@ public class ResultSurveyResource {
     private String applicationName;
 
     private final ResultSurveyRepository resultSurveyRepository;
-
+    private final ResultSurveyService resultSurveyService;
     private final UserRepository userRepository;
 
-    public ResultSurveyResource(ResultSurveyRepository resultSurveyRepository, UserRepository userRepository) {
+    public ResultSurveyResource(ResultSurveyRepository resultSurveyRepository, ResultSurveyService resultSurveyService, UserRepository userRepository) {
         this.resultSurveyRepository = resultSurveyRepository;
+        this.resultSurveyService = resultSurveyService;
         this.userRepository = userRepository;
     }
 
@@ -136,6 +140,13 @@ public class ResultSurveyResource {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(resultSurvey.get(), HttpStatus.OK);
+    }
+
+    @GetMapping("/result-surveys/get-statistics/{idQues}")
+    public List<dataStatisticsDTO> getStatisticsOfQuestion(@PathVariable Long idQues){
+//        Map<String, Long> result = resultSurveyService.getStatistics(idQues);
+//        return result;
+        return  resultSurveyService.getStatistics(idQues);
     }
 
     /**
