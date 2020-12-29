@@ -2,8 +2,8 @@
   "tgusurveyApp": {
     "Gender": {
       "null": "",
-      "MALE": "MALE",
-      "FEMALE": "FEMALE"
+      "MALE": "Nam",
+      "FEMALE": "Nữ"
     }
   }
 }

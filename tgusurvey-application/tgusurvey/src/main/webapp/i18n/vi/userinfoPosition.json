@@ -2,7 +2,7 @@
   "tgusurveyApp": {
     "userinfoPosition": {
       "home": {
-        "title": "Positions",
+        "title": "Chức vụ",
         "createLabel": "Thêm mới một Position",
         "createOrEditLabel": "Thêm mới hoặc cập nhật Position",
         "notFound": "No Positions found"

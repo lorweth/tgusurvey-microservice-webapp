@@ -2,30 +2,30 @@
   "tgusurveyApp": {
     "userinfoEnterprise": {
       "home": {
-        "title": "Enterprises",
-        "createLabel": "Thêm mới một Enterprise",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Enterprise",
+        "title": "Doanh nghiệp",
+        "createLabel": "Thêm mới một doanh nghiệp",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật doanh nghiệp",
         "notFound": "No Enterprises found"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Enterprise {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa doanh nghiệp {{ id }}?"
       },
       "detail": {
-        "title": "Enterprise"
+        "title": "Doanh nghiệp"
       },
-      "name": "Name",
-      "address": "Address",
-      "phoneNumber": "Phone Number",
-      "representative": "Representative",
-      "lineOfBussiness": "Line Of Bussiness",
+      "name": "Tên doanh nghiệp",
+      "address": "Địa chỉ",
+      "phoneNumber": "SDT",
+      "representative": "Người đại diện",
+      "lineOfBussiness": "Lĩnh vực kinh doanh",
       "user": "User"
     }
   },
   "userinfoApp": {
     "userinfoEnterprise": {
-      "created": "Một Enterprise mới được tạo với định danh {{ param }}",
-      "updated": "Một Enterprise cập nhật với định danh {{ param }}",
-      "deleted": "Một Enterprise đã xóa với định danh {{ param }}"
+      "created": "Một doanh nghiệp mới được tạo với định danh {{ param }}",
+      "updated": "Một doanh nghiệp cập nhật với định danh {{ param }}",
+      "deleted": "Một doanh nghiệp đã xóa với định danh {{ param }}"
     }
   }
 }

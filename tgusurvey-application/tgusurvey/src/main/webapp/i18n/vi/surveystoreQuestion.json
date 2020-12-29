@@ -2,26 +2,26 @@
   "tgusurveyApp": {
     "surveystoreQuestion": {
       "home": {
-        "title": "Questions",
-        "createLabel": "Thêm mới một Question",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Question",
+        "title": "Câu hỏi khảo sát",
+        "createLabel": "Thêm mới một câu hỏi",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật câu hỏi",
         "notFound": "No Questions found"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Question {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa câu hỏi {{ id }}?"
       },
       "detail": {
-        "title": "Question"
+        "title": "Câu hỏi khảo sát"
       },
-      "content": "Content",
-      "section": "Section"
+      "content": "Nội dung",
+      "section": "Phần"
     }
   },
   "surveystoreApp": {
     "surveystoreQuestion": {
-      "created": "Một Question mới được tạo với định danh {{ param }}",
-      "updated": "Một Question cập nhật với định danh {{ param }}",
-      "deleted": "Một Question đã xóa với định danh {{ param }}"
+      "created": "Một câu hỏi mới được tạo với định danh {{ param }}",
+      "updated": "Một câu hỏi cập nhật với định danh {{ param }}",
+      "deleted": "Một câu hỏi đã xóa với định danh {{ param }}"
     }
   }
 }

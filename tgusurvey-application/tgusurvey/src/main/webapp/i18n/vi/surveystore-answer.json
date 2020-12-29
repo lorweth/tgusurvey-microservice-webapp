@@ -2,11 +2,11 @@
   "tgusurveyApp": {
     "Answer": {
       "null": "",
-      "OPTION1": "OPTION1",
-      "OPTION2": "OPTION2",
-      "OPTION3": "OPTION3",
-      "OPTION4": "OPTION4",
-      "OPTION5": "OPTION5"
+      "OPTION1": "Mức 1",
+      "OPTION2": "Mức 2",
+      "OPTION3": "Mức 3",
+      "OPTION4": "Mức 4",
+      "OPTION5": "Mức 5"
     }
   }
 }

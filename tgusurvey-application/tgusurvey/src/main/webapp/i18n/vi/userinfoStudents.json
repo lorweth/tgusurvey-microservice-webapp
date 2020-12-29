@@ -2,16 +2,16 @@
   "tgusurveyApp": {
     "userinfoStudents": {
       "home": {
-        "title": "Students",
-        "createLabel": "Thêm mới một Students",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Students",
+        "title": "Sinh viên",
+        "createLabel": "Thêm mới một sinh viên",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật sinh viên",
         "notFound": "No Students found"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Students {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa sinh viên {{ id }}?"
       },
       "detail": {
-        "title": "Students"
+        "title": "Sinh viên"
       },
       "mssv": "Mssv",
       "birthDay": "Birth Day",

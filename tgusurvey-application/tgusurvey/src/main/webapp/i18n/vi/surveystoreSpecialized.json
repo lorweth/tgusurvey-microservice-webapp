@@ -2,26 +2,26 @@
   "tgusurveyApp": {
     "surveystoreSpecialized": {
       "home": {
-        "title": "Specializeds",
-        "createLabel": "Thêm mới một Specialized",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Specialized",
+        "title": "Ngành học",
+        "createLabel": "Thêm mới một ngành học",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật ngành học",
         "notFound": "No Specializeds found"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Specialized {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa ngành học {{ id }}?"
       },
       "detail": {
-        "title": "Specialized"
+        "title": "Ngành học"
       },
       "mscn": "Mscn",
-      "name": "Name"
+      "name": "Tên ngành học"
     }
   },
   "surveystoreApp": {
     "surveystoreSpecialized": {
-      "created": "Một Specialized mới được tạo với định danh {{ param }}",
-      "updated": "Một Specialized cập nhật với định danh {{ param }}",
-      "deleted": "Một Specialized đã xóa với định danh {{ param }}"
+      "created": "Một ngành học mới được tạo với định danh {{ param }}",
+      "updated": "Một ngành học cập nhật với định danh {{ param }}",
+      "deleted": "Một ngành học đã xóa với định danh {{ param }}"
     }
   }
 }

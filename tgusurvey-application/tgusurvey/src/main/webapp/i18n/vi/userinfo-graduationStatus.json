@@ -2,8 +2,8 @@
   "tgusurveyApp": {
     "GraduationStatus": {
       "null": "",
-      "GRADUATED": "GRADUATED",
-      "PENDING": "PENDING"
+      "GRADUATED": "Đã tốt nghiệp",
+      "PENDING": "Đang học"
     }
   }
 }

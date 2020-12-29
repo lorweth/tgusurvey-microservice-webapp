@@ -2,33 +2,33 @@
   "tgusurveyApp": {
     "userinfoLecturer": {
       "home": {
-        "title": "Lecturers",
-        "createLabel": "Thêm mới một Lecturer",
-        "createOrEditLabel": "Thêm mới hoặc cập nhật Lecturer",
+        "title": "Giảng viên",
+        "createLabel": "Thêm mới một giảng viên",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật giảng viên",
         "notFound": "No Lecturers found"
       },
       "delete": {
-        "question": "Bạn có chắc là muốn xóa Lecturer {{ id }}?"
+        "question": "Bạn có chắc là muốn xóa giảng viên {{ id }}?"
       },
       "detail": {
-        "title": "Lecturer"
+        "title": "Giảng viên"
       },
       "msgv": "Msgv",
-      "birthDay": "Birth Day",
-      "address": "Address",
-      "gender": "Gender",
+      "birthDay": "Ngày sinh",
+      "address": "Địa chỉ",
+      "gender": "Giới tính",
       "cmnd": "Cmnd",
-      "phoneNumber": "Phone Number",
+      "phoneNumber": "Số điện thoại",
       "user": "User",
-      "position": "Position",
-      "unit": "Unit"
+      "position": "Chức vụ",
+      "unit": "Đơn vị"
     }
   },
   "userinfoApp": {
     "userinfoLecturer": {
-      "created": "Một Lecturer mới được tạo với định danh {{ param }}",
-      "updated": "Một Lecturer cập nhật với định danh {{ param }}",
-      "deleted": "Một Lecturer đã xóa với định danh {{ param }}"
+      "created": "Một giảng viên mới được tạo với định danh {{ param }}",
+      "updated": "Một giảng viên cập nhật với định danh {{ param }}",
+      "deleted": "Một giảng viên đã xóa với định danh {{ param }}"
     }
   }
 }
