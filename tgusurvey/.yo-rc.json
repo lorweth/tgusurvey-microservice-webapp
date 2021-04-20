@@ -36,7 +36,8 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
-    "blueprints": []
+    "blueprints": [],
+    "appFolder": "tgusurvey"
   },
   "entities": [
     "Classroom",

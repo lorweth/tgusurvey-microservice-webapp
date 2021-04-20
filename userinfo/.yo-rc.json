@@ -2,10 +2,10 @@
   "generator-jhipster": {
     "authenticationType": "oauth2",
     "cacheProvider": "hazelcast",
-    "serverPort": "8082",
+    "serverPort": "8081",
     "serviceDiscoveryType": "consul",
     "skipUserManagement": true,
-    "baseName": "surveystore",
+    "baseName": "userinfo",
     "buildTool": "gradle",
     "databaseType": "sql",
     "devDatabaseType": "mysql",
@@ -22,8 +22,8 @@
     "testFrameworks": ["gatling"],
     "websocket": false,
     "applicationType": "microservice",
-    "packageName": "vn.vnedu.tgusurvey.surveystore",
-    "packageFolder": "vn/vnedu/tgusurvey/surveystore",
+    "packageName": "vn.vnedu.tgusurvey.userinfo",
+    "packageFolder": "vn/vnedu/tgusurvey/userinfo",
     "jhipsterVersion": "6.10.5",
     "creationTimestamp": 1607223840836,
     "clientPackageManager": "npm",
@@ -31,18 +31,8 @@
     "entitySuffix": "",
     "dtoSuffix": "DTO",
     "otherModules": [],
-    "blueprints": []
+    "blueprints": [],
+    "appFolder": "userinfo"
   },
-  "entities": [
-    "ResultSurvey",
-    "Question",
-    "SurveyHeader",
-    "Section",
-    "Subject",
-    "ProgramItem",
-    "SubjectCondition",
-    "SurveyForm",
-    "EducationProgram",
-    "Specialized"
-  ]
+  "entities": ["Students", "Lecturer", "Enterprise", "Classroom", "Unit", "Position"]
 }
